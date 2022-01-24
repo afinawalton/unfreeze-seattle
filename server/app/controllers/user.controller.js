@@ -1,5 +1,5 @@
 const db = require('../models');
-const User = require('../models/user.model.js');
+let User = db.users;
 const Op = db.Sequelize.Op;
 
 const getAge = (dateString) => {
@@ -17,7 +17,7 @@ const getAge = (dateString) => {
 exports.create = (req, res) => {
     let missing = "";
 
-    if (!req.body.firstName) {
+    if (!req.body.first_name) {
         missing = 'First name';
         res.status(400).send({
             message: `${missing} cannot be empty!`
@@ -41,7 +41,7 @@ exports.create = (req, res) => {
             message: `${missing} cannot be empty!`
         });
         return;
-    } else if (!req.body.yearsInWa) {
+    } else if (!req.body.years_in_wa) {
         missing = 'Years in Washington';
         res.status(400).send({
             message: `${missing} cannot be empty!`
@@ -51,11 +51,12 @@ exports.create = (req, res) => {
 
     // Create a new user
     const user = {
-        firstName: req.body.firstName,
+        first_name: req.body.first_name,
         email: req.body.email,
-        age: getAge(req.body.birthdate),
+        birthdate: req.body.birthdate,
         city: req.body.city,
-        yearsInWa: req.body.yearsInWa
+        resident_type: req.body.resident_type,
+        years_in_wa: req.body.years_in_wa
     };
 
     // Save user in db
@@ -72,7 +73,18 @@ exports.create = (req, res) => {
 
 // Get all users
 exports.findAll = (req, res) => {
+    const residentType = req.query.residentType;
+    let condition = residentType ? { residentType: { [Op.iLike]: `%${residentType}` } } : null;
 
+    User.findAll({ where: condition })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while retrieving users."
+            });
+        });
 };
 
 // Get one user by id
@@ -98,19 +110,59 @@ exports.findOne = (req, res) => {
 
 // Update a user
 exports.update = (req, res) => {
+    const id = req.params.id;
 
+    User.update(req.body, {
+        where: { id: id }
+    })
+        .then(num => {
+            if (num == 1) {
+                res.send({
+                    message: "User was updated successfully."
+                });
+            } else {
+                res.send({
+                    message: `Cannot update User with id=${id}.`
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Error updating User with id=", id
+            });
+        });
 };
 
 // Delete a user
 exports.delete = (req, res) => {
+    const id = req.params.id;
 
+    User.destroy({
+        where: { id: id }
+    })
+        .then(num => {
+            if (num == 1) {
+                res.send({
+                message: `User ${id} was deleted successfully!`
+                });
+            } else {
+                res.send({
+                message: `Cannot delete User with id=${id}. Maybe User was not found!`
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Could not delete User with id=" + id
+            });
+        });
 };
 
 // Get all locals
-exports.findAllLocals = (req, res) => {
+// exports.findAllLocals = (req, res) => {
 
-};
+// };
 
-exports.findAllTransplants = (req, res) => {
+// exports.findAllTransplants = (req, res) => {
 
-};
+// };

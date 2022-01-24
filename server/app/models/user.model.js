@@ -1,13 +1,16 @@
 module.exports = (sequelize, Sequelize) => {
     const User = sequelize.define("user", {
         first_name: {
-            type: Sequelize.STRING(50)
+            type: Sequelize.STRING(50),
+            allowNull: false
         },
         email: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false
         },
         birthdate: {
-            type: Sequelize.DATEONLY
+            type: Sequelize.DATEONLY,
+            allowNull: false
         },
         work: {
             type: Sequelize.STRING(120)
@@ -19,7 +22,8 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING(50)
         },
         city: {
-            type: Sequelize.STRING(85)
+            type: Sequelize.STRING(85),
+            allowNull: false
         },
         neighborhood: {
             type: Sequelize.STRING(85)
@@ -28,11 +32,18 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING(2048)
         },
         resident_type: {
-            type: Sequelize.STRING(12)
+            type: Sequelize.STRING(12),
+            allowNull: false
         },
         years_in_wa: {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            allowNull: false
         }
+    }, {
+        timestamps: true,
+        createdAt: 'account_created',
+        updatedAt: false,
+        deletedAt: false
     });
 
     return User;
