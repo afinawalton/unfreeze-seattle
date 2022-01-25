@@ -123,8 +123,9 @@ exports.create = (req, res) => {
 
 // Get all users
 exports.findAll = (req, res) => {
+    // Allow to find users by local or transplant
     const residentType = req.query.residentType;
-    let condition = residentType ? { residentType: { [Op.iLike]: `%${residentType}` } } : null;
+    let condition = residentType ? { resident_type: { [Op.iLike]: `%${residentType}` } } : null;
 
     User.findAll({ where: condition })
         .then(data => {
@@ -207,12 +208,3 @@ exports.delete = (req, res) => {
             });
         });
 };
-
-// Get all locals
-// exports.findAllLocals = (req, res) => {
-
-// };
-
-// exports.findAllTransplants = (req, res) => {
-
-// };
