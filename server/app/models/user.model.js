@@ -1,5 +1,6 @@
-module.exports = (sequelize, Sequelize) => {
-    const User = sequelize.define("user", {
+module.exports = (sequelize, Sequelize, Model) => {
+    class User extends Model {}
+    User.init({
         first_name: {
             type: Sequelize.STRING(50),
             allowNull: false
@@ -39,11 +40,48 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.INTEGER,
             allowNull: false
         }
-    }, {
+    }, { 
+        sequelize,
+        modelName: 'user',
         timestamps: true,
         createdAt: 'account_created',
         updatedAt: false,
         deletedAt: false
+    });
+
+    class UserProfile extends Model {}
+    UserProfile.init({
+        user_id: {
+            type: Sequelize.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        bio: {
+            type: Sequelize.STRING(300)
+        },
+        top_interest: {
+            type: Sequelize.STRING(40),
+            allowNull: false
+        },
+        blurb: {
+            type: Sequelize.STRING(50),
+            allowNull: false
+        },
+        prompt_answers: {
+            type: Sequelize.JSON,
+            allowNull: false
+        }
+    }, {
+        sequelize,
+        modelName: 'user_profile',
+        timestamps: false
+    });
+
+    User.UserProfile = User.hasOne(UserProfile, {
+        foreignKey: {
+            name: 'user_id',
+            allowNull: false
+        }
     });
 
     return User;
