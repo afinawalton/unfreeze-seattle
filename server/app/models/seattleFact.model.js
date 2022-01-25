@@ -1,6 +1,4 @@
 module.exports = (sequelize, Sequelize, Model) => {
-    const facts = require('./seattleFacts.json');
-
     class SeattleFact extends Model {}
     SeattleFact.init({
         fact: {
