@@ -21,6 +21,7 @@ db.sequelize = sequelize;
 
 db.users = require('./user.model.js')(sequelize, Sequelize, Model);
 db.seattleFacts = require('./seattleFact.model')(sequelize, Sequelize, Model);
-db.preloadedFacts = require('./seattleFacts.json');
+db.interests = require('./interest.model.js')(sequelize, Sequelize, Model);
+db.data = require('./preloadedData.json');
 
 module.exports = db;
