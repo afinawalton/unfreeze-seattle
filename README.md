@@ -42,7 +42,6 @@ Ongoing until Feb 15
 - (List of "connections" each user has made (similar to a friends list / links to user accounts BUT only visible to the user themselves))
 
 ### News Feed / Main Page
----
 - Shows a list of users in your area with a blurb about:
 - _Seattlite_: What they like to do in Seattle
 - _Transplant_: What they want to do in Seattle
