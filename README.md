@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Unfreeze Seattle
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Everyone knows about the so-called "Seattle Freeze". Transplants to Seattle have reported having a difficult time meeting new people when they move here. Part of it might be that making friends as an adult is difficult--period. Part of it might be the city's "cultural introversion". Either way, transplants find themselves on the outside. Unfreeze Seattle aims to change that! By connecting friendly locals with curious transplants, Unfreeze Seattle creates a unique platform for getting to know one another.
 
-## Available Scripts
+## Project Status
 
-In the project directory, you can run:
+Ongoing until Feb 15
 
-### `npm start`
+## Learning Goals
+- Create a full-stack application using a combination of past programming concepts and new technologies
+- Learn to use Node.js, Express.js, and MySQL together to build a back-end - Learn to pull and display data from external databases (geocoding API and Yelp API)
+- Integrate CSS (with Sass) and React to implement front-end
+- Understand the process of building a social networking application from scratch
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Front-End
+- React
+- Sass
+### Back-End
+- JavaScript
+- Node
+- Express.js
+- PostgreSQL
+- Sequelize
+### External APIs
+- Yelp Fusion API
+- LocationIQ
 
-### `npm test`
+## MVP Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Explore Neighborhoods
+- List of Seattle neighborhoods with ability to take in user input on must-sees in a particular neighborhood
+- (Pre-loaded with the first few results from a Yelp API)
 
-### `npm run build`
+### User Profiles
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Allow users to create profiles to share info about themselves with prompts to make it easy to fill out
+- Different layouts for Seattleites vs transplants
+- (Detect location of each user and opt to share if they want to and store on profile)
+- Ability to "ping" a user, which sends a message to their email
+- (List of "connections" each user has made (similar to a friends list / links to user accounts BUT only visible to the user themselves))
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### News Feed / Main Page
+---
+- Shows a list of users in your area with a blurb about:
+- _Seattlite_: What they like to do in Seattle
+- _Transplant_: What they want to do in Seattle
+- (Allows easy visibility to all users (close to you) and easy access to users that are interested in what you're interested in)
