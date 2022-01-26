@@ -20,7 +20,7 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.users = require('./user.model.js')(sequelize, Sequelize, Model);
-db.seattleFacts = require('./seattleFact.model')(sequelize, Sequelize, Model);
+db.facts = require('./fact.model')(sequelize, Sequelize, Model);
 db.interests = require('./interest.model.js')(sequelize, Sequelize, Model);
 db.neighborhoods = require('./neighborhood.model')(sequelize, Sequelize, Model);
 db.data = require('./preloadedData.json');

@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize, Model) => {
-    class SeattleFact extends Model {}
-    SeattleFact.init({
+    class Fact extends Model {}
+    Fact.init({
         fact: {
             type: Sequelize.STRING,
             allowNull: false
@@ -11,9 +11,9 @@ module.exports = (sequelize, Sequelize, Model) => {
         }
     }, { 
         sequelize,
-        modelName: 'seattle_fact',
+        modelName: 'fact',
         timestamps: false
     });
     
-    return SeattleFact;
+    return Fact;
 }
