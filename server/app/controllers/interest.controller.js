@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 // Get all interests for form in React front-end
 // GET /interests
 exports.findAll = (req, res) => {
-    Interest.findAll()
+    Interest.findAll({ attributes: ["name"] })
         .then(data => {
             res.send(data);
         })
