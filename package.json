@@ -18,9 +18,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node ./server/server.js",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -40,5 +40,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "jest": "^27.4.7",
+    "supertest": "^6.2.2"
   }
 }
