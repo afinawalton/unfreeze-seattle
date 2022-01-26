@@ -21,7 +21,7 @@ const Home = () => {
                 </p>
             </form>
             <p id='noAccount'>Don't have an account?</p>
-            <button id='createAccount'>Create an Account</button>
+            <a id='createAccount' href='/sign-up'>Create an Account</a>
             <footer>
                 <p>Made with love in Seattle, WA</p>
             </footer>
