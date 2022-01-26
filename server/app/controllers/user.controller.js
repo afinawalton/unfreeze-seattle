@@ -2,19 +2,8 @@ const db = require('../models');
 let User = db.users;
 const Op = db.Sequelize.Op;
 
-// const getAge = (dateString) => {
-//     var today = new Date();
-//     var birthDate = new Date(dateString);
-//     var age = today.getFullYear() - birthDate.getFullYear();
-//     var m = today.getMonth() - birthDate.getMonth();
-//     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-//         age--;
-//     }
-//     return age;
-// }
-
 // Create a new user
-exports.create = (req, res) => {
+exports.createNewUser = (req, res) => {
 
     // Get user profile info a new user profile
     const userProfile = {
@@ -122,7 +111,7 @@ exports.create = (req, res) => {
 };
 
 // Get all users
-exports.findAll = (req, res) => {
+exports.getUsersByResidency = (req, res) => {
     // Allow to find users by local or transplant
     const residentType = req.query.residentType;
     let condition = residentType ? { resident_type: { [Op.iLike]: `%${residentType}` } } : null;
@@ -139,7 +128,7 @@ exports.findAll = (req, res) => {
 };
 
 // Get one user by id
-exports.findOne = (req, res) => {
+exports.getOneUser = (req, res) => {
     const id = req.params.id;
 
     User.findByPk(id)
@@ -160,7 +149,7 @@ exports.findOne = (req, res) => {
 };
 
 // Update a user
-exports.update = (req, res) => {
+exports.updateUser = (req, res) => {
     const id = req.params.id;
 
     User.update(req.body, {
@@ -184,8 +173,34 @@ exports.update = (req, res) => {
         });
 };
 
+// Update interests that belongs to a user
+// PUT /users/:id
+// exports.update = (req, res) => {
+//     const id = req.params.id;
+
+//     User.update(req.body, {
+//         where: { id: id }
+//     })
+//         .then(num => {
+//             if (num == 1) {
+//                 res.send({
+//                     message: "User was updated successfully."
+//                 });
+//             } else {
+//                 res.send({
+//                     message: `Cannot update User with id=${id}.`
+//                 });
+//             }
+//         })
+//         .catch(err => {
+//             res.status(500).send({
+//                 message: "Error updating User with id=", id
+//             });
+//         });
+// };
+
 // Delete a user
-exports.delete = (req, res) => {
+exports.deleteUser = (req, res) => {
     const id = req.params.id;
 
     User.destroy({
