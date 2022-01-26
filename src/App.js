@@ -10,17 +10,19 @@ import UserProfile from './components/userProfile';
 
 const App = () =>{
   return (
-    <Router>
-      <NavBar />
-      {/* <UserProfile /> */}
-      <Routes>
-        <Route exact path='/' exact element={<Home />} />
-        <Route path='/my-profile' element={<MyProfile />} />
-        <Route path='/main-feed' element={<MainFeed />} />
-        <Route path='/neighborhoods' element={<Neighborhoods />} />
-        {/* <Route path='/log-out' element={<LogOut />} /> */}
-      </Routes>
-    </Router>
+    <main className="App">
+      <Router>
+        <NavBar />
+        {/* <UserProfile /> */}
+        <Routes>
+          <Route exact path='/' exact element={<Home />} />
+          <Route path='/my-profile' element={<MyProfile />} />
+          <Route path='/main-feed' element={<MainFeed />} />
+          <Route path='/neighborhoods' element={<Neighborhoods />} />
+          {/* <Route path='/log-out' element={<LogOut />} /> */}
+        </Routes>
+      </Router>
+    </main>
   );
 }
 
