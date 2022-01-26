@@ -29,9 +29,6 @@ module.exports = (sequelize, Sequelize, Model) => {
         neighborhood: {
             type: Sequelize.STRING(85)
         },
-        profile_pic: {
-            type: Sequelize.STRING(2048)
-        },
         resident_type: {
             type: Sequelize.STRING(12),
             allowNull: false
@@ -70,7 +67,10 @@ module.exports = (sequelize, Sequelize, Model) => {
         prompt_answers: {
             type: Sequelize.JSON,
             allowNull: false
-        }
+        },
+        profile_pic: {
+            type: Sequelize.STRING(2048)
+        },
     }, {
         sequelize,
         modelName: 'user_profile',

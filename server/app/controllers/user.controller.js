@@ -10,7 +10,8 @@ exports.createNewUser = (req, res) => {
         bio: req.body.user_profile.bio,
         top_interest: req.body.user_profile.top_interest,
         blurb: req.body.user_profile.blurb,
-        prompt_answers: req.body.user_profile.prompt_answers
+        prompt_answers: req.body.user_profile.prompt_answers,
+        profile_pic: req.body.user_profile.profile_pic,
         // This structure looks like a nested object
         // {
         //     "How are you today?": "I'm well thanks",
@@ -50,7 +51,6 @@ exports.createNewUser = (req, res) => {
         pronouns: req.body.pronouns,
         city: req.body.city,
         neighborhood: req.body.neighborhood,
-        profile_pic: req.body.profile_pic,
         resident_type: req.body.resident_type,
         years_in_wa: req.body.years_in_wa,
         user_profile: userProfile
