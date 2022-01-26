@@ -19,6 +19,7 @@ db.sequelize.sync({ force: true })
     .then(() => {
         db.seattleFacts.bulkCreate(db.data.facts);
         db.interests.bulkCreate(db.data.interests);
+        db.neighborhoods.bulkCreate(db.data.neighborhoods, { fields: ["name"] });
     }
 );
 

@@ -57,5 +57,115 @@
             "fact": "Seattle was the home of the SuperSonics of the NBA from 1967 to 2008, when the team was relocated to Oklahoma City.",
             "source": "https://www.britannica.com/place/Seattle-Washington/Cultural-life"
         }
+    ],
+    "neighborhoods": [
+        {
+            "name": "Bainbridge/Bremerton",
+            "restaurants": [],
+            "activities": [],
+            "sights": []
+        },
+        {
+            "name": "Ballard",
+            "restaurants": [],
+            "activities": [],
+            "sights": []
+        },
+        {
+            "name": "Bellevue/Eastside",
+            "restaurants": [],
+            "activities": [],
+            "sights": []
+        },
+        {
+            "name": "Belltown",
+            "restaurants": [],
+            "activities": [],
+            "sights": []
+        },
+        {
+            "name": "Capitol Hill",
+            "restaurants": [],
+            "activities": [],
+            "sights": []
+        },
+        {
+            "name": "International District",
+            "restaurants": [],
+            "activities": [],
+            "sights": []
+        },
+        {
+            "name": "Columbia City",
+            "restaurants": [],
+            "activities": [],
+            "sights": []
+        },
+        {
+            "name": "Downtown Seattle",
+            "restaurants": [],
+            "activities": [],
+            "sights": []
+        },
+        {
+            "name": "Fremont",
+            "restaurants": [],
+            "activities": [],
+            "sights": []
+        },
+        {
+            "name": "Pioneer Square",
+            "restaurants": [],
+            "activities": [],
+            "sights": []
+        },
+        {
+            "name": "Queen Anne",
+            "restaurants": [],
+            "activities": [],
+            "sights": []
+        },
+        {
+            "name": "SoDo & Georgetown",
+            "restaurants": [],
+            "activities": [],
+            "sights": []
+        },
+        {
+            "name": "South Lake Union",
+            "restaurants": [],
+            "activities": [],
+            "sights": []
+        },
+        {
+            "name": "University District",
+            "restaurants": [],
+            "activities": [],
+            "sights": []
+        },
+        {
+            "name": "Wallingford, Green Lake & Phinney Ridge",
+            "restaurants": [],
+            "activities": [],
+            "sights": []
+        },
+        {
+            "name": "Waterfront",
+            "restaurants": [],
+            "activities": [],
+            "sights": []
+        },
+        {
+            "name": "West Seattle",
+            "restaurants": [],
+            "activities": [],
+            "sights": []
+        },
+        {
+            "name": "Woodinville",
+            "restaurants": [],
+            "activities": [],
+            "sights": []
+        }
     ]
 }
