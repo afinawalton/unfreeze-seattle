@@ -6,18 +6,9 @@ const Home = () => {
     // Might need user in useState
     const [currentUser, setCurrentUser] = useState(null);
 
-    const logInUser = (user) => {
-        console.log(`User details: ${user}`);
-    
-        axios.post('http://localhost:8080/session', user)
-            .then(res => {
-                console.log('Server response', res);
-                setCurrentUser(user);
-                console.log(`Logged in user is ${user.email}`);
-            })
-            .catch(err => {
-                console.log(err);
-            })
+    const logInUser = ({ email, password }) => {
+        console.log(`User details: ${email}`);
+        // Validate that user with this password exists
         // setCurrentUser(user);
         // Sets up private route once user is logged in
     }

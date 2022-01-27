@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const LoginForm = () => {
+const LoginForm = ({ logInUserCallback }) => {
 
     const [formFields, setFormFields] = useState({ email: '', password: '' });
 
@@ -18,8 +18,14 @@ const LoginForm = () => {
         })
     }
 
+    const onFormSubmit = (e) => {
+        e.preventDefault();
+
+        logInUserCallback(formFields);
+    }
+
     return (
-        <form>
+        <form onSubmit={onFormSubmit}>
             <p>
                 <label htmlFor=''>Email address</label>
                 <input id='email' placeholder='Email' value={formFields.email} onChange={onEmailChange}></input>
