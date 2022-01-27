@@ -7,7 +7,7 @@ import SignUp from './pages/signUp';
 import MyProfile from './pages/myProfile';
 import MainFeed from './pages/mainFeed';
 import Neighborhoods from './pages/neighbhorhoods';
-import UserProfile from './components/userProfile';
+// import UserProfile from './components/userProfile';
 
 const App = () =>{
   return (
@@ -16,7 +16,7 @@ const App = () =>{
         <NavBar />
         {/* <UserProfile /> */}
         <Routes>
-          <Route exact path='/' exact element={<Home />} />
+          <Route path='/' element={<Home />} />
           <Route path='/sign-up' element={<SignUp />} />
           <Route path='/my-profile' element={<MyProfile />} />
           <Route path='/main-feed' element={<MainFeed />} />

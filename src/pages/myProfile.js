@@ -58,7 +58,7 @@ const MyProfile = () => {
         <main>
             <button>Edit Profile</button>
             <section id='profileHeader'>
-                <img src='' alt='Profile picture of {user}' />
+                <img src='' alt='Portrait of {user}' />
                 <p>|name|, |age|, |pronouns|</p>
                 <p>|city|, |neighborhood|</p>
                 <div>
