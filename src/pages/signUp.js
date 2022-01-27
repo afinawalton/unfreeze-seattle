@@ -27,7 +27,7 @@ const SignUp = () => {
                 <h1 id='createAccountTitle'>Create an Account</h1>
                 <p>
                     <label htmlFor='email'>Email address</label>
-                    <input type='text' id='email' required></input>
+                    <input type='text' id='email' name='email' required></input>
                 </p>
                 <p>
                     <label htmlFor='password'>Password</label>
@@ -39,34 +39,34 @@ const SignUp = () => {
                 </p>
                 <p>
                     <label htmlFor='birthdate'>Birthdate</label>
-                    <input type='date' id='birthdate' required></input>
+                    <input type='date' id='birthdate' name='birthdate' required></input>
                 </p>
                 <p>
                     <label htmlFor='pronouns'>Pronouns</label>
-                    <input type='text' id='pronouns'></input>
+                    <input type='text' id='pronouns' name='pronouns'></input>
                 </p>
                 <p>
                     <label htmlFor='city'>City</label>
-                    <input type='text' id='city' placeholder='Seattle' required></input>
+                    <input type='text' id='city' placeholder='Seattle' name='city' required></input>
                 </p>
                 <p>
                     <label htmlFor='neighborhood'>Neighborhood</label>
-                    <select id='neighborhoodList'>
+                    <select id='neighborhoodList' name='neighborhood'>
                         <option value=''>Choose the neighborhood closest to you</option>
                     </select>
                 </p>
                 <p>
                     <label htmlFor='yearsInWa'>Years in Seattle</label>
-                    <input type='number' min='0' max='70' id='yearsInWa' required></input>
+                    <input type='number' min='0' max='70' id='yearsInWa' name='yearsInWa' required></input>
                 </p>
                 <p id="residentType">You're a ! <span></span></p>
                 <p>
                     <label htmlFor='interests'>Choose interests</label>
-                    <select type='text' id='interests' multiple required></select>
+                    <select type='text' id='interests' name='interests' multiple required></select>
                 </p>
                 <p>
                     <label htmlFor='jobHobby'>Job or Hobby</label>
-                    <input type='text' id='jobHobby'></input>
+                    <input type='text' id='jobHobby' name='jobHobby'></input>
                 </p>
                 <p>
                     <button type='submit' id='createAccountButton'>Create Account</button>
