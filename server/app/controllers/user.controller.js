@@ -148,6 +148,40 @@ exports.getOneUser = (req, res) => {
         });
 };
 
+// Allow user to log in with valid credentials
+exports.authenticateUserWithEmail = (user) => {
+    return new Promise((resolve, reject) => {
+        try {
+            User.findOne({
+                where: {
+                    email: user.email // user email
+                }
+            }).then(async (response) => {
+                if (!response) {
+                    resolve(false);
+                } else {
+                    if (!response.dataValues.password ||
+                    !await response.validPassword(user.password,
+                        response.dataValues.password)) {
+                            resolve(false);
+                    } else {
+                        resolve(response.dataValues)
+                    }
+                }
+            })
+        } catch (error) {
+            const response = {
+                status: 500,
+                data: {},
+                error: {
+                    message: 'User match failed'
+                }
+            };
+            reject(response);
+        }
+    })
+}
+
 // Update a user
 exports.updateUser = (req, res) => {
     const id = req.params.id;
