@@ -8,7 +8,7 @@ Ongoing until Feb 15
 
 ## Learning Goals
 - Create a full-stack application using a combination of past programming concepts and new technologies
-- Learn to use Node.js, Express.js, and MySQL together to build a back-end - Learn to pull and display data from external databases (geocoding API and Yelp API)
+- Learn to use Node.js, Express.js, and PostgreSQL together to build a back-end - Learn to pull and display data from external databases (geocoding API and Yelp API)
 - Integrate CSS (with Sass) and React to implement front-end
 - Understand the process of building a social networking application from scratch
 
