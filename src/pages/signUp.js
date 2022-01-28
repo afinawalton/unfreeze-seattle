@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 const axios = require('axios');
 
 const SignUp = ({ addUserCallback, userCreated }) => {
+    // Get list of interests from database and add to HTML
     useEffect(() => {
         axios.get('http://localhost:8080/interests')
             .then(res => {
@@ -15,12 +16,27 @@ const SignUp = ({ addUserCallback, userCreated }) => {
                 }
             })
     }, [])
+    // Get list of neighborhoods from database and add to HTML
+    useEffect(() => {
+        axios.get('http://localhost:8080/neighborhoods')
+            .then(res => {
+                let neighborhoodList = res.data;
+                neighborhoodList.sort();
+                let selectNeighborhood = document.getElementById('neighborhoodList');
+                for (let item of neighborhoodList) {
+                    let neighborhood = document.createElement('option');
+                    neighborhood.value = item.name;
+                    neighborhood.textContent = item.name;
+                    selectNeighborhood.appendChild(neighborhood);
+                }
+            })
+    }, [])
 
     const emptyForm = {
         first_name: '',
         email: '',
         password: '',
-        birthdate: '2004-01-27',
+        birthdate: '',
         work: '',
         interests: [],
         pronouns: '',
@@ -109,11 +125,11 @@ const SignUp = ({ addUserCallback, userCreated }) => {
                 </p>
                 <p>
                     <label htmlFor='city'>City</label>
-                    <input type='text' id='city' placeholder='Seattle' name='city' onChange={handleInputChange} value={formFields.city} required></input>
+                    <input type='text' id='city' name='city' onChange={handleInputChange} value={formFields.city} required></input>
                 </p>
                 <p>
                     <label htmlFor='neighborhood'>Neighborhood</label>
-                    <select id='neighborhoodList' name='neighborhood' onChange={handleInputChange} value={formFields.neighborhood}>
+                    <select id='neighborhoodList' name='neighborhood' onChange={handleInputChange} value={formFields.neighborhood} required>
                         <option value=''>Choose the neighborhood closest to you</option>
                     </select>
                 </p>
