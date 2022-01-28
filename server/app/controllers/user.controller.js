@@ -19,32 +19,33 @@ exports.createNewUser = (req, res) => {
         // }
     }
 
-    let missing = "";
+    // let missing = "";
     
-    if (!req.body.user_profile.top_interest) {
-        missing = 'Top interest';
-        res.status(400).send({
-            message: `${missing} cannot be empty!`
-        });
-        return;
-    } else if (!req.body.user_profile.blurb) {
-        missing = 'Email';
-        res.status(400).send({
-            message: `${missing} cannot be empty!`
-        });
-        return;
-    } else if (!req.body.user_profile.prompt_answers) {
-        missing = 'Birthdate';
-        res.status(400).send({
-            message: `${missing} cannot be empty!`
-        });
-        return;
-    }
+    // if (!req.body.user_profile.top_interest) {
+    //     missing = 'Top interest';
+    //     res.status(400).send({
+    //         message: `${missing} cannot be empty!`
+    //     });
+    //     return;
+    // } else if (!req.body.user_profile.blurb) {
+    //     missing = 'Email';
+    //     res.status(400).send({
+    //         message: `${missing} cannot be empty!`
+    //     });
+    //     return;
+    // } else if (!req.body.user_profile.prompt_answers) {
+    //     missing = 'Birthdate';
+    //     res.status(400).send({
+    //         message: `${missing} cannot be empty!`
+    //     });
+    //     return;
+    // }
 
     // Create a new user
     let user = {
         first_name: req.body.first_name,
         email: req.body.email,
+        password: req.body.password,
         birthdate: req.body.birthdate,
         work: req.body.work,
         interests: req.body.interests,
@@ -56,9 +57,6 @@ exports.createNewUser = (req, res) => {
         user_profile: userProfile
     };
 
-    // Encrypt password and add to user
-    user.passwordHash = bcrypt.hashSync(user.password, 10);
-
     if (!req.body.first_name) {
         missing = 'First name';
         res.status(400).send({
@@ -67,6 +65,12 @@ exports.createNewUser = (req, res) => {
         return;
     } else if (!req.body.email) {
         missing = 'Email';
+        res.status(400).send({
+            message: `${missing} cannot be empty!`
+        });
+        return;
+    } else if (!req.body.password) {
+        missing = 'Password';
         res.status(400).send({
             message: `${missing} cannot be empty!`
         });
