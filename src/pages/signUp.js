@@ -5,7 +5,6 @@ const SignUp = ({ addUserCallback, userCreated }) => {
     useEffect(() => {
         axios.get('http://localhost:8080/interests')
             .then(res => {
-                // console.log('List of interests: ', res.data);
                 const interestList = res.data;
                 let selectInterests = document.getElementById('interests');
                 for (let item of interestList) {
@@ -25,7 +24,7 @@ const SignUp = ({ addUserCallback, userCreated }) => {
         work: '',
         interests: [],
         pronouns: '',
-        city: 'Seattle',
+        city: '',
         neighborhood: '',
         resident_type: 'transplant',
         years_in_wa: 0,
@@ -61,12 +60,10 @@ const SignUp = ({ addUserCallback, userCreated }) => {
                     selectedInterests.push(option.value);
                 }
             }
-
             setFormFields({
                 ...formFields,
                 interests: selectedInterests
             });
-            // console.log(formFields.interests);
         } else {
             setFormFields({
                 ...formFields,
@@ -79,6 +76,8 @@ const SignUp = ({ addUserCallback, userCreated }) => {
         e.preventDefault();
 
         addUserCallback(formFields);
+        
+        setFormFields(emptyForm);
     }
 
     return (
