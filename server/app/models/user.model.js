@@ -39,7 +39,7 @@ module.exports = (sequelize, Sequelize, Model) => {
         },
         years_in_wa: {
             type: Sequelize.INTEGER,
-            allowNull: false
+            allowNull: true
         }
     }, { 
         sequelize,
