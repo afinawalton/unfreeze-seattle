@@ -95,20 +95,32 @@ exports.createNewUser = (req, res) => {
         return;
     }
 
-    // Save user in db
-    User.create(user, {
-        include: [{
-            association: User.UserProfile
-        }]
-    })
-        .then(data => {
-            res.status(201).send(data);
+    // Check if user exists in db
+    let userExists = 'someUser';
+    User.findOne({ where: { email: req.body.email } })
+        .then((res) => {
+            userExists = res;
         })
-        .catch(err => {
-            res.status(500).send({
-                message: "Some error occurred while creating the User."
-            });
-        });
+        .then(() => {
+            if (userExists === null) {
+                // Save user in db
+                User.create(user, {
+                    include: [{
+                        association: User.UserProfile
+                    }]
+                })
+                    .then(data => {
+                        res.status(201).send(data);
+                    })
+                    .catch(err => {
+                        res.status(500).send({
+                            message: "Some error occurred while creating the User."
+                        });
+                    });
+            } else {
+                res.status(400).send({ message: 'User with that email already exists!', userExists: userExists});
+            }
+        })
 };
 
 // Get all users
