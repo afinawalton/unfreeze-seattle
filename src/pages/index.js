@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import LoginForm from '../components/LoginForm.js';
-const axios = require('axios');
+// const axios = require('axios');
 
 const Home = () => {
     // Might need user in useState
