@@ -1,13 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+const axios = require('axios');
 
-const SignUp = ({ addUserCallback }) => {
+const SignUp = ({ addUserCallback, userCreated }) => {
+    useEffect(() => {
+        axios.get('http://localhost:8080/interests')
+            .then(res => {
+                // console.log('List of interests: ', res.data);
+                const interestList = res.data;
+                let selectInterests = document.getElementById('interests');
+                for (let item of interestList) {
+                    let newInterest = document.createElement('option');
+                    newInterest.value = item.name;
+                    newInterest.textContent = item.name;
+                    selectInterests.appendChild(newInterest);
+                }
+            })
+    }, [])
+
     const emptyForm = {
         first_name: '',
         email: '',
         password: '',
         birthdate: '2004-01-27',
         work: '',
-        interests: [''],
+        interests: [],
         pronouns: '',
         city: 'Seattle',
         neighborhood: '',
@@ -33,10 +49,24 @@ const SignUp = ({ addUserCallback }) => {
             const resident = value >= 5 ? 'local' : 'transplant';
             setFormFields({
                 ...formFields,
-                [name]: value,
+                [name]: parseInt(value),
                 resident_type: resident
             });
             document.getElementById('residency').textContent = resident;
+        } else if (name === 'interests') {
+            const options = e.target.options;
+            let selectedInterests = [];
+            for (let option of options) {
+                if (option.selected) {
+                    selectedInterests.push(option.value);
+                }
+            }
+
+            setFormFields({
+                ...formFields,
+                interests: selectedInterests
+            });
+            // console.log(formFields.interests);
         } else {
             setFormFields({
                 ...formFields,
@@ -45,104 +75,11 @@ const SignUp = ({ addUserCallback }) => {
         }
     };
 
-    // const onFirstNameChange = (e) => {
-    //     setFormFields({
-    //         ...formFields,
-    //         first_name: e.target.value
-    //     })
-    // }
-
-    // const onEmailChange = (e) => {
-    //     setFormFields({
-    //         ...formFields,
-    //         email: e.target.value
-    //     })
-    // }
-
-    // const onPasswordChange = (e) => {
-    //     setFormFields({
-    //         ...formFields,
-    //         password: e.target.value
-    //     })
-    // }
-
-    // const onBirthdateChange = (e) => {
-    //     setFormFields({
-    //         ...formFields,
-    //         birthdate: e.target.value.toString()
-    //     })
-    // }
-
-    // const onWorkChange = (e) => {
-    //     setFormFields({
-    //         ...formFields,
-    //         work: e.target.value
-    //     })
-    // }
-
-    // const onInterestsSelect = (e) => {
-    //     const interests = [];
-
-    //     if (!interests.includes(e.target.value)) {
-    //         interests.push(e.target.value)
-    //     }
-
-    //     setFormFields({
-    //         ...formFields,
-    //         interests: interests
-    //     })
-    // }
-
-    // const onPronounsChange = (e) => {
-    //     setFormFields({
-    //         ...formFields,
-    //         pronouns: e.target.value
-    //     })
-    // }
-
-    // const onCityChange = (e) => {
-    //     setFormFields({
-    //         ...formFields,
-    //         city: e.target.value
-    //     })
-    // }
-
-    // const onNeighborhoodChange = (e) => {
-    //     setFormFields({
-    //         ...formFields,
-    //         neighborhood: e.target.value
-    //     })
-    // }
-
-    // const onYearsInWaChange = (e) => {
-    //     setFormFields({
-    //         ...formFields,
-    //         years_in_wa: parseInt(e.target.value),
-    //         resident_type: e.target.value >= 5 ? 'local' : 'transplant'
-    //     })
-    // }
-
     const onFormSubmit = (e) => {
         e.preventDefault();
 
         addUserCallback(formFields);
     }
-
-    // let interests = [];
-    // useEffect(() => {
-    //     axios.get('http://localhost:8080/interests')
-    //     .then(res => {
-    //         const res_list = res;
-    //         for (let item of res_list) {
-    //             interests.push(item["name"])
-    //         }
-    //         console.log(`List of interests=\n${interests}`)
-    //         console.log(res);
-    //     })
-    //     .catch(err => {
-    //         console.log('This is my error:', err);
-    //     })
-    // })
 
     return (
         <main>
@@ -160,7 +97,7 @@ const SignUp = ({ addUserCallback }) => {
                     <input type="password" name="password" onChange={handleInputChange} value={formFields.password}></input>
                 </p>
                 <p>
-                    <label htmlFor='firstName'>First name</label>
+                    <label htmlFor='first_name'>First name</label>
                     <input type='text' id='firstName' name='first_name' onChange={handleInputChange} value={formFields.first_name} required></input>
                 </p>
                 <p>
@@ -182,19 +119,18 @@ const SignUp = ({ addUserCallback }) => {
                     </select>
                 </p>
                 <p>
-                    <label htmlFor='yearsInWa'>Years in Seattle</label>
+                    <label htmlFor='years_in_wa'>Years in Seattle</label>
                     <input type='number' min='0' max='70' id='yearsInWa' name='years_in_wa' onChange={handleInputChange} value={formFields.years_in_wa} required></input>
                 </p>
-                <p id="residentType">You're a <span id='residency'></span>!</p>
+                <p id="residentType">You're a <span id='residency'>transplant</span>!</p>
                 <p>
                     <label htmlFor='interests'>Choose interests</label>
-                    <select type='text' id='interests' name='interests' multiple required>
-                        <option value='Foodie'>Foodie</option>
+                    <select type='text' id='interests' name='interests' onChange={handleInputChange} multiple required>
                     </select>
                 </p>
                 <p>
-                    <label htmlFor='jobHobby'>Job or Hobby</label>
-                    <input type='text' id='jobHobby' name='work' onChange={handleInputChange} value={formFields.work}></input>
+                    <label htmlFor='work'>Job or Hobby</label>
+                    <input type='text' id='work' name='work' onChange={handleInputChange} value={formFields.work}></input>
                 </p>
                 <p>
                     <button type='submit' id='createAccountButton'>Create Account</button>

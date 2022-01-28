@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // COMPONENTS
 import NavBar from './components/NavBar';
@@ -7,7 +7,6 @@ import SignUp from './pages/signUp';
 import MyProfile from './pages/myProfile';
 import MainFeed from './pages/mainFeed';
 import Neighborhoods from './pages/neighbhorhoods';
-// import UserProfile from './components/userProfile';
 const axios = require('axios');
 
 const App = () =>{
@@ -36,20 +35,18 @@ const App = () =>{
         }
       }
     }
-    // console.log('Correct data format: ', fakeUser);
     console.log('User-inputted data:', userData);
     axios.post('http://localhost:8080/users', userData)
         .then(res => {
-            console.log('Added new user: ', res);
-            const data = res.data;
-            console.log('Data from response: ', data);
-            setCurrentUser(data[1]);
-            console.log(data[1]);
+            console.log('New user successfully created!');
+            setCurrentUser(res.data);
         })
         .catch(err => {
-            console.log('This is the error: ', err);
+            console.log(err);
         })
   }
+  // It /is/ setting currentUser, but because it's an asyncrhonous function, it takes a while to update
+  useEffect(()=>{ console.log(currentUser); },[currentUser]);
 
   return (
     <main className="App">
