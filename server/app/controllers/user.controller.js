@@ -93,12 +93,6 @@ exports.createNewUser = (req, res) => {
             message: `${missing} cannot be empty!`
         });
         return;
-    } else if (!req.body.years_in_wa) {
-        missing = 'Years in Washington';
-        res.status(400).send({
-            message: `${missing} cannot be empty!`
-        });
-        return;
     }
 
     // Save user in db
@@ -108,11 +102,11 @@ exports.createNewUser = (req, res) => {
         }]
     })
         .then(data => {
-            res.send(['User successfully created', data]);
+            res.status(201).send(data);
         })
         .catch(err => {
             res.status(500).send({
-                message: err.message || "Some error occurred while creating the User."
+                message: "Some error occurred while creating the User."
             });
         });
 };
