@@ -24,6 +24,7 @@ db.sequelize.sync({ force: true })
     }
 );
 
+require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 require('./app/routes/interest.routes')(app);
 require('./app/routes/fact.routes')(app);

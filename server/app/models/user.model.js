@@ -62,15 +62,15 @@ module.exports = (sequelize, Sequelize, Model) => {
         },
         top_interest: {
             type: Sequelize.STRING(40),
-            allowNull: false
+            allowNull: true // for now
         },
         blurb: {
             type: Sequelize.STRING(50),
-            allowNull: false
+            allowNull: true // for now
         },
         prompt_answers: {
             type: Sequelize.JSON,
-            allowNull: false
+            allowNull: true // for now
         },
         profile_pic: {
             type: Sequelize.STRING(2048)
