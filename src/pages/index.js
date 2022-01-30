@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LoginForm from '../components/LoginForm.js';
 
 const Home = ({ logInUser }) => {

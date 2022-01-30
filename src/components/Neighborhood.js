@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Neighborhood = () => {
-    const [selectedNeighborhood, setSelectedNeighborhood] = useState(null)
+    // const [selectedNeighborhood, setSelectedNeighborhood] = useState(null)
 
     return (
         <main>
