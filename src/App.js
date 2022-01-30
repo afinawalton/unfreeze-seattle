@@ -13,28 +13,28 @@ const App = () =>{
   const [currentUser, setCurrentUser] = useState({});
 
   const addUser = (userData) => {
-    const fakeUser = {
-      first_name: 'Afina',
-      email: 'email.com',
-      password: 'pwd',
-      birthdate: '1995-05-30',
-      work: 'work',
-      interests: [''],
-      pronouns: 'she/her',
-      city:'seattle',
-      neighborhood: 'northgate',
-      resident_type: 'local',
-      years_in_wa: 8,
-      user_profile: {
-        bio: '',
-        top_interest: '',
-        blurb: 'blurb',
-        prompt_answers: {
-            "How are you today?": '',
-            "How will you be tomorrow?": ''
-        }
-      }
-    }
+    // const fakeUser = {
+    //   first_name: 'Afina',
+    //   email: 'email.com',
+    //   password: 'pwd',
+    //   birthdate: '1995-05-30',
+    //   work: 'work',
+    //   interests: [''],
+    //   pronouns: 'she/her',
+    //   city:'seattle',
+    //   neighborhood: 'northgate',
+    //   resident_type: 'local',
+    //   years_in_wa: 8,
+    //   user_profile: {
+    //     bio: '',
+    //     top_interest: '',
+    //     blurb: 'blurb',
+    //     prompt_answers: {
+    //         "How are you today?": '',
+    //         "How will you be tomorrow?": ''
+    //     }
+    //   }
+    // }
     console.log('User-inputted data:', userData);
     axios.post('http://localhost:8080/users', userData)
         .then(res => {
@@ -45,6 +45,16 @@ const App = () =>{
             console.log(err);
         })
   }
+
+  const logInUser = (loginData) => {
+    axios.post('http://localhost:8080/auth/login', loginData)
+      .then(res => {
+        console.log('User successfully logged in!');
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
   // It /is/ setting currentUser, but because it's an asyncrhonous function, it takes a while to update
   useEffect(()=>{ console.log(currentUser); },[currentUser]);
 
@@ -54,7 +64,7 @@ const App = () =>{
         <NavBar />
         {/* <UserProfile /> */}
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home logInUser={logInUser} />} />
           <Route path='/sign-up' element={<SignUp addUserCallback={addUser} />} />
           <Route path='/my-profile' element={<MyProfile />} />
           <Route path='/main-feed' element={<MainFeed />} />
