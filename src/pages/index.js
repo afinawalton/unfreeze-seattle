@@ -1,17 +1,7 @@
 import React, { useState } from 'react';
 import LoginForm from '../components/LoginForm.js';
-// const axios = require('axios');
 
-const Home = () => {
-    // Might need user in useState
-    const [currentUser, setCurrentUser] = useState(null);
-
-    const logInUser = ({ email, password }) => {
-        console.log(`User details: ${email}`);
-        // Validate that user with this password exists
-        // setCurrentUser(user);
-        // Sets up private route once user is logged in
-    }
+const Home = ({ logInUser }) => {
 
     return (
         <main>
