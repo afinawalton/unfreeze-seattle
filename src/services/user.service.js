@@ -17,4 +17,8 @@ class UserService {
     }
 }
 
-export default new UserService();
+export default {
+    getPublicContent,
+    getLocalBoard,
+    getTransplantBoard
+}
