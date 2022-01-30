@@ -8,14 +8,14 @@ const LoginForm = ({ logInUserCallback }) => {
         setFormFields({
             ...formFields,
             email: e.target.value
-        })
+        });
     }
 
     const onPasswordChange = (e) => {
         setFormFields({
             ...formFields,
             password: e.target.value
-        })
+        });
     }
 
     const onFormSubmit = (e) => {
@@ -26,11 +26,11 @@ const LoginForm = ({ logInUserCallback }) => {
 
     return (
         <form onSubmit={onFormSubmit}>
-            <p>
-                <label htmlFor=''>Email address</label>
-                <input id='email' placeholder='Email' value={formFields.email} onChange={onEmailChange}></input>
+            <p id='emailContainer'>
+                <label htmlFor='email'>Email address</label>
+                <input id='email' value={formFields.email} onChange={onEmailChange}></input>
             </p>
-            <p>
+            <p id='passwordContainer'>
                 <label htmlFor='password'>Password</label>
                 <input id='password' type='password' value={formFields.password} onChange={onPasswordChange}></input>
             </p>
