@@ -6,7 +6,7 @@ const SignUp = () => {
     const auth = useAuth();
     // Get list of interests from database and add to HTML
     useEffect(() => {
-        axios.get('http://localhost:8080/interests')
+        axios.get('http://localhost:8080/api/interests')
             .then(res => {
                 const interestList = res.data;
                 let selectInterests = document.getElementById('interests');
@@ -20,7 +20,7 @@ const SignUp = () => {
     }, [])
     // Get list of neighborhoods from database and add to HTML
     useEffect(() => {
-        axios.get('http://localhost:8080/neighborhoods')
+        axios.get('http://localhost:8080/api/neighborhoods')
             .then(res => {
                 let neighborhoodList = res.data;
                 neighborhoodList.sort();
