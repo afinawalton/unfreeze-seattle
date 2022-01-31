@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '../use-auth';
 const axios = require('axios');
 
 const SignUp = ({ addUserCallback, userCreated }) => {
+    const auth = useAuth();
     // Get list of interests from database and add to HTML
     useEffect(() => {
         axios.get('http://localhost:8080/interests')
@@ -91,7 +93,7 @@ const SignUp = ({ addUserCallback, userCreated }) => {
     const onFormSubmit = (e) => {
         e.preventDefault();
 
-        addUserCallback(formFields);
+        auth.signup(formFields);
         
         setFormFields(emptyForm);
     }
