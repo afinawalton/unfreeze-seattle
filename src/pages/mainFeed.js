@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Blurb from '../components/Blurb';
+import { useAuth } from '../use-auth';
 
 const MainFeed = () => {
-    const [currentUser, setCurrentUser] = useState('local');
-    // setLoggedInUser('local');
+    const auth = useAuth();
 
-    const aside = currentUser === 'local' ?
+    const aside = auth.user.resident_type === 'local' ?
     <aside id='addYourFavs'>
         <h2>Add Your Favs</h2>
         <p>|Know where to find the best bookstore? Or poke shop? Add your favorites to our database.|</p>
@@ -15,7 +15,7 @@ const MainFeed = () => {
         <p>|Pike Place Market is the oldest continuously operating farmer’s market in the country.|</p>
     </aside>
 
-    const feed = currentUser === 'local' ?
+    const feed = auth.user.resident_type === 'local' ?
     <section id='blurbFeed'>
         <h2>Show a transplant around town:</h2>
         <Blurb />
@@ -29,7 +29,7 @@ const MainFeed = () => {
         <main>
             <section id="loggedInAs">
                 <img src='' alt='profilePic'></img>
-                <p>Logged in as <br /><span id="user">Afina Walton</span></p>
+                <p>Logged in as <br /><span id="user">{auth.user.first_name}</span></p>
                 <p>find a hiking trail on weekend mornings</p>
                 <button>Edit My Blurb</button>
             </section>
