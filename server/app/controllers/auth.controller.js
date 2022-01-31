@@ -116,3 +116,23 @@ exports.logInUser = (req, res) => {
             res.status(500).send({ message: err.message });
         });
 };
+
+// //check if user is logged in
+// exports.checkUser = catchAsync(async(req, res, next) => {
+//     let currentUser;    if (req.cookies.jwt) {
+//        const token = req.cookies.jwt;
+//        const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+//        currentUser = await User.findById(decoded.id);
+//    } else {
+//      currentUser =  null;
+//   }
+//    res.status(200).send({ currentUser });
+// });
+
+// //log user out
+// exports.logoutUser = catchAsync(async (req, res) => {
+//     res.cookie('jwt', 'loggedout', {
+//     expires: new Date(Date.now() + 10 * 1000),
+//     httpOnly: true
+// });    res.status(200).send('user is logged out');
+// });
