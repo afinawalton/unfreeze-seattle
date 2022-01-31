@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
+import { useAuth } from '../use-auth';
 
 const LoginForm = ({ logInUserCallback }) => {
+    const auth = useAuth();
+    // On this, we need to set up some form validation:
+    // Bad email means it doesn't exist in the database => formSubmit works improperly
+    // On form submit, generate code on App.js?
 
     const [formFields, setFormFields] = useState({ email: '', password: '' });
 
@@ -21,7 +26,10 @@ const LoginForm = ({ logInUserCallback }) => {
     const onFormSubmit = (e) => {
         e.preventDefault();
 
-        logInUserCallback(formFields);
+        // Have some sort of form validation here
+        // Call log in user? Once we get a bad response, send it back to this component and render a message with info to the user
+
+        auth.login(formFields);
     }
 
     return (
