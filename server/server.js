@@ -26,9 +26,7 @@ db.sequelize.sync({ force: true })
 
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
-require('./app/routes/interest.routes')(app);
-require('./app/routes/fact.routes')(app);
-require('./app/routes/neighborhood.routes')(app);
+require('./app/routes/main.routes')(app);
 
 app.get("/", (req, res) => {
     res.json({ message: "The server is working properly." });
