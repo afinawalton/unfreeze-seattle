@@ -19,4 +19,8 @@ module.exports = (app) => {
     );
 
     app.post('/auth/login', auth.logInUser);
+
+    app.delete('/auth/logout', function (req, res) {
+        res.status(200).send('User succesfully logged out!')
+      })
 };
