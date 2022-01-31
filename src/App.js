@@ -18,7 +18,7 @@ const App = () =>{
           <NavBar />
           {/* <UserProfile /> */}
           <Routes>
-            <Route path='/' element={<Home logInUser={logInUser} />} />
+            <Route path='/' element={<Home />} />
             <Route path='/sign-up' element={<SignUp />} />
             <Route path='/my-profile' element={<MyProfile />} />
             <Route path='/main-feed' element={<MainFeed />} />

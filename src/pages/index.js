@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginForm from '../components/LoginForm.js';
 
-const Home = ({ logInUser }) => {
+const Home = () => {
 
     return (
         <main>
@@ -9,7 +9,7 @@ const Home = ({ logInUser }) => {
                 <h1><span className="green">Unfreeze</span> <span className="blue">Seattle</span></h1>
                 <div>Making friends just got a hell of a lot easier</div>
             </header>
-            <LoginForm logInUserCallback={logInUser} />
+            <LoginForm />
             <p id='noAccount'>Don't have an account?</p>
             <a id='createAccount' href='/sign-up'>Create an Account</a>
             <footer>
