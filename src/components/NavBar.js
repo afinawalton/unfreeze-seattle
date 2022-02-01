@@ -18,6 +18,7 @@ const NavBar = (props) => {
     <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/neighborhoods">Neighborhoods</a></li>
+        <li><a href="/edit-profile">Edit Profile</a></li>
     </ul>
 
     return (

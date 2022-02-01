@@ -42,11 +42,14 @@ exports.getOneUser = (req, res) => {
 
 // Update a user
 exports.updateUser = (req, res) => {
-    const id = req.params.id;
+    // const id = req.params.id;
 
-    User.update(req.body, {
-        where: { id: id }
-    })
+    // User.update(req.body, {
+    //     where: { id: id }
+    // })
+        User.update(req.body, {
+            where: { email: req.body.email }
+        })
         .then(num => {
             if (num == 1) {
                 res.send({

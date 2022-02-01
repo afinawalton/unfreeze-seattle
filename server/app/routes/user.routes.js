@@ -13,18 +13,23 @@ module.exports = app => {
         next();
     });
 
-    app.get('/test/all', users.allAccess);
+    app.get('/user/all', users.allAccess);
 
     app.get(
-        '/test/local',
+        '/user/local',
         [authJwt.verifyToken, authJwt.isLocal],
         users.localBoard
     );
 
     app.get(
-        '/test/transplant',
+        '/user/transplant',
         [authJwt.verifyToken, authJwt.isTransplant],
         users.transplantBoard
+    );
+
+    app.put(
+        '/user',
+        users.updateUser
     );
 
     // Create a new user

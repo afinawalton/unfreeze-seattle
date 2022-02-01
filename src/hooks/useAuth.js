@@ -82,6 +82,21 @@ function useProvideAuth() {
         });
   }
 
+  function editProfile(profileData) {
+    setErrors([]);
+    setIsLoading(true);
+    axios.put('http://localhost:8080/user', profileData)
+        .then(res => {
+            setIsLoading(false);
+            console.log('User successfully updated!');
+            // Need to send back ALL user data + user_profile column
+            setUser(res.data);
+            })
+        .catch(err => {
+            console.log(err);
+        });
+  }
+
   function logout() {
     axios.delete('http://localhost:8080/auth/logout')
       .then(res => {
@@ -100,6 +115,7 @@ function useProvideAuth() {
     user,
     login,
     signup,
+    editProfile,
     logout,
     autoLogIn,
     errors,
