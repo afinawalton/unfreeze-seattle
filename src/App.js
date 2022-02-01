@@ -6,9 +6,9 @@ import { ProvideAuth } from './hooks/useAuth';
 import NavBar from './components/NavBar';
 import Home from './pages';
 import CreateAccount from './pages/CreateAccount';
-import MyProfile from './pages/myProfile';
-import MainFeed from './pages/mainFeed';
-import Neighborhoods from './pages/neighbhorhoods';
+import MyProfile from './pages/MyProfile';
+import MainFeed from './pages/MainFeed';
+import Neighborhoods from './pages/Neighbhorhoods';
 // const axios = require('axios');
 
 const App = () =>{
