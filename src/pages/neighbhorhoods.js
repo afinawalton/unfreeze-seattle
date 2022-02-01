@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Neighborhood from '../components/Neighborhood';
+import { UserContext } from '../hooks/UserContext';
 const axios = require('axios');
 
 const Neighborhoods = () => {
+    // const { user } = useContext(UserContext);
     const [neighbhorhoods, setNeighborhoods] = useState([]);
 
     useEffect(() => {
@@ -28,6 +30,10 @@ const Neighborhoods = () => {
     // When you click on a neighborhood
     // It stores that context in state
     // Passes props to neighborhood component
+    // const selectNeighborhood = () => {
+    //     // Redirect to selected neighborhood
+    //     // Render single Neighborhood component
+    // }
     // Props: list of must eat, list of must do, list of must see
     // Renders a page with that neighborhood component
     const normalizeName = (name) => {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth } from '../hooks/useAuth';
+import useAuth from '../hooks/useAuth';
 
 const CreateAccount = () => {
     const auth = useAuth();
@@ -52,7 +52,7 @@ const CreateAccount = () => {
     const onFormSubmit = (e) => {
         e.preventDefault();
 
-        auth.signup(formFields);
+        auth.registerUser(formFields);
         
         setFormFields(emptyForm);
     }

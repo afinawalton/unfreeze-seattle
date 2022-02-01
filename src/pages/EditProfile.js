@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useAuth } from '../hooks/useAuth';
+import React, { useState, useEffect, useContext } from 'react';
+import useAuth from '../hooks/useAuth';
+import { UserContext } from '../hooks/UserContext';
 const axios = require('axios');
 
 const EditProfile = () => {
-    const auth = useAuth();
+    const { user } = useContext(UserContext);
+    const { editProfile } = useAuth();
 
     const [interests, setInterests] = useState([]);
 
@@ -37,19 +39,19 @@ const EditProfile = () => {
             })
     }, [])
 
-    // const currentUser = {
-    //     email: auth.user.email || '',
-    //     birthdate: auth.user.birthdate || '',
-    //     resident_type: auth.user.resident_type || '',
-    //     years_in_wa: auth.user.years_in_wa || 0
-    // }
-
     const currentUser = {
-        email: '',
-        birthdate: '',
-        resident_type: '',
-        years_in_wa: 0
+        email: user.email,
+        birthdate: user.birthdate,
+        resident_type: user.resident_type,
+        years_in_wa: user.years_in_wa
     }
+
+    // const currentUser = {
+    //     email: '',
+    //     birthdate: '',
+    //     resident_type: '',
+    //     years_in_wa: 0
+    // }
 
     const emptyProfile = {
         first_name: '',
@@ -98,7 +100,7 @@ const EditProfile = () => {
 
         currentUser.user_profile = formFields
 
-        auth.editProfile(currentUser);
+        editProfile(currentUser);
         
         setFormFields(emptyProfile);
     }

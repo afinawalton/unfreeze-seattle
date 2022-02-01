@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth } from '../hooks/useAuth';
+import useAuth from '../hooks/useAuth';
 
 const LoginForm = () => {
     const auth = useAuth();
@@ -29,7 +29,7 @@ const LoginForm = () => {
         // Have some sort of form validation here
         // Call log in user? Once we get a bad response, send it back to this component and render a message with info to the user
 
-        auth.login(formFields);
+        auth.loginUser(formFields);
     }
 
     return (

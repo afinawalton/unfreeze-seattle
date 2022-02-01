@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../hooks/UserContext';
 
 const MyProfile = () => {
-    const user = 'local';
+    const { user } = useContext(UserContext);
+    const type = 'local';
 
-    const checklist = user === 'local' ?
+    const checklist = type === 'local' ?
     <section id='mustHaves'>
         <div id='mustEat'>
             <h2>Must Eat</h2>
@@ -32,7 +34,7 @@ const MyProfile = () => {
     </section> :
     null
 
-    const prompts = user === 'local' ?
+    const prompts = type === 'local' ?
     <section id='profilePrompts'>
         <div>
             <h2>What’s your favorite thing about Seattle?</h2>
@@ -42,7 +44,7 @@ const MyProfile = () => {
             <h2>What makes you stay here?</h2>
             <p>|answer2|</p>
         </div>
-    </section> : user === 'transplant' ?
+    </section> : type === 'transplant' ?
     <section id='profilePrompts'>
         <div>
             <h2>Why did you move to Seattle?</h2>
@@ -58,7 +60,7 @@ const MyProfile = () => {
         <main>
             <button>Edit Profile</button>
             <section id='profileHeader'>
-                <img src='' alt='Portrait of {user}' />
+                <img src='' alt='Portrait of {type}' />
                 <p>|name|, |age|, |pronouns|</p>
                 <p>|city|, |neighborhood|</p>
                 <div>

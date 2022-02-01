@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../hooks/UserContext';
 
 const Neighborhood = () => {
     // const [selectedNeighborhood, setSelectedNeighborhood] = useState(null)
+    const { user } = useContext(UserContext);
 
     return (
         <main>
