@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginForm from '../components/LoginForm.js';
 
-const Home = () => {
+const Login = () => {
 
     return (
         <main>
@@ -11,7 +11,7 @@ const Home = () => {
             </header>
             <LoginForm />
             <p id='noAccount'>Don't have an account?</p>
-            <a id='createAccount' href='/sign-up'>Create an Account</a>
+            <a id='createAccount' href='/create-account'>Create an Account</a>
             <footer>
                 <p>Made with love in Seattle, WA</p>
             </footer>
@@ -19,4 +19,4 @@ const Home = () => {
     )
 }
 
-export default Home;
+export default Login;
