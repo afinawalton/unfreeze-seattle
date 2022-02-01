@@ -9,14 +9,13 @@ const NavBar = (props) => {
     // if not, only display a login
     const currentUser = auth.user ? 
     <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/main-feed">News Feed</a></li>
+        <li><a href="/">News Feed</a></li>
         <li><a href="/my-profile">My Profile</a></li>
         <li><a href="/neighborhoods">Neighborhoods</a></li>
         <li><button onClick={() => auth.logout()}>Log Out</button></li>
     </ul> :
     <ul>
-        <li><a href="/">Home</a></li>
+        <li><a href="/create-account">Home</a></li>
         <li><a href="/neighborhoods">Neighborhoods</a></li>
         <li><a href="/edit-profile">Edit Profile</a></li>
     </ul>
