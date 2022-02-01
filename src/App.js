@@ -9,7 +9,7 @@ import CreateAccount from './pages/CreateAccount';
 import MyProfile from './pages/MyProfile';
 import MainFeed from './pages/MainFeed';
 import Neighborhoods from './pages/Neighbhorhoods';
-import EditProfile from './pages/CreateProfile';
+import EditProfile from './pages/EditProfile';
 // const axios = require('axios');
 
 const App = () =>{
