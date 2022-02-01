@@ -5,7 +5,7 @@ import { ProvideAuth } from './hooks/useAuth';
 // COMPONENTS
 import NavBar from './components/NavBar';
 import Home from './pages';
-import SignUp from './pages/signUp';
+import CreateAccount from './pages/CreateAccount';
 import MyProfile from './pages/myProfile';
 import MainFeed from './pages/mainFeed';
 import Neighborhoods from './pages/neighbhorhoods';
@@ -22,7 +22,7 @@ const App = () =>{
           {/* <UserProfile /> */}
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/sign-up' element={<SignUp />} />
+            <Route path='/create-account' element={<CreateAccount />} />
             <Route path='/my-profile' element={<MyProfile />} />
             <Route path='/main-feed' element={<MainFeed />} />
             <Route path='/neighborhoods' element={<Neighborhoods />} />

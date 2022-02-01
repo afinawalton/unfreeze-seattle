@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../hooks/useAuth';
 const axios = require('axios');
 
-const SignUp = () => {
+const CreateAccount = () => {
     const auth = useAuth();
     // Get list of interests from database and add to HTML
     // useEffect(() => {
@@ -161,4 +161,4 @@ const SignUp = () => {
     )
 }
 
-export default SignUp;
+export default CreateAccount;
