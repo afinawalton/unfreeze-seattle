@@ -70,7 +70,27 @@ exports.signUpUser = (req, res) => {
         }]
     })
         .then(data => {
-            res.status(201).send(data);
+            // Create token
+            // token will be added to user data
+            let user = data;
+
+            let token = jwt.sign({ id: user.id }, config.secret, {
+                expiresIn: 86400 // 24 hours
+            });
+
+            // Return new user
+            res.status(201).send({
+                id: user.id,
+                first_name: user.first_name,
+                email: user.email,
+                resident_type: user.resident_type,
+                birthdate: user.birthdate,
+                pronouns: user.pronouns,
+                city: user.city,
+                neighborhood: user.neighborhood,
+                user_profile: user.user_profile,
+                accessToken: token
+            });
         })
         .catch(err => {
             console.log(err);
@@ -109,6 +129,11 @@ exports.logInUser = (req, res) => {
                 first_name: user.first_name,
                 email: user.email,
                 resident_type: user.resident_type,
+                birthdate: user.birthdate,
+                pronouns: user.pronouns,
+                city: user.city,
+                neighborhood: user.neighborhood,
+                user_profile: user.user_profile,
                 accessToken: token
             });
         })
@@ -117,17 +142,20 @@ exports.logInUser = (req, res) => {
         });
 };
 
-// //check if user is logged in
-// exports.checkUser = catchAsync(async(req, res, next) => {
-//     let currentUser;    if (req.cookies.jwt) {
+//check if user is logged in
+// exports.checkUser = async (req, res, next) => {
+//     let currentUser;
+//     if (req.cookies.jwt) {
 //        const token = req.cookies.jwt;
-//        const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-//        currentUser = await User.findById(decoded.id);
+
+//        const decoded = await promisify(jwt.verify)(token, 'unfreeze-seattle-secret-key');
+
+//        currentUser = await User.findByPk(decoded.id);
 //    } else {
 //      currentUser =  null;
 //   }
 //    res.status(200).send({ currentUser });
-// });
+// };
 
 // //log user out
 // exports.logoutUser = catchAsync(async (req, res) => {
