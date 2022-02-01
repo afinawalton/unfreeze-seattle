@@ -57,7 +57,7 @@ exports.updateUser = (req, res) => {
                 });
             } else {
                 res.send({
-                    message: `Cannot update User with id=${id}.`
+                    message: `Cannot update User with email=${req.body.email}.`
                 });
             }
         })
