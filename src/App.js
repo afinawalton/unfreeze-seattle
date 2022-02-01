@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ProvideAuth } from './hooks/useAuth';
+import { useAuth } from './hooks/useAuth';
 // import useFindUser from './hooks/useFindUser';
 // COMPONENTS
 import NavBar from './components/NavBar';
@@ -14,6 +15,7 @@ import EditProfile from './pages/EditProfile';
 
 const App = () =>{
   // const { user, setUser, isLoading } = useFindUser();
+  const auth = useAuth();
 
   return (
     <main className="App">
