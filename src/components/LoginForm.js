@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth } from '../use-auth';
+import { useAuth } from '../hooks/useAuth';
 
 const LoginForm = ({ logInUserCallback }) => {
     const auth = useAuth();

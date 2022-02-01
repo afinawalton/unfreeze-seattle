@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth } from '../use-auth';
+import { useAuth } from '../hooks/useAuth';
 const axios = require('axios');
 
 const SignUp = () => {

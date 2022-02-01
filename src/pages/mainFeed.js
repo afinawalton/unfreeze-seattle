@@ -1,6 +1,6 @@
 import React from 'react';
 import Blurb from '../components/Blurb';
-import { useAuth } from '../use-auth';
+import { useAuth } from '../hooks/useAuth';
 
 const MainFeed = () => {
     const auth = useAuth();

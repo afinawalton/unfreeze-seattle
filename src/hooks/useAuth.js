@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState, useContext, createContext } from 'react';
+// import { useNavigate } from 'react-router-dom';
 
 const authContext = createContext();
 // Provider component which wraps around your app and makes autho object
@@ -12,8 +13,24 @@ export function ProvideAuth({ children }) {
     </authContext.Provider>
 }
 // Hook for child components to get the auth object and re-render when it changes.
+// export const useAuth = () => {
+//     return useContext(authContext);
+// };
 export const useAuth = () => {
-    return useContext(authContext);
+  // let history = useHistory();
+  // const { setUser } = useContext(authContext);
+
+  // const setUserContext = async () => {
+  //   return await axios.get('/user')
+  //   .then(res => {
+  //     setUser(res.data.currentUser);
+  //     history.push('/home');
+  //   })
+  //   .catch(err => {
+  //     setError(err.response.data);
+  //   })
+  // }
+  return useContext(authContext);
 };
 
 // Provider hook that creates auth object and handles state
@@ -22,16 +39,32 @@ function useProvideAuth() {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  // let navigate = useNavigate();
+
+  // const setUserContext = async () => {
+  //   return await axios.get('http://localhost:8080/user')
+  //   .then(res => {
+  //     setUser(res.data.currentUser);
+  //     navigate('/');
+  //   })
+  //   .catch(err => {
+  //     setErrors(err.response.data);
+  //   })
+  // }
+
   function login(loginData) {
     setIsLoading(true);
     axios.post('http://localhost:8080/auth/login', loginData)
         .then(res => {
             setIsLoading(false);
             console.log('User successfully logged in!');
+            // set user in context and push them home
             setUser(res.data);
+            // navigate('/home');
             })
         .catch(err => {
-            console.log(err);
+          console.log(err);
+          setErrors(err.response.data);
         });
     }
 

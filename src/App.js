@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ProvideAuth } from './use-auth';
+import { ProvideAuth } from './hooks/useAuth';
+// import useFindUser from './hooks/useFindUser';
 // COMPONENTS
 import NavBar from './components/NavBar';
 import Home from './pages';
@@ -8,9 +9,11 @@ import SignUp from './pages/signUp';
 import MyProfile from './pages/myProfile';
 import MainFeed from './pages/mainFeed';
 import Neighborhoods from './pages/neighbhorhoods';
-const axios = require('axios');
+// const axios = require('axios');
 
 const App = () =>{
+  // const { user, setUser, isLoading } = useFindUser();
+
   return (
     <main className="App">
       <ProvideAuth>

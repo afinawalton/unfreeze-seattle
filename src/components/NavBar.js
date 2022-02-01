@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth } from '../use-auth';
+import { useAuth } from '../hooks/useAuth';
 
 const NavBar = (props) => {
     // if (userLoggedIn = true) { display different NavBar }
