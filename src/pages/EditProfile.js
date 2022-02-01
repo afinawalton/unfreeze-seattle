@@ -4,20 +4,22 @@ const axios = require('axios');
 
 const EditProfile = () => {
     const auth = useAuth();
-    // Get list of interests from database and add to HTML
+
+    const [interests, setInterests] = useState([]);
+
+    // Get list of interests from database and add to state
     useEffect(() => {
         axios.get('http://localhost:8080/api/interests')
             .then(res => {
-                const interestList = res.data;
-                let selectInterests = document.getElementById('interests');
-                for (let item of interestList) {
-                    let newInterest = document.createElement('option');
-                    newInterest.value = item.name;
-                    newInterest.textContent = item.name;
-                    selectInterests.appendChild(newInterest);
+                // const interestList = res.data;
+                let interestList = [];
+                for (let item of res.data) {
+                    interestList.push(item.name);
                 }
+                setInterests(interestList);
             })
     }, [])
+
     // Get list of neighborhoods from database and add to HTML
     // Use this in the user profile form after user account info is validated
     useEffect(() => {
@@ -134,6 +136,9 @@ const EditProfile = () => {
                     <label htmlFor='top_interest'>Top Interest</label>
                     <select id='top_interest' name='top_interest' onChange={handleInputChange} value={formFields.top_interest} >
                         <option value=''>Choose your primary interest</option>
+                        {interests.map(name => 
+                            <option key={name} value={name}>{name}</option>
+                        )}
                     </select>
                 </p>
                 <p>
@@ -143,6 +148,9 @@ const EditProfile = () => {
                 <p>
                     <label htmlFor='other_interests'>Choose other interests</label>
                     <select type='text' id='interests' name='interests' onChange={handleInputChange} multiple >
+                    {interests.map(name => 
+                            <option key={name} value={name}>{name}</option>
+                        )}
                     </select>
                 </p>
                 <p>
