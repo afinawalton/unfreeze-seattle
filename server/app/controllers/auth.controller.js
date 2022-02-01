@@ -6,14 +6,9 @@ const Op = db.Sequelize.Op;
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
+// Include user profile form on front-end
 exports.signUpUser = (req, res) => {
-    if (!req.body.first_name) {
-        missing = 'First name';
-        res.status(400).send({
-            message: `${missing} cannot be empty!`
-        });
-        return;
-    } else if (!req.body.email) {
+    if (!req.body.email) {
         missing = 'Email';
         res.status(400).send({
             message: `${missing} cannot be empty!`
@@ -31,14 +26,14 @@ exports.signUpUser = (req, res) => {
             message: `${missing} cannot be empty!`
         });
         return;
-    } else if (!req.body.city) {
-        missing = 'City';
+    } else if (!req.body.resident_type) {
+        missing = 'Resident type';
         res.status(400).send({
             message: `${missing} cannot be empty!`
         });
         return;
-    } else if (!req.body.resident_type) {
-        missing = 'Resident type';
+    } else if (!req.body.years_in_wa) {
+        missing = 'Years in WA';
         res.status(400).send({
             message: `${missing} cannot be empty!`
         });
@@ -46,21 +41,21 @@ exports.signUpUser = (req, res) => {
     }
 
     User.create({
-        first_name: req.body.first_name,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 8),
         birthdate: req.body.birthdate,
-        work: req.body.work,
-        interests: req.body.interests,
-        pronouns: req.body.pronouns,
-        city: req.body.city,
-        neighborhood: req.body.neighborhood,
         resident_type: req.body.resident_type,
         years_in_wa: req.body.years_in_wa,
         user_profile: {
-            bio: req.body.user_profile.bio,
+            first_name: req.body.first_name,
+            pronouns: req.body.pronouns,
+            work: req.body.work,
+            city: req.body.city,
+            neighborhood: req.body.neighborhood,
             top_interest: req.body.user_profile.top_interest,
             blurb: req.body.user_profile.blurb,
+            other_interests: req.body.other_interests,
+            bio: req.body.user_profile.bio,
             prompt_answers: req.body.user_profile.prompt_answers,
             profile_pic: req.body.user_profile.profile_pic
         }
@@ -69,10 +64,9 @@ exports.signUpUser = (req, res) => {
             association: User.UserProfile
         }]
     })
-        .then(data => {
+        .then(user => {
             // Create token
             // token will be added to user data
-            let user = data;
 
             let token = jwt.sign({ id: user.id }, config.secret, {
                 expiresIn: 86400 // 24 hours
@@ -81,13 +75,10 @@ exports.signUpUser = (req, res) => {
             // Return new user
             res.status(201).send({
                 id: user.id,
-                first_name: user.first_name,
                 email: user.email,
-                resident_type: user.resident_type,
                 birthdate: user.birthdate,
-                pronouns: user.pronouns,
-                city: user.city,
-                neighborhood: user.neighborhood,
+                resident_type: user.resident_type,
+                years_in_wa: user.years_in_wa,
                 user_profile: user.user_profile,
                 accessToken: token
             });
@@ -125,14 +116,11 @@ exports.logInUser = (req, res) => {
             });
 
             res.status(200).send({
-                id: user.id,
-                first_name: user.first_name,
+                user: user.id,
                 email: user.email,
-                resident_type: user.resident_type,
                 birthdate: user.birthdate,
-                pronouns: user.pronouns,
-                city: user.city,
-                neighborhood: user.neighborhood,
+                resident_type: user.resident_type,
+                years_in_wa: user.years_in_wa,
                 user_profile: user.user_profile,
                 accessToken: token
             });

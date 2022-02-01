@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 
-const LoginForm = ({ logInUserCallback }) => {
+const LoginForm = () => {
     const auth = useAuth();
     // On this, we need to set up some form validation:
     // Bad email means it doesn't exist in the database => formSubmit works improperly
