@@ -1,5 +1,6 @@
 const { verifySignUp } = require('../middleware');
 const auth = require('../controllers/auth.controller');
+const { router } = require('../../server');
 
 module.exports = (app) => {
     app.use((req, res, next) => {
@@ -9,6 +10,8 @@ module.exports = (app) => {
         );
         next();
     });
+
+    app.get('/user', auth.checkUser);
 
     app.post(
         '/auth/signup',
@@ -20,7 +23,7 @@ module.exports = (app) => {
 
     app.post('/auth/login', auth.logInUser);
 
-    app.delete('/auth/logout', function (req, res) {
-        res.status(200).send('User succesfully logged out!')
-      })
+    app.get('/auth/logout', auth.logoutUser);
+
+    // app.use('/auth', router);
 };
