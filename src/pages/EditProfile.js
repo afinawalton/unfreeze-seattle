@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
-import useAuth from '../hooks/useAuth';
+// import useAuth from '../hooks/useAuth';
 import { UserContext } from '../hooks/UserContext';
 const axios = require('axios');
 
 const EditProfile = () => {
-    const { user } = useContext(UserContext);
-    const { editProfile } = useAuth();
+    const { user, editProfile } = useContext(UserContext);
 
     const [interests, setInterests] = useState([]);
 

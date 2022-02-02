@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
-import useAuth from '../hooks/useAuth';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../hooks/UserContext';
+// import useAuth from '../hooks/useAuth';
 
 const LoginForm = () => {
-    const auth = useAuth();
+    // const auth = useAuth();
     // On this, we need to set up some form validation:
     // Bad email means it doesn't exist in the database => formSubmit works improperly
     // On form submit, generate code on App.js?
+    const navigate = useNavigate();
+    const { user, loginUser } = useContext(UserContext);
 
     const [formFields, setFormFields] = useState({ email: '', password: '' });
 
@@ -23,13 +27,13 @@ const LoginForm = () => {
         });
     }
 
-    const onFormSubmit = (e) => {
+    const onFormSubmit = async (e) => {
         e.preventDefault();
 
         // Have some sort of form validation here
         // Call log in user? Once we get a bad response, send it back to this component and render a message with info to the user
 
-        auth.loginUser(formFields);
+        await loginUser(formFields);
     }
 
     return (

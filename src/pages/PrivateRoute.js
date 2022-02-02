@@ -3,10 +3,11 @@ import { Navigate } from 'react-router-dom';
 import { UserContext } from '../hooks/UserContext';
 import MainFeed from './MainFeed';
 
-const PrivateRoute = (props) => {
+const PrivateRoute = () => {
     // const { user, isLoading } = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
-    return props.user ? <MainFeed /> : <Navigate to='/login' />
+    return user ? <MainFeed /> : <Navigate to='/login' />
 }
 
 export default PrivateRoute;
