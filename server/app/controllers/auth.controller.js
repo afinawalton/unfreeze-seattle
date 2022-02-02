@@ -5,48 +5,8 @@ const Op = db.Sequelize.Op;
 
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const { promisify } = require('util');
 
-// Sign JWT token for authenticated user
-const signToken = (id) => {
-    return jwt.sign({ id }, config.secret, {
-        expiresIn: 86400 // 24 hours
-    });
-}
-
-// Create JWT token for authenticated user
-const createUserToken = async (user, code, req, res) => {
-    const token = signToken(user.id);
-    console.log('Signing user token: ', token);
-    // Set expiry to 1 month
-    let d = new Date();
-    d.setDate(d.getDate() + 30);
-
-    // First-party cookie settings
-    // Creates a signed token
-    // Adds jwt as a key on cookie object? and passes signed token as the value
-    
-    // This isn't working vvvv
-    res.cookie('jwt', token, {
-        expires: d,
-        httpOnly: true,
-        secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
-        sameSite: 'none'
-    });
-    console.log('JWT =', res.cookie.jwt);
-
-    // Remove user password from output for security
-    user.password = undefined;
-    res.status(code).json({
-        status: 'success',
-        accessToken: token,
-        data: {
-            user
-        }
-    });
-};
-
-exports.signUpUser = async (req, res, next) => {
+exports.signUpUser = async (req, res) => {
     if (!req.body.email) {
         missing = 'Email';
         res.status(400).send({
@@ -104,23 +64,37 @@ exports.signUpUser = async (req, res, next) => {
         }]
     })
         .then(user => {
-            // // Create token
-            // // token will be added to user data
-            createUserToken(user, 201, req, res);
-            // let token = jwt.sign({ id: user.id }, config.secret, {
-            //     expiresIn: 86400 // 24 hours
-            // });
+            // // Create token by signing user's id to the token
+            const token = jwt.sign({ id: user.id }, config.secret, {
+                expiresIn: 86400 // 24 hours
+            });
+            console.log('Signed user token: ', token);
 
-            // Return new user
-            // res.status(201).send({
-            //     id: user.id,
-            //     email: user.email,
-            //     birthdate: user.birthdate,
-            //     resident_type: user.resident_type,
-            //     years_in_wa: user.years_in_wa,
-            //     user_profile: user.user_profile,
-            //     accessToken: token
-            // });
+            // Set expiry to 1 month
+            let d = new Date();
+            d.setDate(d.getDate() + 30);
+            
+            // Add cookie to response = accessed with req.cookies
+            // This isn't working vvvv
+            res.cookie('jwt', token, {
+                // expires: d,
+                httpOnly: true,
+                // signed: true,
+                // sameSite: 'none',
+                // secure: true
+            });
+
+            // Remove user password from output for security
+            // user.password = undefined;
+            res.status(201).send({
+                id: user.id,
+                email: user.email,
+                birthdate: user.birthdate,
+                resident_type: user.resident_type,
+                years_in_wa: user.years_in_wa,
+                user_profile: user.user_profile,
+                token: token
+            });
         })
         .catch(err => {
             console.log(err);
@@ -130,7 +104,7 @@ exports.signUpUser = async (req, res, next) => {
         });
 };
 
-exports.logInUser = (req, res, next) => {
+exports.logInUser = (req, res) => {
     User.findOne({
         where: {
             email: req.body.email
@@ -149,39 +123,64 @@ exports.logInUser = (req, res, next) => {
                     message: 'Invalid password!'
                 });
             }
+            // Create token by signing user's id to the token
+            const token = jwt.sign({ id: user.id }, config.secret, {
+                expiresIn: 86400 // 24 hours
+            });
+            console.log('Signed user token: ', token);
 
-            // let token = jwt.sign({ id: user.id }, config.secret, {
-            //     expiresIn: 86400 // 24 hours
-            // });
+            // Set expiry to 1 month
+            let d = new Date();
+            d.setDate(d.getDate() + 30);
+            
+            // Add cookie to response = accessed with req.cookies
+            // This isn't working vvvv
+            res.cookie('jwt', token, {
+                // expires: d,
+                httpOnly: true,
+                // signed: true,
+                // sameSite: 'none',
+                // secure: true
+            });
 
-            createUserToken(user, 200, req, res);
-            // res.status(200).send({
-            //     user: user.id,
-            //     email: user.email,
-            //     birthdate: user.birthdate,
-            //     resident_type: user.resident_type,
-            //     years_in_wa: user.years_in_wa,
-            //     user_profile: user.user_profile,
-            //     accessToken: token
-            // });
+            res.status(201).send({
+                id: user.id,
+                email: user.email,
+                birthdate: user.birthdate,
+                resident_type: user.resident_type,
+                years_in_wa: user.years_in_wa,
+                user_profile: user.user_profile,
+                token: token
+            });
         })
         .catch(err => {
             res.status(500).send({ message: err.message });
         });
 };
 
-//check if user is logged in
-exports.checkUser = async (req, res, next) => {
+// Check if user is logged in
+exports.checkUser = async (req, res) => {
+    // Initialize var to store current user data
     let currentUser;
-    if (req.signedCookies.jwt) {
+    // Check whether the request has a cookie called 'jwt'
+    // In this case, it doesn't for some reason
+    if (req.cookies.jwt) {
+        // Create a token and set it to the token stored in the jwt cookie
        const token = req.cookies.jwt;
-
-       const decoded = await promisify(jwt.verify)(token, config.secret);
-
-       currentUser = await User.findByPk(decoded.id);
+       console.log('JWT =', token);
+    
+       // Verifies that the provided token has been 'signed' onto the appropriate secret/key
+        jwt.verify(token, config.secret, (err, decoded) => {
+            User.findByPk(decoded.id)
+            .then(user => {
+                currentUser = user;
+                res.status(200).send({ currentUser });
+            })
+        })
    } else {
      currentUser =  null;
   }
+    // This isn't returning any data
     res.status(200).send({ currentUser });
 };
 
