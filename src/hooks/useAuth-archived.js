@@ -5,14 +5,20 @@ const axios = require('axios');
 
 export default function useAuth() {
     let navigate = useNavigate;
+    // Creates var setUser and sets it to key within UserContext that says {, setUser: ...}
+    // However, UserContext starts out as null
     const { setUser } = useContext(UserContext);
     const [error, setError] = useState(null);
 
     // Set user in context and push them home
     const setUserContext = async () => {
+        // Requests the checkUser function from the database, which returns a currentUser if the request has jwt in its cookies
+
+        // Only called when we register, login, and edit profile
         return await axios.get('http://localhost:8080/user')
         .then(res => {
-            setUser(res.data.currentUser);
+            // setUser(res.data.currentUser);
+            setUser(res.data);
             navigate('http://localhost:8080/');
         })
         .catch(err => {
@@ -26,6 +32,7 @@ export default function useAuth() {
         .then(res => {
             // setIsLoading(false);
             console.log('New user successfully created!');
+            // This is where things are breaking?
             setUserContext();
             })
         .catch(err => {
