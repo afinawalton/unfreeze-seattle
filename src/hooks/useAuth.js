@@ -18,7 +18,7 @@ export default function useAuth() {
         return await axios.get('http://localhost:8080/user')
         .then(res => {
             // setUser(res.data.currentUser);
-            setUser(res.data);
+            setUser(res.data.currentUser);
             navigate('http://localhost:8080/');
         })
         .catch(err => {

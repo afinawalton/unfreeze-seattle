@@ -1,12 +1,9 @@
-import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../hooks/UserContext';
-// import useAuth from '../hooks/useAuth';
+import React, { useState } from 'react';
+import useAuth from '../hooks/useAuth';
 
 const CreateAccount = () => {
-    // const auth = useAuth();
-    const navigate = useNavigate();
-    const { user, registerUser } = useContext(UserContext);
+
+    const { registerUser } = useAuth();
 
     const emptyForm = {
         
@@ -53,11 +50,10 @@ const CreateAccount = () => {
         }
     };
 
-    const onFormSubmit = async (e) => {
+    const onFormSubmit = (e) => {
         e.preventDefault();
 
-        await registerUser(formFields);
-        navigate('/edit-profile');
+        registerUser(formFields);
 
         setFormFields(emptyForm);
     }
