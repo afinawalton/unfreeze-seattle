@@ -2,6 +2,7 @@ const express = require('express');
 // const bodyParser = require('body-parser');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+// const config = require('./app/config/auth.config');
 
 const app = express();
 
@@ -30,12 +31,7 @@ db.sequelize.sync({ force: true })
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 require('./app/routes/main.routes')(app);
-
-app.get("/", (req, res) => {
-    res.json({ message: "The server is working properly." });
-  });
   
-
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
