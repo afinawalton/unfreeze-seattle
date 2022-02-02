@@ -4,7 +4,6 @@ import Blurb from '../components/Blurb';
 import { UserContext } from '../hooks/UserContext';
 
 const MainFeed = () => {
-    // const auth = useAuth();
     const { user } = useContext(UserContext);
 
     const aside =
