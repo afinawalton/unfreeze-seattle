@@ -8,7 +8,7 @@ export default function useLogout() {
         axios.get('http://localhost:8080/auth/logout')
         .then(res => {
             console.log(res);
-            navigate('../');
+            navigate('/');
         })
         .catch(err => {
             console.log(err);
