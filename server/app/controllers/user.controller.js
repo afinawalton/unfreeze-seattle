@@ -102,5 +102,6 @@ exports.localBoard = (req, res) => {
 }
 
 exports.transplantBoard = (req, res) => {
+    // Query into the database to get all users with transplants
     res.status(200).send('Transplant Main Feed.');
 }
