@@ -76,17 +76,15 @@ exports.signUpUser = async (req, res) => {
             
             // Add cookie to response = accessed with req.cookies
             // This isn't working vvvv
-            res.cookie('jwt', token, {
-                // expires: d,
+            res.cookie('x-access-token', token, {
+                maxAge: 86400, // 24 hours
                 httpOnly: true,
                 // signed: true,
                 // sameSite: 'none',
-                // secure: true
-            });
-
-            // Remove user password from output for security
-            // user.password = undefined;
-            res.status(201).send({
+                // secure: req.secure || req.headers['x-forwarded-proto'] === 'https'
+            })
+            .status(201)
+            .send({
                 id: user.id,
                 email: user.email,
                 birthdate: user.birthdate,
@@ -94,7 +92,7 @@ exports.signUpUser = async (req, res) => {
                 years_in_wa: user.years_in_wa,
                 user_profile: user.user_profile,
                 token: token
-            });
+            })
         })
         .catch(err => {
             console.log(err);
@@ -135,15 +133,15 @@ exports.logInUser = (req, res) => {
             
             // Add cookie to response = accessed with req.cookies
             // This isn't working vvvv
-            res.cookie('jwt', token, {
-                // expires: d,
+            res.cookie('x-access-token', token, {
+                maxAge: 86400, // 24 hours
                 httpOnly: true,
                 // signed: true,
                 // sameSite: 'none',
                 // secure: true
-            });
-
-            res.status(201).send({
+            })
+            .status(201)
+            .send({
                 id: user.id,
                 email: user.email,
                 birthdate: user.birthdate,
@@ -164,9 +162,9 @@ exports.checkUser = async (req, res) => {
     let currentUser;
     // Check whether the request has a cookie called 'jwt'
     // In this case, it doesn't for some reason
-    if (req.cookies.jwt) {
+    if (req.cookies['x-access-token']) {
         // Create a token and set it to the token stored in the jwt cookie
-       const token = req.cookies.jwt;
+       const token = req.cookies['x-access-token'];
        console.log('JWT =', token);
     
        // Verifies that the provided token has been 'signed' onto the appropriate secret/key
@@ -174,7 +172,6 @@ exports.checkUser = async (req, res) => {
             User.findByPk(decoded.id)
             .then(user => {
                 currentUser = user;
-                res.status(200).send({ currentUser });
             })
         })
    } else {
