@@ -14,16 +14,16 @@ module.exports = app => {
         next();
     });
 
-    app.get('/user/all', users.allAccess);
+    app.get('/users/all', users.allAccess);
 
     app.get(
-        '/user/local',
+        '/users/locals',
         [authJwt.verifyToken, authJwt.isLocal],
         users.localBoard
     );
 
     app.get(
-        '/user/transplant',
+        '/users/transplants',
         [authJwt.verifyToken, authJwt.isTransplant],
         users.transplantBoard
     );
