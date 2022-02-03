@@ -5,7 +5,7 @@ const axios = require('axios');
 export default function useAuth() {
     // Creates var setUser and sets it to key within UserContext that says {, setUser: ...}
     // However, UserContext starts out as null
-    const { setUser } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
     const [error, setError] = useState(null);
 
     // Set user in context and push them home
@@ -15,8 +15,11 @@ export default function useAuth() {
         // Only called when we register, login, and edit profile
         return await axios.get('http://localhost:8080/user', { withCredentials: true })
         .then(res => {
-            // setUser(res.data.currentUser);
-            setUser(res.data.currentUser);
+            // console.log('Response from .get: ', res.data);
+            setUser(res.data);
+        })
+        .then(() => {
+            console.log('user is now= ', user);
         })
         .catch(err => {
             setError(err);
