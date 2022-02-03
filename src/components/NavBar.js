@@ -6,7 +6,7 @@ const NavBar = () => {
     const { user } = useContext(UserContext);
     const { logoutUser } = useLogout();
 
-    const userNav = user ? 
+    const userNav = user ?
     <ul>
         <li><a href="/">News Feed</a></li>
         <li><a href="/my-profile">My Profile</a></li>
