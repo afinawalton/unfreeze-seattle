@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import useFindUser from './hooks/useFindUser';
 import { UserContext } from './hooks/UserContext';
@@ -11,8 +11,9 @@ import MyProfile from './pages/MyProfile';
 import Neighborhoods from './pages/Neighbhorhoods';
 import EditProfile from './pages/EditProfile';
 
-const App = () =>{
+const App = () => {
   const { user, setUser, isLoading } = useFindUser();
+  // const [user, setUser] = useState(null);
 
   return (
     <main className="App">
