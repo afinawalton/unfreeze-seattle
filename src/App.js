@@ -10,6 +10,7 @@ import CreateAccount from './pages/CreateAccount';
 import MyProfile from './pages/MyProfile';
 import Neighborhoods from './pages/Neighbhorhoods';
 import EditProfile from './pages/EditProfile';
+import MainFeed from './pages/MainFeed';
 
 const App = () => {
   const { user, setUser, isLoading } = useFindUser();
@@ -19,14 +20,20 @@ const App = () => {
         <Router>
           <UserContext.Provider value={{ user, setUser, isLoading }}>
             <NavBar />
-            <Routes>
-              <Route path='/' element={<PrivateRoute />}></Route>
-              <Route path='/login' element={<Login />}></Route>
-              <Route path='/create-account' element={<CreateAccount />} />
-              <Route path='/my-profile' element={<MyProfile />} />
-              <Route path='/edit-profile' element={<EditProfile />} />
-              <Route path='/neighborhoods' element={<Neighborhoods />} />
-            </Routes>
+            {
+              user ?
+              <Routes>
+                <Route path='/' element={<MainFeed />}></Route>
+                <Route path='/create-account' element={<CreateAccount />} />
+                <Route path='/my-profile' element={<MyProfile />} />
+                <Route path='/edit-profile' element={<EditProfile />} />
+                <Route path='/neighborhoods' element={<Neighborhoods />} />
+              </Routes>
+              :
+              <Routes>
+                <Route path='/' element={<Login />}></Route>
+              </Routes>
+            }
           </UserContext.Provider>
         </Router>
     </main>
