@@ -4,10 +4,9 @@ import { UserContext } from '../hooks/UserContext';
 import MainFeed from './MainFeed';
 
 const PrivateRoute = () => {
-    // const { user, isLoading } = useContext(UserContext);
     const { user } = useContext(UserContext);
 
-    return user ? <MainFeed /> : <Navigate to='/login' />
+    return user === null ? <Navigate to='/login' /> : <Navigate to='/main-feed' />
 }
 
 export default PrivateRoute;
