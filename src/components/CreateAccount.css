@@ -1,0 +1,23 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    text-transform: lowercase;
+    font-family: 'Titan One', sans-serif;
+}
+
+.green {
+    color: var(--greenDark);
+}
+
+.blue {
+    color: var(--blueDark);
+}
+
+#residentType > * {
+    color: var(--greenDark);
+    font-weight: bolder;
+}

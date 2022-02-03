@@ -33,17 +33,23 @@ const LoginForm = () => {
     }
 
     return (
-        <form onSubmit={onFormSubmit}>
-            <p id='emailContainer'>
-                <label htmlFor='email'>Email address</label>
-                <input id='email' value={formFields.email} onChange={onEmailChange}></input>
-            </p>
-            <p id='passwordContainer'>
-                <label htmlFor='password'>Password</label>
-                <input id='password' type='password' value={formFields.password} onChange={onPasswordChange}></input>
-            </p>
-            <button type='submit'>Log In</button>
-        </form>
+        <section id="login">
+            <form onSubmit={onFormSubmit}>
+                <p id='emailContainer'>
+                    <label htmlFor='email'>Email address</label>
+                    <input id='email' value={formFields.email} onChange={onEmailChange}></input>
+                </p>
+                <p id='passwordContainer'>
+                    <label htmlFor='password'>Password</label>
+                    <input id='password' type='password' value={formFields.password} onChange={onPasswordChange}></input>
+                </p>
+                <button id='loginButton' type='submit'>Log In</button>
+            </form>
+            <section id="createAccountSection">
+                <p id='noAccount'>Don't have an account?</p>
+                <a id='createAccount' href='/create-account'>Create an Account</a>
+            </section>
+        </section>
     )
 }
 

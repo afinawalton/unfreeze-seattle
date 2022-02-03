@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../hooks/UserContext';
 import useLogout from './../hooks/useLogout';
+import './NavBar.css';
 
 const NavBar = () => {
     const { user } = useContext(UserContext);

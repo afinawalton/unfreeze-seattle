@@ -18,6 +18,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--blueLight);
   color: var(--blueDark);
+  box-sizing: border-box;
 }
 
 code {
@@ -27,18 +28,25 @@ code {
 
 #titleCard {
   background-color: var(--blueDark);
-  width: 30%;
-  height: 61vh;
+  aspect-ratio: .7;
+  width: 325px;
+  /* height: 620px; */
   display: flex;
   flex-direction: column;
   place-content: center;
   place-items: center;
-  border-radius: 24% 0 24% 24%;
+  border-radius: 90px 0 90px 90px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 #titleCard h1 {
   font-family: 'Titan One', sans-serif;
   text-transform: lowercase;
+}
+
+#titleCard div {
+  font-weight: bolder;
 }
 
 #titleCard .green {
@@ -57,15 +65,18 @@ code {
   display: block;
 }
 
-#loginButton {
-  background-color: var(--greenDark);
-  border: none;
+input {
+  border: 1px solid var(--blueMid);
+  height: 65px;
   border-radius: 10px;
+  width: 380px;
+  font-family: inherit;
+  padding-left: 15px;
+  color: inherit;
 }
 
-#createAccount {
-  background-color: var(--blueDark);
-  border: none;
-  border-radius: 30px 0 30px 30px;
-  color: var(--blueLight);
+label {
+  margin-bottom: 10px;
+  text-align: left;
+  text-transform: lowercase;
 }

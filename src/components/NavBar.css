@@ -1,0 +1,24 @@
+ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+
+li {
+    padding: 0 35px;
+}
+
+a {
+    color: var(--greenDark);
+    text-decoration: none;
+    font-weight: bolder;
+    border-bottom: 1px solid var(--greenDark);
+}
+
+button {
+    background-color: var(--blueDark);
+    color: var(--blueLight);
+    font-weight: bolder;
+    border: none;
+    font-family: inherit;
+}

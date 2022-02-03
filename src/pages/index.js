@@ -1,5 +1,6 @@
 import React from 'react';
 import LoginForm from '../components/LoginForm.js';
+import '../components/Login.css';
 
 const Login = () => {
 
@@ -10,10 +11,10 @@ const Login = () => {
                 <div>Making friends just got a hell of a lot easier</div>
             </header>
             <LoginForm />
-            <p id='noAccount'>Don't have an account?</p>
-            <a id='createAccount' href='/create-account'>Create an Account</a>
             <footer>
-                <p>Made with love in Seattle, WA</p>
+                <p>
+                    Unfreeze Seattle © 2022    |    Made with love in Seattle, WA  ❤️
+                    </p>
             </footer>
         </main>
     )

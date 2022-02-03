@@ -41,7 +41,7 @@ const CreateAccount = () => {
                 [name]: parseInt(value),
                 resident_type: resident
             });
-            document.getElementById('residency').textContent = resident;
+            // document.getElementById('residency').textContent = resident;
         } else {
             setFormFields({
                 ...formFields,
@@ -61,7 +61,7 @@ const CreateAccount = () => {
     return (
         <main>
             <header id='logo'>
-                <h1>Unfreeze Seattle</h1>
+                <h1><span className="green">Unfreeze</span> <span className="blue">Seattle</span></h1>
             </header>
             <form id='loginForm' onSubmit={onFormSubmit}>
                 <h2 id='createAccountTitle'>Create an Account</h2>
@@ -81,9 +81,11 @@ const CreateAccount = () => {
                     <label htmlFor='years_in_wa'>Years in Seattle</label>
                     <input type='number' min='0' max='70' id='yearsInWa' name='years_in_wa' onChange={handleInputChange} value={formFields.years_in_wa} required></input>
                 </p>
-                <p id="residentType">You're a <span id='residency'>transplant</span>!</p>
+                <span id="residentType">
+                    You're a <span>transplant</span>!
+                </span>
                 <p>
-                    <button type='submit' id='createAccountButton'>Create Account</button>
+                    <button type='submit' id='createAccount'>Create Account</button>
                 </p>
             </form>
         </main>

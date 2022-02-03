@@ -1,0 +1,46 @@
+#loggedInAs {
+    background-color: #F4F9FB;
+    border-radius: 6px;
+    box-shadow: 0 2px 7px var(--blueMid);
+    padding: 35px;
+}
+
+#loggedInAs p:first-of-type {
+    color: var(--greenDark);
+    font-weight: lighter;
+}
+
+#user {
+    color: var(--blueDark);
+    font-weight: bold;
+}
+
+#currentUserBlurb {
+    border: 1px dotted var(--greenDark);
+    padding: 9px 50px;
+    border-radius: 50px;
+}
+
+#editBlurb {
+    border: 1px solid var(--blueDark);
+    padding: 9px 50px;
+    border-radius: 50px;
+    background-color: #F4F9FB;
+    color: var(--blueDark);
+}
+
+#addYourFavs, #didYouKnow {
+    border: 1px solid var(--blueMid);
+    border-radius: 10px;
+    padding: 25px 40px;
+    box-shadow: 0 2px 7px var(--blueMid);
+    width: 430px;
+}
+
+#fact {
+    font-weight: lighter;
+}
+
+#blurbFeed {
+    width: 430px;
+}
