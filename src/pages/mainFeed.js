@@ -3,43 +3,49 @@ import Blurb from '../components/Blurb';
 // import { useAuth } from '../hooks/useAuth';
 import { UserContext } from '../hooks/UserContext';
 import '../components/MainFeed.css'
+import axios from 'axios';
 
 const MainFeed = () => {
     const { user } = useContext(UserContext);
 
     const aside =
-    // user.resident_type === 'local' ?
+    user.resident_type === 'local' ?
     <aside id='addYourFavs'>
         <h2>Add Your Favs</h2>
-        <p id='fact'>|Know where to find the best bookstore? Or poke shop? Add your favorites to our database.|</p>
+        <p id='fact'>Know where to find the best bookstore? Or poke shop? Add your favorites to our database.</p>
     </aside>
-    // :
-    // <aside id='didYouKnow'>
-    //     <h2>Did You Know?</h2>
-    //     <p>|Pike Place Market is the oldest continuously operating farmer’s market in the country.|</p>
-    // </aside>
+    :
+    <aside id='didYouKnow'>
+        <h2>Did You Know?</h2>
+        <p>|Pike Place Market is the oldest continuously operating farmer’s market in the country.|</p>
+    </aside>
 
     const feed =
-    // user.resident_type === 'local' ?
+    user.resident_type === 'local' ?
     <section id='blurbFeed'>
         <h2>Show a transplant around town:</h2>
         <Blurb />
     </section>
-    // :
-    // <section id='blurbFeed'>
-    //     <h2>Get to know the locals:</h2>
-    //     <Blurb />
-    // </section>
+    :
+    <section id='blurbFeed'>
+        <h2>Get to know the locals:</h2>
+        <Blurb />
+    </section>
+
+    const getFeed = () => {
+        if (user.resident_type === 'local') {
+            axios.get('http://localhost:8080')
+        }
+    }
 
     return (
         <main>
             <section id="loggedInAs">
                 <img src='' alt='profilePic'></img>
                 <p>Logged in as <br /><span id="user">
-                    {/* {user.first_name} */}
-                    User's first name
+                    {user['user_profile']['first_name']}
                 </span></p>
-                <p id='currentUserBlurb'>find a hiking trail on weekend mornings</p>
+                <p id='currentUserBlurb'>{user['user_profile']['blurb']}</p>
                 <button id='editBlurb'>Edit My Blurb</button>
             </section>
             {aside}
