@@ -165,20 +165,22 @@ exports.checkUser = async (req, res) => {
     if (req.cookies['x-access-token']) {
         // Create a token and set it to the token stored in the jwt cookie
        const token = req.cookies['x-access-token'];
-       console.log('JWT =', token);
+       console.log('Token successfully used in request.');
     
        // Verifies that the provided token has been 'signed' onto the appropriate secret/key
         jwt.verify(token, config.secret, (err, decoded) => {
-            User.findByPk(decoded.id)
+            User.findByPk(decoded.id, { include: [User.UserProfile] })
             .then(user => {
                 currentUser = user;
+                console.log('User from database: ', currentUser);
+                currentUser.password = undefined;
+                return res.status(200).send(currentUser);
             })
         })
    } else {
      currentUser =  null;
+     res.status(200).send('');
   }
-    // This isn't returning any data
-    res.status(200).send({ currentUser });
 };
 
 // //log user out
