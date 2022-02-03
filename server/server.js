@@ -23,7 +23,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(config.secret));
 
 const db = require('./app/models');
-db.sequelize.sync({ force: true })
+// db.sequelize.sync({ force: true })
+db.sequelize.sync({ force: false })
     .then(() => {
         db.facts.bulkCreate(db.data.facts);
         db.interests.bulkCreate(db.data.interests);
