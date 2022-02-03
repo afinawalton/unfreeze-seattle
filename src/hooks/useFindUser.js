@@ -7,7 +7,7 @@ export default function useFindUser() {
 
     useEffect(() => {
         async function findUser() {
-            await axios.get('http://localhost:8080/user')
+            await axios.get('http://localhost:8080/user', { withCredentials: true })
             .then(res => {
                 setUser(res.data.currentUser);
                 setLoading(false);
