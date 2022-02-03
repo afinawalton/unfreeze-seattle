@@ -1,10 +1,8 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { UserContext } from './UserContext';
 const axios = require('axios');
 
 export default function useAuth() {
-    let navigate = useNavigate;
     // Creates var setUser and sets it to key within UserContext that says {, setUser: ...}
     // However, UserContext starts out as null
     const { setUser } = useContext(UserContext);
@@ -15,11 +13,10 @@ export default function useAuth() {
         // Requests the checkUser function from the database, which returns a currentUser if the request has jwt in its cookies
 
         // Only called when we register, login, and edit profile
-        return await axios.get('http://localhost:8080/user')
+        return await axios.get('http://localhost:8080/user', { withCredentials: true })
         .then(res => {
             // setUser(res.data.currentUser);
             setUser(res.data.currentUser);
-            navigate('http://localhost:8080/');
         })
         .catch(err => {
             setError(err);
@@ -28,11 +25,10 @@ export default function useAuth() {
 
     // Register user
     const registerUser = (signUpData) => {
-        axios.post('http://localhost:8080/auth/signup', signUpData)
+        axios.post('http://localhost:8080/auth/signup', signUpData, { withCredentials: true })
         .then(res => {
             // setIsLoading(false);
             console.log('New user successfully created!');
-            // This is where things are breaking?
             setUserContext();
             })
         .catch(err => {
@@ -42,7 +38,7 @@ export default function useAuth() {
     };
 
     const loginUser = async (loginData) => {
-        axios.post('http://localhost:8080/auth/login', loginData)
+        axios.post('http://localhost:8080/auth/login', loginData, { withCredentials: true })
         .then(res => {
             console.log('User successfully logged in!');
             setUserContext();
@@ -54,7 +50,7 @@ export default function useAuth() {
     }
 
     function editProfile(profileData) {
-        axios.put('http://localhost:8080/user', profileData)
+        axios.put('http://localhost:8080/user', profileData, { withCredentials: true })
             .then(res => {
                 console.log('User successfully updated!');
                 // Need to send back ALL user data + user_profile column
@@ -67,6 +63,7 @@ export default function useAuth() {
       }
 
     return {
+        setUserContext,
         registerUser,
         loginUser,
         editProfile,
