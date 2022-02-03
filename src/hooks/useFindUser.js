@@ -12,7 +12,6 @@ export default function useFindUser() {
             .then(res => {
                 console.log('This is the data we got back from findUser() ', res);
                 setUser(res.data);
-                console.log('Found user: ', user);
                 setLoading(false);
             })
             .catch(err => {
