@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from './UserContext';
 const axios = require('axios');
 
@@ -7,6 +8,7 @@ export default function useAuth() {
     // However, UserContext starts out as null
     const { user, setUser } = useContext(UserContext);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     // Set user in context and push them home
     const setUserContext = async () => {
@@ -27,8 +29,8 @@ export default function useAuth() {
     }
 
     // Register user
-    const registerUser = (signUpData) => {
-        axios.post('http://localhost:8080/auth/signup', signUpData, { withCredentials: true })
+    const registerUser = async (signUpData) => {
+        await axios.post('http://localhost:8080/auth/signup', signUpData, { withCredentials: true })
         .then(res => {
             // setIsLoading(false);
             console.log('New user successfully created!');
@@ -41,19 +43,19 @@ export default function useAuth() {
     };
 
     const loginUser = async (loginData) => {
-        axios.post('http://localhost:8080/auth/login', loginData, { withCredentials: true })
+        await axios.post('http://localhost:8080/auth/login', loginData, { withCredentials: true })
         .then(res => {
             console.log('User successfully logged in!');
             setUserContext();
-            })
+        })
         .catch(err => {
           console.log(err);
           setError(err.response.data);
         });
     }
 
-    function editProfile(profileData) {
-        axios.put('http://localhost:8080/user', profileData, { withCredentials: true })
+    const editProfile = async (profileData) => {
+        await axios.put('http://localhost:8080/user', profileData, { withCredentials: true })
             .then(res => {
                 console.log('User successfully updated!');
                 // Need to send back ALL user data + user_profile column
