@@ -7,21 +7,29 @@ export default function useFindUser() {
 
     // Now this hook is messing up our cookie
     useEffect(() => {
-        async function findUser() {
-            await axios.get('http://localhost:8080/user', { withCredentials: true })
+        const controller = new AbortController();
+        // const signal = controller.signal;
+        // async function findUser() {
+            axios.get('http://localhost:8080/user', { withCredentials: true })
             .then(res => {
                 console.log('This is the data we got back from findUser() ', res);
                 setUser(res.data);
                 setLoading(false);
             })
             .catch(err => {
+                if (err.name === 'AbortError') {
+                    console.log('Successfully aborted');
+                }
                 setLoading(false);
                 console.log(err);
             });
-        }
+            return () => {
+                controller.abort();
+            };
+        }, []);
 
-        findUser();
-    }, []);
+        // findUser();
+    // , []);
 
     return {
         user,
