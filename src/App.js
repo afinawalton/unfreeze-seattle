@@ -24,7 +24,6 @@ const App = () => {
               user ?
               <Routes>
                 <Route path='/' element={<MainFeed />}></Route>
-                <Route path='/create-account' element={<CreateAccount />} />
                 <Route path='/my-profile' element={<MyProfile />} />
                 <Route path='/edit-profile' element={<EditProfile />} />
                 <Route path='/neighborhoods' element={<Neighborhoods />} />
@@ -32,6 +31,7 @@ const App = () => {
               :
               <Routes>
                 <Route path='/' element={<Login />}></Route>
+                <Route path='/create-account' element={<CreateAccount />} />
               </Routes>
             }
           </UserContext.Provider>
