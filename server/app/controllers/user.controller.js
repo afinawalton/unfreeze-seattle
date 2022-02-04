@@ -1,5 +1,6 @@
 const db = require('../models');
 let User = db.users;
+let UserProfile = db.userProfiles;
 const Op = db.Sequelize.Op;
 
 // Get all users
@@ -8,7 +9,10 @@ exports.getUsersByResidency = (req, res) => {
     const residentType = req.query.residentType;
     let condition = residentType ? { resident_type: { [Op.iLike]: `%${residentType}` } } : null;
 
-    User.findAll({ where: condition })
+    User.findAll({
+        where: condition,
+        include: [User.UserProfile]
+    })
         .then(data => {
             res.status(200).send(data);
         })
@@ -41,32 +45,23 @@ exports.getOneUser = (req, res) => {
 };
 
 // Update a user
-exports.updateUser = (req, res) => {
-    // const id = req.params.id;
-
-    // User.update(req.body, {
-    //     where: { id: id }
-    // })
-        User.update(req.body, {
-            where: { email: req.body.email }
+exports.updateUserProfile = (req, res) => {
+    UserProfile.findOne({ where: { user_id: req.body.id}})
+    .then(profile => {
+        profile.update(req.body.user_profile, { returning: true })
+        .then(data => {
+            console.log('Data returned: ', data);
+            res.status(200).send(data);
         })
-        .then(num => {
-            if (num == 1) {
-                res.send({
-                    message: "User was updated successfully."
-                });
-            } else {
-                res.send({
-                    message: `Cannot update User with email=${req.body.email}.`
-                });
-            }
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: "Error updating User with id=", id
-            });
+    })
+    .catch(err => {
+        console.log('Error is: ', err);
+        res.status(500).send({
+            message: "No user found"
         });
+    });
 };
+
 // Delete a user
 exports.deleteUser = (req, res) => {
     const id = req.params.id;
