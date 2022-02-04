@@ -1,8 +1,18 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../hooks/UserContext';
+import useAuth from '../hooks/useAuth';
+
+const calculateAge = (birthdate) => {
+    let bdayObj = new Date(birthdate);
+    let diff_ms = Date.now() - bdayObj.getTime();
+    let age_dt = new Date(diff_ms);
+
+    return Math.abs(age_dt.getUTCFullYear() - 1970)
+}
 
 const MyProfile = () => {
     const { user } = useContext(UserContext);
+    const { editProfile } = useAuth();
     const profile = user['user_profile'];
 
     const checklist = user['resident_type'] === 'local' ?
@@ -58,10 +68,10 @@ const MyProfile = () => {
 
     return (
         <main>
-            <button>Edit Profile</button>
+            <a href='/edit-profile'>Edit Profile</a>
             <section id='profileHeader'>
                 <img src='' alt='Portrait of {type}' />
-                <p>{profile['first_name']} {user['birthdate']} {profile['pronouns']}</p>
+                <p>{profile['first_name']} {calculateAge(user['birthdate'])} {profile['pronouns']}</p>
                 <p>{profile['city']} - {profile['neighborhood']}</p>
                 <div>
                     <section id="topInterest">
@@ -69,7 +79,7 @@ const MyProfile = () => {
                         <p>{profile['blurb']}</p>
                     </section>
                     <section id='otherInterests'>
-                        {profile['other_interests'].map(item => <p className='interest'>{item}</p>)}
+                        {/* {profile['other_interests'].map(item => <p className='interest'>{item}</p>)} */}
                     </section>
                 </div>
             </section>
