@@ -92,5 +92,12 @@ module.exports = (sequelize, Sequelize, Model) => {
         }
     });
 
-    return User;
+    UserProfile.User = UserProfile.belongsTo(User, {
+        foreignKey: {
+            name: 'user_id',
+            allowNull: false
+        }
+    });
+
+    return { User, UserProfile };
 }
