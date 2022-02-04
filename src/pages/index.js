@@ -13,7 +13,7 @@ const Login = () => {
             <LoginForm />
             <footer>
                 <p>
-                    Unfreeze Seattle © 2022    |    Made with love in Seattle, WA  ❤️
+                    Unfreeze Seattle © 2022    |    Made with love in Seattle, WA  <span role='img' aria-label='heart'>❤️</span>
                     </p>
             </footer>
         </main>
