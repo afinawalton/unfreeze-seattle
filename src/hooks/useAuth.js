@@ -20,9 +20,6 @@ export default function useAuth() {
             // console.log('Response from .get: ', res.data);
             setUser(res.data);
         })
-        .then(() => {
-            console.log('user is now= ', user);
-        })
         .catch(err => {
             setError(err);
         })
@@ -36,6 +33,9 @@ export default function useAuth() {
             console.log('New user successfully created!');
             setUserContext();
             })
+        .then(() => {
+            navigate('/edit-profile');
+        })
         .catch(err => {
             console.log(err);
             setError(err.response.data);
@@ -48,6 +48,9 @@ export default function useAuth() {
             console.log('User successfully logged in!');
             setUserContext();
         })
+        .then(() => {
+            navigate('/');
+        })
         .catch(err => {
           console.log(err);
           setError(err.response.data);
@@ -55,12 +58,15 @@ export default function useAuth() {
     }
 
     const editProfile = async (profileData) => {
-        await axios.put('http://localhost:8080/user', profileData, { withCredentials: true })
+        await axios.put('http://localhost:8080/api/users/my-profile', profileData, { withCredentials: true })
             .then(res => {
                 console.log('User successfully updated!');
                 // Need to send back ALL user data + user_profile column
                 setUserContext();
                 })
+            .then(() => {
+                navigate('/my-profile');
+            })
             .catch(err => {
                 console.log(err);
                 setError(err.response.data);
