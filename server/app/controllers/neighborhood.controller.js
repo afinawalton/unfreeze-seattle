@@ -3,7 +3,7 @@ let Neighborhood = db.neighborhoods;
 const Op = db.Sequelize.Op;
 
 exports.findAll = (req, res) => {
-    Neighborhood.findAll({ attributes: ["name"] })
+    Neighborhood.findAll({ attributes: ["id", "name"] })
         .then(data => {
             res.send(data);
         })
