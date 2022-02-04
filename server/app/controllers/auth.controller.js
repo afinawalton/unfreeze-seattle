@@ -46,14 +46,14 @@ exports.signUpUser = async (req, res) => {
         resident_type: req.body.resident_type,
         years_in_wa: req.body.years_in_wa,
         user_profile: {
-            first_name: req.body.first_name,
-            pronouns: req.body.pronouns,
-            work: req.body.work,
-            city: req.body.city,
-            neighborhood: req.body.neighborhood,
+            first_name: req.body.user_profile.first_name,
+            pronouns: req.body.user_profile.pronouns,
+            work: req.body.user_profile.work,
+            city: req.body.user_profile.city,
+            neighborhood: req.body.user_profile.neighborhood,
             top_interest: req.body.user_profile.top_interest,
             blurb: req.body.user_profile.blurb,
-            other_interests: req.body.other_interests,
+            other_interests: req.body.user_profile.other_interests,
             bio: req.body.user_profile.bio,
             prompt_answers: req.body.user_profile.prompt_answers,
             profile_pic: req.body.user_profile.profile_pic
@@ -69,10 +69,6 @@ exports.signUpUser = async (req, res) => {
                 expiresIn: 86400 // 24 hours
             });
             console.log('Signed user token: ', token);
-
-            // Set expiry to 1 month
-            let d = new Date();
-            d.setDate(d.getDate() + 30);
             
             // Add cookie to response = accessed with req.cookies
             // This isn't working vvvv
@@ -90,8 +86,7 @@ exports.signUpUser = async (req, res) => {
                 birthdate: user.birthdate,
                 resident_type: user.resident_type,
                 years_in_wa: user.years_in_wa,
-                user_profile: user.user_profile,
-                token: token
+                user_profile: user.user_profile
             })
         })
         .catch(err => {
@@ -126,10 +121,6 @@ exports.logInUser = (req, res) => {
                 expiresIn: 86400 // 24 hours
             });
             console.log('Signed user token: ', token);
-
-            // Set expiry to 1 month
-            let d = new Date();
-            d.setDate(d.getDate() + 30);
             
             // Add cookie to response = accessed with req.cookies
             // This isn't working vvvv
@@ -147,8 +138,7 @@ exports.logInUser = (req, res) => {
                 birthdate: user.birthdate,
                 resident_type: user.resident_type,
                 years_in_wa: user.years_in_wa,
-                user_profile: user.user_profile,
-                token: token
+                user_profile: user.user_profile
             });
         })
         .catch(err => {
@@ -185,7 +175,7 @@ exports.checkUser = async (req, res) => {
 
 // //log user out
 exports.logoutUser = async (req, res) => {
-    res.cookie('jwt', 'loggedout', {
+    res.cookie('x-access-token', 'loggedout', {
         expires: new Date(Date.now() + 10 * 1000),
         httpOnly: true
     });
