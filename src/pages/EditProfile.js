@@ -113,13 +113,13 @@ const EditProfile = () => {
         e.preventDefault();
 
         let currentUser = {};
-        // { user_id:, user_profile = { }}
         currentUser.id = user.id;
         currentUser.user_profile = formFields;
-        console.log(currentUser);
+        console.log('Data being submitted: ', currentUser);
+
         editProfile(currentUser);
         
-        // setFormFields(emptyProfile);
+        setFormFields(emptyProfile);
     }
 
     return (
@@ -205,7 +205,7 @@ const EditProfile = () => {
                     <input id='prompt2' name='prompt 2' value={formFields.prompt_answers['prompt 2']} onChange={handleInputChange} type='text'></input>
                 </p>
                 <p>
-                    <button type='submit' id='createAccountButton'>Create Account</button>
+                    <button type='submit' id='saveChangesButton'>Save Changes</button>
                 </p>
             </form>
         </main>
