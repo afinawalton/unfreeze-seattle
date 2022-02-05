@@ -24,13 +24,31 @@ app.use(cookieParser(config.secret));
 
 const db = require('./app/models');
 // db.sequelize.sync({ force: true })
-db.sequelize.sync({ force: false })
+// db.sequelize.sync({ force: false })
+//     .then(() => {
+//         db.facts.bulkCreate(db.data.facts);
+//         db.interests.bulkCreate(db.data.interests);
+//         db.neighborhoods.bulkCreate(db.data.neighborhoods, { fields: ["name"] });
+//     }
+// );
+
+// Keep the existing records
+db.users.sync({ force: false });
+db.userProfiles.sync({ force: false });
+
+// Force drop existing records
+db.facts.sync({ force: true })
     .then(() => {
         db.facts.bulkCreate(db.data.facts);
+    });
+db.interests.sync({ force: true })
+    .then(() => {
         db.interests.bulkCreate(db.data.interests);
+    })
+db.neighborhoods.sync({ force: true })
+    .then(() => {
         db.neighborhoods.bulkCreate(db.data.neighborhoods, { fields: ["name"] });
-    }
-);
+    })
 
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
