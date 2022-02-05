@@ -1,13 +1,35 @@
+#mainFeed {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 70px;
+    margin-top: 50px;
+}
+
 #loggedInAs {
     background-color: #F4F9FB;
     border-radius: 6px;
     box-shadow: 0 2px 7px var(--blueMid);
     padding: 35px;
+    grid-column: 2 / span 3;
+    max-height: 265px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* width: 305px; */
+}
+
+#loggedInAs img {
+    border: 1px solid var(--blueDark);
+    border-radius: 50px;
+    aspect-ratio: 1;
+    width: 75px;
 }
 
 #loggedInAs p:first-of-type {
     color: var(--greenDark);
     font-weight: lighter;
+    text-align: left;
+    display: inline-block;
 }
 
 #user {
@@ -27,14 +49,27 @@
     border-radius: 50px;
     background-color: #F4F9FB;
     color: var(--blueDark);
+    font-family: inherit;
+    font-weight: bolder;
 }
 
-#addYourFavs, #didYouKnow {
+#main {
+    grid-column: 5 / span 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#feedSubhead {
     border: 1px solid var(--blueMid);
     border-radius: 10px;
     padding: 25px 40px;
     box-shadow: 0 2px 7px var(--blueMid);
     width: 430px;
+}
+
+#feedSubhead h2 {
+    font-weight: 600;
 }
 
 #fact {
@@ -43,4 +78,11 @@
 
 #blurbFeed {
     width: 430px;
+}
+
+#blurbFeed h2 {
+    font-size: 18px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    font-weight: 600;
 }
