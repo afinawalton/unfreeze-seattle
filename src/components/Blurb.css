@@ -1,0 +1,27 @@
+#blurb {
+    background-color: var(--greenDark);
+    border-radius: 70px 0 70px 70px;
+    display: flex;
+    text-align: left;
+    margin-bottom: 75px;
+}
+
+#blurb img {
+    border: 3px solid var(--blueLight);
+    width: 105px;
+    height: 105px;
+    margin: 10px 0 10px 10px;
+    border-radius: 200px;
+}
+
+#blurb > div {
+    margin-left: 20px;
+}
+
+#blurb a {
+    color: var(--blueLight);
+}
+
+#blurb p {
+    color: var(--blueDark);
+}
