@@ -15,19 +15,19 @@ module.exports = app => {
         next();
     });
 
-    app.get('/users/all', users.allAccess);
+    // app.get('/users/all', users.allAccess);
 
-    app.get(
-        '/users/local',
-        [authJwt.verifyToken, authJwt.isLocal],
-        users.localBoard
-    );
+    // app.get(
+    //     '/users/local',
+    //     [authJwt.verifyToken, authJwt.isLocal],
+    //     users.localBoard
+    // );
 
-    app.get(
-        '/users/transplant',
-        [authJwt.verifyToken, authJwt.isTransplant],
-        users.transplantBoard
-    );
+    // app.get(
+    //     '/users/transplant',
+    //     [authJwt.verifyToken, authJwt.isTransplant],
+    //     users.transplantBoard
+    // );
 
     app.post(
         '/users/my-profile',
