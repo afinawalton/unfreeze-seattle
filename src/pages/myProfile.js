@@ -70,7 +70,7 @@ const MyProfile = () => {
         <main>
             <a href='/edit-profile'>Edit Profile</a>
             <section id='profileHeader'>
-                <img src='' alt='Portrait of {type}' />
+                <img src='' alt={`Portrait of ${profile['first_name']}`} />
                 <p>{profile['first_name']} {calculateAge(user['birthdate'])} {profile['pronouns']}</p>
                 <p>{profile['city']} - {profile['neighborhood']}</p>
                 <div>
