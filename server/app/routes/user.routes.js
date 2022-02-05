@@ -15,22 +15,22 @@ module.exports = app => {
         next();
     });
 
-    app.get('api/users/all', users.allAccess);
+    app.get('/users/all', users.allAccess);
 
     app.get(
-        'api/users/locals',
+        '/users/local',
         [authJwt.verifyToken, authJwt.isLocal],
         users.localBoard
     );
 
     app.get(
-        'api/users/transplants',
+        '/users/transplant',
         [authJwt.verifyToken, authJwt.isTransplant],
         users.transplantBoard
     );
 
     app.post(
-        'api/users/my-profile',
+        '/users/my-profile',
         users.updateUserProfile
     );
 
