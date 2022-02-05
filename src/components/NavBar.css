@@ -1,24 +1,44 @@
-ul {
+nav h1 {
+    font-family: 'Titan One', sans-serif;
+    text-transform: lowercase;
+    border-bottom: 1px solid var(--blueMid);
+    padding-bottom: 15px;
+}
+
+nav h1 .green {
+    color: var(--greenDark);
+}
+
+nav ul {
     padding: 0;
     list-style: none;
     display: flex;
+    justify-content: center;
 }
 
-li {
+nav li {
     padding: 0 35px;
 }
 
-a {
+nav a {
     color: var(--greenDark);
     text-decoration: none;
     font-weight: bolder;
     border-bottom: 1px solid var(--greenDark);
 }
 
-button {
-    background-color: var(--blueDark);
+nav button {
+    /* background-color: var(--blueDark);
     color: var(--blueLight);
-    font-weight: bolder;
+     */
+    background-color: transparent;
     border: none;
+    color: var(--greenDark);
+    text-decoration: none;
+    font-weight: bolder;
     font-family: inherit;
+    font-size: inherit;
+    border-bottom: 1px solid var(--greenDark);
+    margin: 0;
+    padding: 0;
 }
