@@ -110,12 +110,9 @@ const EditProfile = () => {
     const onFormSubmit = (e) => {
         e.preventDefault();
 
-        let currentUser = {};
-        currentUser.id = user.id;
-        currentUser.user_profile = formFields;
-        console.log('Data being submitted: ', currentUser);
+        console.log('Data being submitted: ', formFields);
 
-        editProfile(currentUser);
+        editProfile(formFields);
         
         setFormFields(emptyProfile);
     }
