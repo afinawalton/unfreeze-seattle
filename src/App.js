@@ -11,6 +11,7 @@ import MyProfile from './pages/MyProfile';
 import Neighborhoods from './pages/Neighbhorhoods';
 import EditProfile from './pages/EditProfile';
 import MainFeed from './pages/MainFeed';
+import DeleteAccount from './pages/DeleteAccount';
 
 const App = () => {
   const { user, setUser, isLoading } = useFindUser();
@@ -26,6 +27,7 @@ const App = () => {
                 <Route path='/' element={<MainFeed />}></Route>
                 <Route path='/my-profile' element={<MyProfile />} />
                 <Route path='/edit-profile' element={<EditProfile />} />
+                <Route path='/delete-account' element={<DeleteAccount />} />
                 <Route path='/neighborhoods' element={<Neighborhoods />} />
               </Routes>
               :
