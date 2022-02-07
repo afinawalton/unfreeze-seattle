@@ -29,7 +29,7 @@ const App = () => {
               <Route path='/delete-account' element={<DeleteAccount />} />
               <Route path='/neighborhoods' element={<Neighborhoods />} />
               <Route path='/users'>
-                <Route path=":userId" element={<UserProfile users={allUsers} />} />
+                <Route path=":userId" element={<UserProfile />} />
               </Route>
             </Routes>
             :
