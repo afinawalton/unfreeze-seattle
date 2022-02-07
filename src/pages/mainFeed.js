@@ -46,12 +46,12 @@ const MainFeed = () => {
     user.resident_type === 'local' ?
     <section id='blurbFeed'>
         <h2>Show a transplant around town:</h2>
-        {blurbs.map(item => <Blurb userProfile={item.user_profile} />)}
+        {blurbs.map(item => <Blurb key={item.id} userProfile={item.user_profile} />)}
     </section>
     :
     <section id='blurbFeed'>
         <h2>Get to know the locals:</h2>
-        {blurbs.map(item => <Blurb userProfile={item.user_profile} />)}
+        {blurbs.map(item => <Blurb key={item.id} userProfile={item.user_profile} />)}
     </section>
 
     return (
