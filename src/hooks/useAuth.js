@@ -58,7 +58,7 @@ export default function useAuth() {
     }
 
     const editProfile = async (profileData) => {
-        await axios.put('http://localhost:8080/users/my-profile', profileData, { withCredentials: true })
+        await axios.post(`http://localhost:8080/users/${user.id}/profile`, profileData, { withCredentials: true })
         .then(res => {
             console.log('User successfully updated!');
             // Need to send back ALL user data + user_profile column

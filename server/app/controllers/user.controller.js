@@ -46,11 +46,13 @@ exports.getOneUser = (req, res) => {
 
 // Update a user
 exports.updateUserProfile = (req, res) => {
+    const id = req.params.id;
+
     UserProfile.findOne({
-        where: { user_id: req.body.id }
+        where: { user_id: id }
     })
     .then(profile => {
-        profile.update(req.body.user_profile, { returning: true })
+        profile.update(req.body, { returning: true })
         .then(data => {
             console.log('Data returned: ', data);
             res.status(200).send(data);
@@ -73,6 +75,7 @@ exports.deleteUser = (req, res) => {
     })
         .then(num => {
             if (num == 1) {
+                res.clearCookie('x-access-token');
                 res.send({
                 message: `User ${id} was deleted successfully!`
                 });
