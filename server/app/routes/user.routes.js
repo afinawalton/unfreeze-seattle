@@ -15,7 +15,7 @@ module.exports = app => {
         next();
     });
 
-    app.post(
+    app.put(
         '/users/my-profile',
         users.updateUserProfile
     );
