@@ -174,9 +174,7 @@ exports.checkUser = async (req, res) => {
 
 // //log user out
 exports.logoutUser = async (req, res) => {
-    res.cookie('x-access-token', 'loggedout', {
-        expires: new Date(Date.now() + 10 * 1000),
-        httpOnly: true
-    });
+    res.clearCookie('x-access-token');
+
     res.status(200).send('User successfully logged out!');
 };
