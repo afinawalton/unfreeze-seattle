@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Blurb from '../components/Blurb';
 import { UserContext } from '../hooks/UserContext';
 import '../components/MainFeed.css'
@@ -6,13 +7,13 @@ const axios = require('axios');
 
 const MainFeed = () => {
     const { user } = useContext(UserContext);
-    const [blurbs, setBlurbs] = useState([]);
+    const [allUsers, setAllUsers] = useState([]);
 
     useEffect(() => {
         return user.resident_type === 'local' ?
         axios.get('http://localhost:8080/users?residentType=transplant')
         .then((res) => {
-            setBlurbs(res.data);
+            setAllUsers(res.data);
         })
         .catch(err => {
             console.log(err);
@@ -21,7 +22,7 @@ const MainFeed = () => {
         : user.resident_type === 'transplant' ?
         axios.get('http://localhost:8080/users/?residentType=local')
         .then((res) => {
-            setBlurbs(res.data);
+            setAllUsers(res.data);
         })
         .catch(err => {
             console.log(err);
@@ -46,12 +47,20 @@ const MainFeed = () => {
     user.resident_type === 'local' ?
     <section id='blurbFeed'>
         <h2>Show a transplant around town:</h2>
-        {blurbs.map(item => <Blurb key={item.id} userProfile={item.user_profile} />)}
+        {allUsers.map(item =>
+            <Link to={`/users/${item.id}`} key={item.id}>
+                <Blurb id={item.id} userProfile={item.user_profile} />
+            </Link>)
+        }
     </section>
     :
     <section id='blurbFeed'>
         <h2>Get to know the locals:</h2>
-        {blurbs.map(item => <Blurb key={item.id} userProfile={item.user_profile} />)}
+        {allUsers.map(item =>
+            <Link to={`/users/${item.id}`} key={item.id}>
+                <Blurb id={item.id} userProfile={item.user_profile} />
+            </Link>)
+        }
     </section>
 
     return (
