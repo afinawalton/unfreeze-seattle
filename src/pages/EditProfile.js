@@ -55,7 +55,6 @@ const EditProfile = () => {
         first_name: '',
         pronouns: '',
         work: '',
-        city: '',
         neighborhood: '',
         top_interest: '',
         blurb: '',
@@ -140,10 +139,6 @@ const EditProfile = () => {
                 <p>
                     <label htmlFor='work'>Work</label>
                     <input type="text" name="work" onChange={handleInputChange} value={formFields.work}></input>
-                </p>
-                <p>
-                    <label htmlFor='city'>City</label>
-                    <input type="text" name="city" onChange={handleInputChange} value={formFields.city}></input>
                 </p>
                 <p>
                     <label htmlFor='neighborhood'>Neighborhood</label>

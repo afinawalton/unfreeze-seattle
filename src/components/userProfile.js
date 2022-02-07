@@ -63,7 +63,7 @@ const UserProfile = () => {
             <section id='profileHeader'>
                 <img src='' alt='Profile picture of {user}' />
                 <p>|name|, |age|, |pronouns|</p>
-                <p>|city|, |neighborhood|</p>
+                <p>|neighborhood|</p>
                 <div>
                     <p>|topInterest|</p>
                     <p>|profile.blurb|</p>

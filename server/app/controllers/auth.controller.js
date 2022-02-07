@@ -49,7 +49,6 @@ exports.signUpUser = async (req, res) => {
             first_name: req.body.user_profile.first_name,
             pronouns: req.body.user_profile.pronouns,
             work: req.body.user_profile.work,
-            city: req.body.user_profile.city,
             neighborhood: req.body.user_profile.neighborhood,
             top_interest: req.body.user_profile.top_interest,
             blurb: req.body.user_profile.blurb,

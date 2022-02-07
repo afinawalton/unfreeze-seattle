@@ -49,9 +49,6 @@ module.exports = (sequelize, Sequelize, Model) => {
         work: {
             type: Sequelize.STRING(120)
         },
-        city: {
-            type: Sequelize.STRING(85)
-        },
         neighborhood: {
             type: Sequelize.STRING(85)
         },

@@ -72,7 +72,7 @@ const MyProfile = () => {
             <section id='profileHeader'>
                 <img src='' alt={`Portrait of ${profile['first_name']}`} />
                 <p>{profile['first_name']} {calculateAge(user['birthdate'])} {profile['pronouns']}</p>
-                <p>{profile['city']} - {profile['neighborhood']}</p>
+                <p>{profile['neighborhood']}</p>
                 <div>
                     <section id="topInterest">
                         <p>{profile['top_interest']}</p>
