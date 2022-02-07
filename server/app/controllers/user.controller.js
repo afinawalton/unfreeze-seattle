@@ -27,7 +27,7 @@ exports.getUsersByResidency = (req, res) => {
 exports.getOneUser = (req, res) => {
     const id = req.params.id;
 
-    User.findByPk(id)
+    User.findByPk(id, { include: [User.UserProfile] })
         .then(data => {
             if (data) {
                 res.send(data);
