@@ -20,20 +20,11 @@ module.exports = app => {
         users.updateUserProfile
     );
 
-    // Create a new user
-    // router.post('/', users.createNewUser);
-
-    // Get all users
+    // Get all users by residency type
     app.get('/users', users.getUsersByResidency);
 
-    // Get one user by id
-    // router.get('/:id', users.getOneUser);
-
-    // Update one user
-    // router.put('/:id', users.updateUser);
-
     // Delete a user
-    // router.delete('/:id', users.deleteUser);
+    app.delete('/users/:id', users.deleteUser);
 
     // app.use('/users', router);
 }
