@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../hooks/UserContext';
-import useAuth from '../hooks/useAuth';
 
 const calculateAge = (birthdate) => {
     let bdayObj = new Date(birthdate);
@@ -12,7 +11,6 @@ const calculateAge = (birthdate) => {
 
 const MyProfile = () => {
     const { user } = useContext(UserContext);
-    const { editProfile } = useAuth();
     const profile = user['user_profile'];
 
     const checklist = user['resident_type'] === 'local' ?
@@ -107,7 +105,6 @@ const MyProfile = () => {
                         {profile['other_interests'] ? profile['other_interests'].map(item => <p className='interest'>{item}</p>) : null}
                     </section>
                 </div>
-                <a href={`mailto:${user.email}`}>Send an Email</a>
             </section>
             <section id="profileBio">
                 <p>{profile['bio']}</p>
