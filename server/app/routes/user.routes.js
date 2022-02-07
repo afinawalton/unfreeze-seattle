@@ -20,6 +20,9 @@ module.exports = app => {
         users.updateUserProfile
     );
 
+    // Get one user's profile
+    app.get('/users/:id', users.getOneUser);
+
     // Get all users by residency type
     app.get('/users', users.getUsersByResidency);
 
