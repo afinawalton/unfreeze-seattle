@@ -1,12 +1,14 @@
 import React from 'react';
+import { Link, Outlet } from 'react-router-dom';
 import './Blurb.css';
 
-const Blurb = ({ userProfile }) => {
+const Blurb = ({ id, userProfile }) => {
+    // How do we pass this data onto the UserProfile itself?
     return (
-        <div id='blurb'>
+        <div id="blurb">
             <img src={userProfile['profile_pic']} alt='profilePic' />
             <div>
-                <h3><a href=''>{userProfile['first_name']}</a></h3>
+                <h3>{userProfile['first_name']}</h3>
                 <p>{userProfile['blurb']}</p>
             </div>
         </div>
