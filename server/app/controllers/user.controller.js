@@ -46,7 +46,9 @@ exports.getOneUser = (req, res) => {
 
 // Update a user
 exports.updateUserProfile = (req, res) => {
-    UserProfile.findOne({ where: { user_id: req.body.id} })
+    UserProfile.findOne({
+        where: { user_id: req.body.id }
+    })
     .then(profile => {
         profile.update(req.body.user_profile, { returning: true })
         .then(data => {
