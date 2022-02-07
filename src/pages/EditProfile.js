@@ -29,8 +29,7 @@ const EditProfile = () => {
         };
     }, [])
 
-    // Get list of neighborhoods from database and add to HTML
-    // Use this in the user profile form after user account info is validated
+    // Get list of neighborhoods from database and add to state
     useEffect(() => {
         const controller = new AbortController();
 
@@ -174,31 +173,24 @@ const EditProfile = () => {
                     <label htmlFor='bio'>Bio</label>
                     <input type="text" name="bio" onChange={handleInputChange} value={formFields.bio}></input>
                 </p>
-                    {/* {auth.user.resident_type === 'transplant' ?
+                    {user['resident_type'] === 'transplant' ?
                     <p>
                         <label htmlFor='prompt1'>What are you most excited to explore in Seattle?</label>
-                        <input id='prompt1' value={formFields.prompt_answers['prompt 1']} onChange={handleInputChange} type='text'></input>
+                        <input id='prompt1' name='prompt 1' value={formFields.prompt_answers['prompt 1']} onChange={handleInputChange} type='text'></input>
                         
                         <label htmlFor='prompt2'>Why did you move to Seattle?</label>
-                        <input id='prompt2' value={formFields.prompt_answers['prompt 2']} onChange={handleInputChange} type='text'></input>
+                        <input id='prompt2' name='prompt 2' value={formFields.prompt_answers['prompt 2']} onChange={handleInputChange} type='text'></input>
                     </p>
-                    :
+                    : user['resident_type'] === 'local' ?
                     <p>
                         <label htmlFor='prompt1'>What's your favorite thing about Seattle?</label>
-                        <input id='prompt1' value={formFields.prompt_answers['prompt 1']} onChange={handleInputChange} type='text'></input>
+                        <input id='prompt1' name='prompt 1' value={formFields.prompt_answers['prompt 1']} onChange={handleInputChange} type='text'></input>
                         
                         <label htmlFor='prompt2'>What makes you stay here?</label>
-                        <input id='prompt2' value={formFields.prompt_answers['prompt 2']} onChange={handleInputChange} type='text'></input>
+                        <input id='prompt2' name='prompt 2' value={formFields.prompt_answers['prompt 2']} onChange={handleInputChange} type='text'></input>
                     </p>
-                    } */}
-                <p>
-                    <label htmlFor='prompt1'>What are you most excited to explore in Seattle?</label>
-                    <input id='prompt1' name='prompt 1' value={formFields.prompt_answers['prompt 1']} onChange={handleInputChange} type='text'></input>
-                </p>
-                <p>
-                    <label htmlFor='prompt2'>Why did you move to Seattle?</label>
-                    <input id='prompt2' name='prompt 2' value={formFields.prompt_answers['prompt 2']} onChange={handleInputChange} type='text'></input>
-                </p>
+                    : null
+                    }
                 <p>
                     <button type='submit' id='saveChangesButton'>Save Changes</button>
                 </p>
