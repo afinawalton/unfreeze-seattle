@@ -59,25 +59,41 @@ export default function useAuth() {
 
     const editProfile = async (profileData) => {
         await axios.put('http://localhost:8080/users/my-profile', profileData, { withCredentials: true })
-            .then(res => {
-                console.log('User successfully updated!');
-                // Need to send back ALL user data + user_profile column
-                setUserContext();
-                })
-            .then(() => {
-                navigate('/my-profile');
+        .then(res => {
+            console.log('User successfully updated!');
+            // Need to send back ALL user data + user_profile column
+            setUserContext();
             })
-            .catch(err => {
-                console.log(err);
-                setError(err.response.data);
-            });
-      }
+        .then(() => {
+            navigate('/my-profile');
+        })
+        .catch(err => {
+            console.log(err);
+            setError(err.response.data);
+        });
+    }
+
+    const deleteUser = async () => {
+        await axios.delete(`http://localhost:8080/users/${user.id}`)
+        .then(res => {
+            console.log('User successfully updated!');
+            setUser(null);
+        })
+        .then(() => {
+            navigate('/');
+        })
+        .catch(err => {
+            console.log(err);
+            setError(err.response.data);
+        })
+    }
 
     return {
         setUserContext,
         registerUser,
         loginUser,
         editProfile,
+        deleteUser,
         error
     }
 }
