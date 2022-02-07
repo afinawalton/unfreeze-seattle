@@ -41,7 +41,6 @@ const CreateAccount = () => {
                 [name]: parseInt(value),
                 resident_type: resident
             });
-            // document.getElementById('residency').textContent = resident;
         } else {
             setFormFields({
                 ...formFields,
@@ -82,7 +81,7 @@ const CreateAccount = () => {
                     <input type='number' min='0' max='70' id='yearsInWa' name='years_in_wa' onChange={handleInputChange} value={formFields.years_in_wa} required></input>
                 </p>
                 <span id="residentType">
-                    You're a <span>transplant</span>!
+                    You're a <span>{formFields.resident_type}</span>!
                 </span>
                 <p>
                     <button type='submit' id='createAccount'>Create Account</button>
