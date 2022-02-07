@@ -6,6 +6,7 @@ const axios = require('axios');
 const EditProfile = () => {
     const { user } = useContext(UserContext);
     const { editProfile } = useAuth();
+    const profile = user.user_profile;
     
     const [interests, setInterests] = useState([]);
     const [neighborhoods, setNeighborhoods] = useState([]);
@@ -51,17 +52,17 @@ const EditProfile = () => {
     }, [])
 
     const emptyProfile = {
-        first_name: '',
-        pronouns: '',
-        work: '',
-        neighborhood: '',
-        top_interest: '',
-        blurb: '',
-        other_interests: [],
-        bio: '',
+        first_name: profile.first_name || '',
+        pronouns: profile.pronouns || '',
+        work: profile.work || '',
+        neighborhood: profile.neighborhood || '',
+        top_interest: profile.top_interest || '',
+        blurb: profile.blurb || '',
+        other_interests: profile.other_interests || [],
+        bio: profile.bio || '',
         prompt_answers: {
-            'prompt 1': '',
-            'prompt 2': ''
+            'prompt 1': profile.prompt_answers['prompt 1'] || '',
+            'prompt 2': profile.prompt_answers['prompt 2'] || ''
         }
     }
 
