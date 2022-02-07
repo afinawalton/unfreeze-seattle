@@ -6,7 +6,7 @@ const axios = require('axios');
 const EditProfile = () => {
     const { user } = useContext(UserContext);
     const { editProfile } = useAuth();
-
+    
     const [interests, setInterests] = useState([]);
     const [neighborhoods, setNeighborhoods] = useState([]);
 
@@ -195,6 +195,9 @@ const EditProfile = () => {
                     <button type='submit' id='saveChangesButton'>Save Changes</button>
                 </p>
             </form>
+            <p>Want to delete your account?</p>
+            <a href='/delete-account'>Delete Account</a>
+            <p>You will be taken to another page to confirm your account deletion.</p>
         </main>
     )
 }
