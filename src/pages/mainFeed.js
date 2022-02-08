@@ -9,26 +9,42 @@ const MainFeed = () => {
     const { user } = useContext(UserContext);
     const [allUsers, setAllUsers] = useState([]);
 
+    // Add cleanup function
     useEffect(() => {
-        return user.resident_type === 'local' ?
-        axios.get('http://localhost:8080/users?residentType=transplant')
-        .then((res) => {
-            setAllUsers(res.data);
-        })
-        .catch(err => {
-            console.log(err);
-        })
+        const controller = new AbortController();
 
-        : user.resident_type === 'transplant' ?
-        axios.get('http://localhost:8080/users/?residentType=local')
-        .then((res) => {
-            setAllUsers(res.data);
-        })
-        .catch(err => {
-            console.log(err);
-        })
+        const getUsers = async () => {
+            return user.resident_type === 'local' ?
+            await axios.get('http://localhost:8080/users?residentType=transplant', {
+                signal: controller.signal
+            })
+            .then((res) => {
+                setAllUsers(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
 
-        : null
+            : user.resident_type === 'transplant' ?
+            await axios.get('http://localhost:8080/users/?residentType=local', {
+                signal: controller.signal
+            })
+            .then((res) => {
+                setAllUsers(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
+            : null
+        }
+
+        getUsers();
+
+        return () => {
+            controller.abort();
+        }
+        
     })
 
     const aside =
