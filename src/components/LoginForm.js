@@ -34,7 +34,7 @@ const LoginForm = () => {
 
     return (
         <section id="login">
-            <form onSubmit={onFormSubmit}>
+            <form onSubmit={onFormSubmit} id='loginForm'>
                 <p id='emailContainer'>
                     <label htmlFor='email'>Email address</label>
                     <input id='email' value={formFields.email} onChange={onEmailChange}></input>

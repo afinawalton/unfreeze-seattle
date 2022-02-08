@@ -5,10 +5,10 @@ import '../components/Login.css';
 const Login = () => {
 
     return (
-        <main>
+        <main id='loginMain'>
             <header id='titleCard'>
                 <h1><span className="green">Unfreeze</span> <span className="blue">Seattle</span></h1>
-                <div>Making friends just got a hell of a lot easier</div>
+                <div>Making friends just got <span class="newLine">a lot easier</span></div>
             </header>
             <LoginForm />
             <footer>

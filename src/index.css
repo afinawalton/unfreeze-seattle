@@ -28,9 +28,7 @@ code {
 
 #titleCard {
   background-color: var(--blueDark);
-  aspect-ratio: .7;
-  width: 325px;
-  /* height: 620px; */
+  height: 70vw;
   display: flex;
   flex-direction: column;
   place-content: center;
@@ -38,15 +36,21 @@ code {
   border-radius: 90px 0 90px 90px;
   padding-left: 40px;
   padding-right: 40px;
+  margin-bottom: 36px;
 }
 
 #titleCard h1 {
   font-family: 'Titan One', sans-serif;
   text-transform: lowercase;
+  font-size: 40px;
 }
 
 #titleCard div {
-  font-weight: bolder;
+  font-weight: 600;
+}
+
+.newLine {
+  display: inline-block;
 }
 
 #titleCard .green {
@@ -61,22 +65,25 @@ code {
   color: var(--blueLight);
 }
 
-#loginForm p > * {
-  display: block;
-}
-
 input {
   border: 1px solid var(--blueMid);
-  height: 65px;
+  height: 50px;
   border-radius: 10px;
-  width: 380px;
+  width: 93%;
   font-family: inherit;
-  padding-left: 15px;
   color: inherit;
+  padding-left: 15px;
 }
 
 label {
   margin-bottom: 10px;
   text-align: left;
   text-transform: lowercase;
+}
+
+footer {
+  font-size: 12px;
+  border-top: 1px solid var(--blueMid);
+  text-align: center;
+  margin: 80px auto auto auto;
 }
