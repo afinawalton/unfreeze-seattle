@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import Neighborhood from '../components/Neighborhood';
-import { UserContext } from '../hooks/UserContext';
 const axios = require('axios');
 
 const Neighborhoods = () => {
-    // const { user } = useContext(UserContext);
     const [neighbhorhoods, setNeighborhoods] = useState([]);
 
     useEffect(() => {
