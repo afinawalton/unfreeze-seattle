@@ -54,7 +54,7 @@ require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 require('./app/routes/main.routes')(app);
   
-const PORT = process.env.PORT || 8080;
+const PORT = 8080;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
 })
