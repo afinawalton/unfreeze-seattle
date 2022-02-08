@@ -32,7 +32,7 @@ const UserProfile = () => {
         .catch(err => {
             console.log(err);
         })
-    }, [])
+    })
 
     const checklist = thisUser['resident_type'] === 'local' ?
     <section id='experiences'>

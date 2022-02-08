@@ -29,7 +29,7 @@ const MainFeed = () => {
         })
 
         : null
-    }, [])
+    })
 
     const aside =
     user.resident_type === 'local' ?
