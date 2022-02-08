@@ -20,24 +20,21 @@ const App = () => {
     <main className="App">
         <UserContext.Provider value={{ user, setUser, isLoading }}>
           <NavBar />
-          {
-            user ?
-            <Routes>
-              <Route path='/' element={<MainFeed />}></Route>
-              <Route path='/my-profile' element={<MyProfile />} />
-              <Route path='/edit-profile' element={<EditProfile />} />
-              <Route path='/delete-account' element={<DeleteAccount />} />
-              <Route path='/neighborhoods' element={<Neighborhoods />} />
-              <Route path='/users'>
-                <Route path=":userId" element={<UserProfile />} />
-              </Route>
-            </Routes>
-            :
-            <Routes>
-              <Route path='/' element={<Login />}></Route>
-              <Route path='/create-account' element={<CreateAccount />} />
-            </Routes>
-          }
+          <Routes>
+            {
+              user ?
+                <Route path='/' element={<MainFeed />}></Route>
+              : <Route path='/' element={<Login />}></Route>
+            }
+            <Route path='/create-account' element={<CreateAccount />} />
+            <Route path='/my-profile' element={<MyProfile />} />
+            <Route path='/edit-profile' element={<EditProfile />} />
+            <Route path='/delete-account' element={<DeleteAccount />} />
+            <Route path='/neighborhoods' element={<Neighborhoods />} />
+            <Route path='/users'>
+              <Route path=":userId" element={<UserProfile />} />
+            </Route>
+          </Routes>
         </UserContext.Provider>
     </main>
   );
