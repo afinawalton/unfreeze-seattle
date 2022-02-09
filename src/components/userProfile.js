@@ -14,25 +14,29 @@ const UserProfile = () => {
     const { userId } = useParams();
     const [thisUser, setThisUser] = useState({});
     const [profile, setProfile] = useState({});
+    const [isFetched, setIsFetched] = useState(false);
     const navigate = useNavigate();
 
     // Do a GET request to request data from server and when this component first renders, it will store the data in state using matched params
     
     useEffect(() => {
-        axios.get(`http://localhost:8080/users/${parseInt(userId)}`)
-        .then(res => {
-            console.log(res.data);
-            setThisUser(res.data);
-            setProfile(res.data.user_profile);
-        })
-        .then(() => {
-            console.log(thisUser);
-            console.log(profile);
-        })
-        .catch(err => {
-            console.log(err);
-        })
-    })
+        if (isFetched === false) {
+            axios.get(`http://localhost:8080/users/${parseInt(userId)}`)
+            .then(res => {
+                console.log(res.data);
+                setThisUser(res.data);
+                setProfile(res.data.user_profile);
+                setIsFetched(true);
+            })
+            .then(() => {
+                console.log(thisUser);
+                console.log(profile);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        }
+    }, [])
 
     const checklist = thisUser['resident_type'] === 'local' ?
     <section id='experiences'>
