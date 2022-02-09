@@ -99,9 +99,9 @@ const MyProfile = () => {
                     <p>{profile['first_name']}, {calculateAge(user['birthdate'])}, {profile['pronouns']}</p>
                     <p>Seattle ‣ {profile['neighborhood']}</p>
                 </section>
-                <p id='topInterest'>{profile['top_interest']}</p>
-                <p id='blurbInterest'>{profile['blurb']}</p>
-                <section id='otherInterests'>
+                <p className='topInterest'>{profile['top_interest']}</p>
+                <p className='blurbInterest'>{profile['blurb']}</p>
+                <section className='otherInterests'>
                     {profile['other_interests'] ? profile['other_interests'].map(item => <p className='interest'>{item}</p>) : null}
                 </section>
             </section>
