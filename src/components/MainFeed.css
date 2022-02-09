@@ -1,12 +1,5 @@
-#mainFeed {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 70px;
-    margin-top: 50px;
-}
-
 #loggedInAs {
-    background-color: #F4F9FB;
+    /* background-color: #F4F9FB;
     border-radius: 6px;
     box-shadow: 0 2px 7px var(--blueMid);
     padding: 35px;
@@ -14,11 +7,11 @@
     max-height: 265px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    /* width: 305px; */
+    justify-content: center; */
+    display: none;
 }
 
-#loggedInAs img {
+/* #loggedInAs img {
     border: 1px solid var(--blueDark);
     border-radius: 50px;
     aspect-ratio: 1;
@@ -30,7 +23,7 @@
     font-weight: lighter;
     text-align: left;
     display: inline-block;
-}
+} */
 
 #user {
     color: var(--blueDark);
@@ -43,18 +36,8 @@
     border-radius: 50px;
 }
 
-#editBlurb {
-    border: 1px solid var(--blueDark);
-    padding: 9px 50px;
-    border-radius: 50px;
-    background-color: #F4F9FB;
-    color: var(--blueDark);
-    font-family: inherit;
-    font-weight: bolder;
-}
-
 #main {
-    grid-column: 5 / span 4;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,7 +48,7 @@
     border-radius: 10px;
     padding: 25px 40px;
     box-shadow: 0 2px 7px var(--blueMid);
-    width: 430px;
+    text-align: center;
 }
 
 #feedSubhead h2 {
@@ -77,7 +60,7 @@
 }
 
 #blurbFeed {
-    width: 430px;
+    width: 100%;
 }
 
 #blurbFeed h2 {
@@ -85,4 +68,5 @@
     margin-top: 50px;
     margin-bottom: 30px;
     font-weight: 600;
+    text-align: center;
 }
