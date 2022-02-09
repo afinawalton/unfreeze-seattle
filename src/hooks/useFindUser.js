@@ -38,7 +38,7 @@ export default function useFindUser() {
         return () => {
             controller.abort();
         };
-    });
+    }, [user]);
 
     return {
         user,
