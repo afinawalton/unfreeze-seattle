@@ -3,6 +3,7 @@ nav h1 {
     text-transform: lowercase;
     border-bottom: 1px solid var(--blueMid);
     padding-bottom: 15px;
+    text-align: center;
 }
 
 nav h1 .green {
