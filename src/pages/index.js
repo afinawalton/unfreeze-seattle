@@ -8,7 +8,7 @@ const Login = () => {
         <main id='loginMain'>
             <header id='titleCard'>
                 <h1><span className="green">Unfreeze</span> <span className="blue">Seattle</span></h1>
-                <div>Making friends just got <span class="newLine">a lot easier</span></div>
+                <div>Making friends just got <span className="newLine">a lot easier</span></div>
             </header>
             <LoginForm />
             <footer>
