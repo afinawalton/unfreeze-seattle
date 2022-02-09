@@ -19,6 +19,7 @@ main {
 .backToFeed {
     background-color: var(--blueMid);
     width: 100%;
+    font-family: inherit;
 }
 
 .sendEmail {
@@ -31,6 +32,7 @@ main {
     grid-column: 1 / span 1;
     grid-row: 1 / span 2;
     border-radius: 100%;
+    max-width: 118px;
 }
 
 #profileHeader {
