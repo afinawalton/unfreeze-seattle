@@ -48,7 +48,7 @@ const MainFeed = () => {
             controller.abort();
         }
         
-    })
+    }, [])
 
     const aside =
     user.resident_type === 'local' ?
