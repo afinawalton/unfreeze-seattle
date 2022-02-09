@@ -8,38 +8,41 @@ const axios = require('axios');
 const MainFeed = () => {
     const { user } = useContext(UserContext);
     const [allUsers, setAllUsers] = useState([]);
+    const [isFetched, setIsFetched] = useState(false);
 
     // Add cleanup function
     useEffect(() => {
         const controller = new AbortController();
 
         const getUsers = async () => {
-            return user.resident_type === 'local' ?
-            await axios.get('http://localhost:8080/users?residentType=transplant', {
+            if (user.resident_type === 'local') {
+                await axios.get('http://localhost:8080/users?residentType=transplant', {
                 signal: controller.signal
-            })
-            .then((res) => {
-                setAllUsers(res.data);
-            })
-            .catch(err => {
-                console.log(err);
-            })
-
-            : user.resident_type === 'transplant' ?
-            await axios.get('http://localhost:8080/users/?residentType=local', {
+                })
+                .then((res) => {
+                    setAllUsers(res.data);
+                    setIsFetched(true);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+            } else if (user.resident_type === 'transplant') {
+                await axios.get('http://localhost:8080/users/?residentType=local', {
                 signal: controller.signal
-            })
-            .then((res) => {
-                setAllUsers(res.data);
-            })
-            .catch(err => {
-                console.log(err);
-            })
-
-            : null
+                })
+                .then((res) => {
+                    setAllUsers(res.data);
+                    setIsFetched(true);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+            }
         }
 
-        getUsers();
+        if (isFetched === false) {
+            getUsers();
+        }
 
         return () => {
             controller.abort();
@@ -89,7 +92,6 @@ const MainFeed = () => {
                     </span></p>
                 </section>
                 <p id='currentUserBlurb'>{user['user_profile']['blurb']}</p>
-                <button id='editBlurb'>Edit My Blurb</button>
             </section>
             <main id='main'>
                 {aside}
