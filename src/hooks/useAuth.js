@@ -17,7 +17,7 @@ export default function useAuth() {
         // Only called when we register, login, and edit profile
         return await axios.get('http://localhost:8080/user', { withCredentials: true })
         .then(res => {
-            // console.log('Response from .get: ', res.data);
+            console.log('Response from .get: ', res.data);
             setUser(res.data);
         })
         .catch(err => {

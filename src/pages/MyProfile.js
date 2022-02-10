@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../hooks/UserContext';
+import { Link } from 'react-router-dom';
 import '../components/UserProfile.css';
 
 const calculateAge = (birthdate) => {
@@ -92,7 +93,7 @@ const MyProfile = () => {
 
     return (
         <main>
-            <a href='/edit-profile' className='userButton'>Edit Profile</a>
+            <Link to='/edit-profile' className='userButton' style={{ textDecoration: 'none' }}>Edit Profile</Link>
             <section id='profileHeader'>
                 <img src='' alt={`Portrait of ${profile['first_name']}`} className='profilePic' />
                 <section className="userDetails">
