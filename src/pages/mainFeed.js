@@ -9,6 +9,7 @@ const MainFeed = () => {
     const { user } = useContext(UserContext);
     const [allUsers, setAllUsers] = useState([]);
     const [isFetched, setIsFetched] = useState(false);
+    const [displayFact, setDisplayFact] = useState('');
 
     // Add cleanup function
     useEffect(() => {
@@ -17,7 +18,8 @@ const MainFeed = () => {
         const getUsers = async () => {
             if (user.resident_type === 'local') {
                 await axios.get('http://localhost:8080/users?residentType=transplant', {
-                signal: controller.signal
+                signal: controller.signal,
+                withCredentials: true
                 })
                 .then((res) => {
                     setAllUsers(res.data);
@@ -28,7 +30,8 @@ const MainFeed = () => {
                 })
             } else if (user.resident_type === 'transplant') {
                 await axios.get('http://localhost:8080/users/?residentType=local', {
-                signal: controller.signal
+                signal: controller.signal,
+                withCredentials: true
                 })
                 .then((res) => {
                     setAllUsers(res.data);
@@ -44,30 +47,27 @@ const MainFeed = () => {
             getUsers();
         }
 
+        axios.get('http://localhost:8080/api/fact', { withCredentials: true })
+        .then(res => {
+            console.log(res.data[0]);
+            setDisplayFact(res.data[0]);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
         return () => {
             controller.abort();
         }
         
     }, [])
 
-    const aside =
-    user.resident_type === 'local' ?
-    <aside id='feedSubhead'>
-        <h2>Add Your Favs</h2>
-        <p id='fact'>Know where to find the best bookstore? Or poke shop? Add your favorites to our database.</p>
-    </aside>
-    :
-    <aside id='feedSubhead'>
-        <h2>Did You Know?</h2>
-        <p>|Pike Place Market is the oldest continuously operating farmer’s market in the country.|</p>
-    </aside>
-
     const feed =
     user.resident_type === 'local' ?
     <section id='blurbFeed'>
         <h2>Show a transplant around town:</h2>
         {allUsers.map(item =>
-            <Link to={`/users/${item.id}`} key={item.id}>
+            <Link to={`/users/${item.id}`} key={item.id} style={{ textDecoration: 'none' }}>
                 <Blurb id={item.id} userProfile={item.user_profile} />
             </Link>)
         }
@@ -76,7 +76,7 @@ const MainFeed = () => {
     <section id='blurbFeed'>
         <h2>Get to know the locals:</h2>
         {allUsers.map(item =>
-            <Link to={`/users/${item.id}`} key={item.id}>
+            <Link to={`/users/${item.id}`} key={item.id} style={{ textDecoration: 'none' }}>
                 <Blurb id={item.id} userProfile={item.user_profile} />
             </Link>)
         }
@@ -94,7 +94,10 @@ const MainFeed = () => {
                 <p id='currentUserBlurb'>{user['user_profile']['blurb']}</p>
             </section>
             <main id='main'>
-                {aside}
+                <aside id='feedSubhead'>
+                    <h2>Did You Know?</h2>
+                    <q className='fact' cite={displayFact.source}>{displayFact.fact}</q>
+                </aside>
                 {feed}
             </main>
         </section>
