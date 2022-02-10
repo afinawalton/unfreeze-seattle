@@ -27,7 +27,7 @@ export default function useAuth() {
 
     // Register user
     const registerUser = async (signUpData) => {
-        await axios.post('http://localhost:8080/auth/signup', signUpData, { withCredentials: true })
+        return await axios.post('http://localhost:8080/auth/signup', signUpData, { withCredentials: true })
         .then(res => {
             // setIsLoading(false);
             console.log('New user successfully created!');
@@ -43,7 +43,7 @@ export default function useAuth() {
     };
 
     const loginUser = async (loginData) => {
-        await axios.post('http://localhost:8080/auth/login', loginData, { withCredentials: true })
+        return await axios.post('http://localhost:8080/auth/login', loginData, { withCredentials: true })
         .then(res => {
             console.log('User successfully logged in!');
             setUserContext();
@@ -58,7 +58,7 @@ export default function useAuth() {
     }
 
     const editProfile = async (profileData) => {
-        await axios.post(`http://localhost:8080/users/${user.id}/profile`, profileData, { withCredentials: true })
+        return await axios.post(`http://localhost:8080/users/${user.id}/profile`, profileData, { withCredentials: true })
         .then(res => {
             console.log('User successfully updated!');
             // Need to send back ALL user data + user_profile column
@@ -74,7 +74,7 @@ export default function useAuth() {
     }
 
     const deleteUser = async () => {
-        await axios.delete(`http://localhost:8080/users/${user.id}`, { withCredentials: true })
+        return await axios.delete(`http://localhost:8080/users/${user.id}`, { withCredentials: true })
         .then(res => {
             console.log('User successfully updated!');
             setUser(null);
