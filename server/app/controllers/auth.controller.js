@@ -67,7 +67,6 @@ exports.signUpUser = async (req, res) => {
             console.log('Signed user token: ', token);
             
             // Add cookie to response = accessed with req.cookies
-            // This isn't working vvvv
             res.cookie('x-access-token', token, {
                 maxAge: 3600000, // 1 hr in milliseconds
                 httpOnly: true,
@@ -108,7 +107,6 @@ exports.logInUser = (req, res) => {
 
             if (!passwordIsValid) {
                 return res.status(401).send({
-                    accessToken: null,
                     message: 'Invalid password!'
                 });
             }
@@ -117,7 +115,6 @@ exports.logInUser = (req, res) => {
             console.log('Signed user token: ', token);
             
             // Add cookie to response = accessed with req.cookies
-            // This isn't working vvvv
             res.cookie('x-access-token', token, {
                 maxAge: 3600000, // 1 hr in milliseconds
                 httpOnly: true,
@@ -125,7 +122,7 @@ exports.logInUser = (req, res) => {
                 // sameSite: 'none',
                 // secure: true
             })
-            .status(201)
+            .status(200)
             .send({
                 id: user.id,
                 email: user.email,
