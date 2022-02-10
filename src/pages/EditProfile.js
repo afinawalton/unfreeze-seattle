@@ -15,7 +15,7 @@ const EditProfile = () => {
     useEffect(() => {
         const controller = new AbortController();
 
-        axios.get('http://localhost:8080/api/interests')
+        axios.get('http://localhost:8080/api/interests', { withCredentials: true })
         .then(res => {
             setInterests(res.data);
         })
@@ -34,7 +34,7 @@ const EditProfile = () => {
     useEffect(() => {
         const controller = new AbortController();
 
-        axios.get('http://localhost:8080/api/neighborhoods')
+        axios.get('http://localhost:8080/api/neighborhoods', { withCredentials: true })
         .then(res => {
             let neighborhoodList = res.data;
             neighborhoodList.sort();
@@ -52,17 +52,17 @@ const EditProfile = () => {
     }, [])
 
     const emptyProfile = {
-        first_name: profile.first_name || '',
-        pronouns: profile.pronouns || '',
-        work: profile.work || '',
-        neighborhood: profile.neighborhood || '',
-        top_interest: profile.top_interest || '',
-        blurb: profile.blurb || '',
-        other_interests: profile.other_interests || [],
-        bio: profile.bio || '',
+        first_name: profile ? profile.first_name : '',
+        pronouns: profile ? profile.pronouns : '',
+        work: profile ? profile.work : '',
+        neighborhood: profile ? profile.neighborhood : '',
+        top_interest: profile ? profile.top_interest : '',
+        blurb: profile? profile.blurb : '',
+        other_interests: profile ? profile.other_interests : [],
+        bio: profile ? profile.bio : '',
         prompt_answers: {
-            'prompt 1': profile.prompt_answers['prompt 1'] || '',
-            'prompt 2': profile.prompt_answers['prompt 2'] || ''
+            'prompt 1': profile ? profile.prompt_answers['prompt 1'] : '',
+            'prompt 2': profile ? profile.prompt_answers['prompt 2'] : ''
         }
     }
 

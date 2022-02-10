@@ -74,7 +74,7 @@ export default function useAuth() {
     }
 
     const deleteUser = async () => {
-        await axios.delete(`http://localhost:8080/users/${user.id}`)
+        await axios.delete(`http://localhost:8080/users/${user.id}`, { withCredentials: true })
         .then(res => {
             console.log('User successfully updated!');
             setUser(null);

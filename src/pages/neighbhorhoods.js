@@ -6,7 +6,7 @@ const Neighborhoods = () => {
     const [neighbhorhoods, setNeighborhoods] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/api/neighborhoods')
+        axios.get('http://localhost:8080/api/neighborhoods', { withCredentials: true })
         .then(res => {
             let list = [];
             const neighborhoodData = res.data;

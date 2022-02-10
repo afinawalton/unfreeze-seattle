@@ -21,7 +21,7 @@ const UserProfile = () => {
     
     useEffect(() => {
         if (isFetched === false) {
-            axios.get(`http://localhost:8080/users/${parseInt(userId)}`)
+            axios.get(`http://localhost:8080/users/${parseInt(userId)}`, { withCredentials: true })
             .then(res => {
                 console.log(res.data);
                 setThisUser(res.data);
