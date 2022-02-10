@@ -14,11 +14,7 @@ export default function useFindUser() {
             return await axios.get('http://localhost:8080/user', { withCredentials: true, signal: controller.signal })
             .then(res => {
                 // console.log('This is the data we got back from findUser() ', res);
-                if (res.data === user) {
-                    return controller.abort();
-                } else {
-                    setUser(res.data);
-                }
+                setUser(res.data);
                 setLoading(false);
             })
             .catch(err => {
@@ -38,7 +34,7 @@ export default function useFindUser() {
         return () => {
             controller.abort();
         };
-    }, [user]);
+    }, []);
 
     return {
         user,
