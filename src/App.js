@@ -6,10 +6,10 @@ import { UserContext } from './hooks/UserContext';
 import NavBar from './components/NavBar';
 import Login from './pages';
 import CreateAccount from './pages/CreateAccount';
-import MyProfile from './pages/MyProfile';
+import MyUserProfile from './pages/MyUserProfile';
 import Neighborhoods from './pages/Neighbhorhoods';
 import EditProfile from './pages/EditProfile';
-import MainFeed from './pages/MainFeed';
+import NewsFeed from './pages/NewsFeed';
 import DeleteAccount from './pages/DeleteAccount';
 import UserProfile from './components/UserProfile';
 
@@ -23,11 +23,11 @@ const App = () => {
           <Routes>
             {
               user ?
-                <Route path='/' element={<MainFeed />}></Route>
+                <Route path='/' element={<NewsFeed />}></Route>
               : <Route path='/' element={<Login />}></Route>
             }
             <Route path='/create-account' element={<CreateAccount />} />
-            <Route path='/my-profile' element={<MyProfile />} />
+            <Route path='/my-profile' element={<MyUserProfile />} />
             <Route path='/edit-profile' element={<EditProfile />} />
             <Route path='/delete-account' element={<DeleteAccount />} />
             <Route path='/neighborhoods' element={<Neighborhoods />} />
