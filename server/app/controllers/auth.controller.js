@@ -63,16 +63,13 @@ exports.signUpUser = async (req, res) => {
         }]
     })
         .then(user => {
-            // // Create token by signing user's id to the token
-            const token = jwt.sign({ id: user.id }, config.secret, {
-                expiresIn: 86400 // 24 hours
-            });
+            const token = jwt.sign({ id: user.id }, config.secret, {});
             console.log('Signed user token: ', token);
             
             // Add cookie to response = accessed with req.cookies
             // This isn't working vvvv
             res.cookie('x-access-token', token, {
-                maxAge: 86400, // 24 hours
+                maxAge: 3600000, // 1 hr in milliseconds
                 httpOnly: true,
                 // signed: true,
                 // sameSite: 'none',
@@ -116,15 +113,13 @@ exports.logInUser = (req, res) => {
                 });
             }
             // Create token by signing user's id to the token
-            const token = jwt.sign({ id: user.id }, config.secret, {
-                expiresIn: 86400 // 24 hours
-            });
+            const token = jwt.sign({ id: user.id }, config.secret, {});
             console.log('Signed user token: ', token);
             
             // Add cookie to response = accessed with req.cookies
             // This isn't working vvvv
             res.cookie('x-access-token', token, {
-                maxAge: 86400, // 24 hours
+                maxAge: 3600000, // 1 hr in milliseconds
                 httpOnly: true,
                 // signed: true,
                 // sameSite: 'none',
@@ -174,7 +169,10 @@ exports.checkUser = async (req, res) => {
 
 // //log user out
 exports.logoutUser = async (req, res) => {
-    res.clearCookie('x-access-token');
+    res.clearCookie('x-access-token', {
+        maxAge: 3600000,
+        httpOnly: true
+    });
 
     res.status(200).send('User successfully logged out!');
 };
