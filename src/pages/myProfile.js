@@ -102,7 +102,7 @@ const MyProfile = () => {
                 <p className='topInterest'>{profile['top_interest']}</p>
                 <p className='blurbInterest'>{profile['blurb']}</p>
                 <section className='otherInterests'>
-                    {profile['other_interests'] ? profile['other_interests'].map(item => <p className='interest'>{item}</p>) : null}
+                    {profile['other_interests'] ? profile['other_interests'].map(item => <p key={item} className='interest'>{item}</p>) : null}
                 </section>
             </section>
             <section id="profileBio">
