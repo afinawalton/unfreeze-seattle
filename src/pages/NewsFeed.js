@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Blurb from '../components/Blurb';
 import { UserContext } from '../hooks/UserContext';
-import '../components/MainFeed.css'
+import '../components/NewsFeed.css'
 const axios = require('axios');
 
-const MainFeed = () => {
+const NewsFeed = () => {
     const { user } = useContext(UserContext);
     const [allUsers, setAllUsers] = useState([]);
     const [isFetched, setIsFetched] = useState(false);
@@ -104,4 +104,4 @@ const MainFeed = () => {
     )
 }
 
-export default MainFeed;
+export default NewsFeed;

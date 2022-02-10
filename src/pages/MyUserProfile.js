@@ -11,7 +11,7 @@ const calculateAge = (birthdate) => {
     return Math.abs(age_dt.getUTCFullYear() - 1970)
 }
 
-const MyProfile = () => {
+const MyUserProfile = () => {
     const { user } = useContext(UserContext);
     const profile = user['user_profile'];
 
@@ -115,4 +115,4 @@ const MyProfile = () => {
     )
 }
 
-export default MyProfile;
+export default MyUserProfile;
