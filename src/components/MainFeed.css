@@ -53,10 +53,18 @@
 
 #feedSubhead h2 {
     font-weight: 600;
+    margin-bottom: 7px;
+    margin-top: 0;
 }
 
-#fact {
+.fact {
     font-weight: lighter;
+    quotes: none;
+}
+
+.fact::before, .fact::after {
+    content: '';
+    content: none;
 }
 
 #blurbFeed {
