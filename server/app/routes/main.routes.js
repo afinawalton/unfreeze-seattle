@@ -11,6 +11,9 @@ module.exports = app => {
     // Get all neighborhoods
     router.get('/neighborhoods', neighborhoods.findAll);
 
+    // Get one neighborhood
+    router.get('/neighborhoods/:id', neighborhoods.findOne);
+
     // Get one random fact
     router.get('/fact', facts.getRandomFact);
 
