@@ -66,11 +66,12 @@ const UserProfile = () => {
 
     return (
         <main>
-            <button className='userButton backToFeed' onClick={() => navigate(-1)}>← Back to Feed</button>
+            <button className='userButton backToButton' onClick={() => navigate(-1)}>← Back to Feed</button>
             <section id='profileHeader'>
                 <img src={`http://localhost:8080/images/${profile['profile_pic']}`} alt={`Portrait of ${profile['first_name']}`} className='profilePic' />
                 <section className="userDetails">
                     <p>{profile['first_name']}, {calculateAge(thisUser['birthdate'])}, {profile['pronouns']}</p>
+                    <p>{profile['work']}</p>
                     <p>Seattle ‣ {profile['neighborhood']}</p>
                 </section>
                 <p className='topInterest'>{profile['top_interest']}</p>

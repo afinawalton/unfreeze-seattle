@@ -101,6 +101,7 @@ const MyUserProfile = () => {
                 <img src='' alt={`Portrait of ${profile['first_name']}`} className='profilePic' />
                 <section className="userDetails">
                     <p>{profile['first_name']}, {calculateAge(user['birthdate'])}, {profile['pronouns']}</p>
+                    <p>{profile['work']}</p>
                     <p>Seattle ‣ {profile['neighborhood']}</p>
                 </section>
                 <p className='topInterest'>{profile['top_interest']}</p>
