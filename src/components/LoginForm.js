@@ -37,13 +37,13 @@ const LoginForm = () => {
             <form onSubmit={onFormSubmit} id='loginForm'>
                 <p id='emailContainer'>
                     <label htmlFor='email'>Email address</label>
-                    <input id='email' value={formFields.email} onChange={onEmailChange}></input>
+                    <input id='email' aria-label='email' aria-required='true' required value={formFields.email} onChange={onEmailChange}></input>
                 </p>
                 <p id='passwordContainer'>
                     <label htmlFor='password'>Password</label>
-                    <input id='password' type='password' value={formFields.password} onChange={onPasswordChange}></input>
+                    <input id='password' type='password' aria-label='password' aria-required='true' required value={formFields.password} onChange={onPasswordChange}></input>
                 </p>
-                <button id='loginButton' type='submit'>Log In</button>
+                <button class='userFormButton' type='submit'>Log In</button>
             </form>
             <section id="createAccountSection">
                 <p id='noAccount'>Don't have an account?</p>

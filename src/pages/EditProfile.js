@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import useAuth from '../hooks/useAuth';
 import { UserContext } from '../hooks/UserContext';
+import '../components/EditProfile.css';
 const axios = require('axios');
 
 const EditProfile = () => {
@@ -120,9 +121,6 @@ const EditProfile = () => {
 
     return (
         <main>
-            <header id='logo'>
-                <h1>Unfreeze Seattle</h1>
-            </header>
             <form id='editProfileForm' onSubmit={onFormSubmit}>
                 <h2 id='editProfileTitle'>Edit My Profile</h2>
                 <p>
@@ -194,7 +192,7 @@ const EditProfile = () => {
                     : null
                     }
                 <p>
-                    <button type='submit' id='saveChangesButton'>Save Changes</button>
+                    <button className='userFormButton' type='submit' id='saveChangesButton'>Update Profile</button>
                 </p>
             </form>
             <p>Want to delete your account?</p>

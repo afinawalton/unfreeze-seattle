@@ -10,7 +10,9 @@ const NavBar = () => {
 
     const userNav = user ?
     <nav>
-        <h1><span className="green">Unfreeze</span> <span className="blue">Seattle</span></h1>
+        <a href='/'>
+            <h1 id='logo'><span className="green">Unfreeze</span> <span className="blue">Seattle</span></h1>
+        </a>
         <ul>
             <li><NavLink to='/'>News Feed</NavLink></li>
             <li><NavLink to="/my-profile">My Profile</NavLink></li>

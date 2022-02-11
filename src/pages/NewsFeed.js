@@ -86,7 +86,7 @@ const NewsFeed = () => {
         <section id='mainFeed'>
             <section id="loggedInAs">
                 <section id='picAndName'>
-                    <img src='' alt='profilePic'></img>
+                    <img src='' alt={`Portrait of ${user['user_profile']['first_name']}`}></img>
                     <p>Logged in as <br /><span id="user">
                         {user['user_profile']['first_name']}
                     </span></p>
