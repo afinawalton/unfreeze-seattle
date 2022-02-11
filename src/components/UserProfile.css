@@ -17,10 +17,8 @@ main {
     text-align: center;
 }
 
-.backToFeed {
+.userButton:hover {
     background-color: var(--blueMid);
-    width: 100%;
-    font-family: inherit;
 }
 
 .sendEmail {
@@ -107,10 +105,16 @@ main {
     line-height: 34px;
     margin-top: 30px;
     text-align: center;
+    margin-bottom: 0;
 }
 
 .promptAnswer {
     background-color: #FCFAED;
-    border-radius: 6px;
+    border-radius: 0 0 6px 6px;
     font-size: 12px;
+    padding: 20px 20px 10px 20px;
+    margin-top: -10px;
+    position: relative;
+    z-index: -1;
+    font-size: 14px;
 }

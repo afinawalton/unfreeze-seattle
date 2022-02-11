@@ -17,7 +17,7 @@
     margin-bottom: 35px;
 }
 
-form {
+/* form {
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -35,19 +35,7 @@ form {
 
 #loginForm p > * {
     display: block;
-  }
-
-#loginButton {
-    background-color: var(--greenDark);
-    height: 50px;
-    font-family: inherit;
-    font-size: 18px;
-    color: inherit;
-    font-weight: bolder;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-}
+} */
 
 #createAccountSection {
     width: 80%;

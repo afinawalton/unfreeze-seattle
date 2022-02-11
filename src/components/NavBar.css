@@ -6,8 +6,8 @@ nav h1 {
     text-align: center;
 }
 
-nav h1 .green {
-    color: var(--greenDark);
+#logo .blue {
+    color: var(--blueDark);
 }
 
 nav ul {
@@ -29,6 +29,11 @@ nav a {
     border-bottom: 1px solid var(--greenDark);
 }
 
+nav ul a:hover {
+    color: var(--blueDark);
+    border-bottom-color: var(--blueDark);
+}
+
 nav button {
     /* background-color: var(--blueDark);
     color: var(--blueLight);
@@ -43,6 +48,11 @@ nav button {
     border-bottom: 1px solid var(--greenDark);
     margin: 0;
     padding: 0;
+}
+
+nav button:hover {
+    color: var(--blueDark);
+    border-bottom: 1px solid var(--blueDark);
 }
 
 #logoutButton {

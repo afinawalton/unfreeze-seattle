@@ -1,0 +1,15 @@
+#neighborhoodPage {
+    text-align: center;
+}
+
+#neighborhoodPage h1 {
+    font-weight: 300;
+    font-size: 23px;
+}
+
+.townName {
+    display: block;
+    /* font-size: 18px; */
+    font-weight: 700;
+    margin-top: 5px;
+}

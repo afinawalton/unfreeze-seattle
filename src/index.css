@@ -10,6 +10,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Sora', -apple-system, 'Helvetica Neue',
@@ -18,7 +22,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--blueLight);
   color: var(--blueDark);
-  box-sizing: border-box;
 }
 
 code {
@@ -65,20 +68,91 @@ code {
   color: var(--blueLight);
 }
 
-input {
-  border: 1px solid var(--blueMid);
-  height: 50px;
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 100%;
+  align-items: center;
+  padding: 50px 5px;
   border-radius: 10px;
-  width: 93%;
-  font-family: inherit;
-  color: inherit;
-  padding-left: 15px;
+  box-shadow: 0 2px 4px var(--blueMid);
+  margin: 0 auto 28px auto;
+  border: 1px solid var(--blueMid);
+}
+
+form > * {
+  width: 80%;
+}
+
+form p > * {
+  display: block;
 }
 
 label {
   margin-bottom: 10px;
   text-align: left;
-  text-transform: lowercase;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+label::after {
+  content: ':';
+}
+
+input {
+  border: 1px solid var(--blueMid);
+  height: 50px;
+  border-radius: 10px;
+  width: 100%;
+  font-family: inherit;
+  color: inherit;
+  padding-left: 15px;
+}
+
+select {
+  width: 100%;
+  height: 50px;
+  font-family: inherit;
+  padding-left: 15px;
+  color: inherit;
+  border: 1px solid var(--blueMid);
+  border-radius: 10px;
+}
+
+select[multiple] {
+  min-height: 200px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.backToButton {
+  background-color: var(--blueMid);
+  width: 100%;
+  font-family: inherit;
+  margin-bottom: 28px;
+}
+
+.userFormButton {
+  background-color: var(--greenDark);
+  height: 50px;
+  font-family: inherit;
+  font-size: 18px;
+  color: inherit;
+  font-weight: bolder;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.userFormButton:hover {
+  background-color: var(--blueDark);
+  color: var(--blueLight);
 }
 
 footer {
