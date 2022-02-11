@@ -173,10 +173,10 @@ const EditProfile = () => {
                 </p>
                     {user['resident_type'] === 'transplant' ?
                     <p>
-                        <label htmlFor='prompt1'>What are you most excited to explore in Seattle?</label>
+                        <label htmlFor='prompt1'>Why did you move to Seattle?</label>
                         <input id='prompt1' name='prompt 1' value={formFields.prompt_answers['prompt 1']} onChange={handleInputChange} type='text'></input>
                         
-                        <label htmlFor='prompt2'>Why did you move to Seattle?</label>
+                        <label htmlFor='prompt2'>What are you most excited to explore in Seattle?</label>
                         <input id='prompt2' name='prompt 2' value={formFields.prompt_answers['prompt 2']} onChange={handleInputChange} type='text'></input>
                     </p>
                     : user['resident_type'] === 'local' ?
