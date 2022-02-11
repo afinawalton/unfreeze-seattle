@@ -11,11 +11,6 @@ const Login = () => {
                 <div>Making friends just got <span className="newLine">a lot easier</span></div>
             </header>
             <LoginForm />
-            <footer>
-                <p>
-                    Unfreeze Seattle © 2022    |    Made with love in Seattle, WA  <span role='img' aria-label='heart'>❤️</span>
-                    </p>
-            </footer>
         </main>
     )
 }
