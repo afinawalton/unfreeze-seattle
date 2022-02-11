@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Neighborhood from '../components/Neighborhood';
+// import Neighborhood from '../components/Neighborhood';
+import { Link } from 'react-router-dom';
+import '../components/Neighborhoods.css';
 const axios = require('axios');
 
 const Neighborhoods = () => {
-    const [neighbhorhoods, setNeighborhoods] = useState([]);
+    const [neighborhoods, setNeighborhoods] = useState([]);
 
     useEffect(() => {
         axios.get('http://localhost:8080/api/neighborhoods', { withCredentials: true })
@@ -40,14 +42,15 @@ const Neighborhoods = () => {
     }
     
     return (
-        <main>
+        <main id='neighborhoodsPage'>
             <h1>Neighborhoods</h1>
+            <h2>Seattle</h2>
             <section id="neighborhoodContainer">
                 <ul id='neighborhoodList'>
-                    {neighbhorhoods.map(info => <li key={info.name}><a href={normalizeName(info.name)}>{info.name}</a></li>)}
+                    {neighborhoods.map(info => <li className='neighborhood' key={info.id}><Link to={`/neighborhoods/${info.id}`}>{info.name}</Link></li>)}
                 </ul>
             </section>
-            <Neighborhood />
+            {/* <Neighborhood /> */}
         </main>
     )
 }
