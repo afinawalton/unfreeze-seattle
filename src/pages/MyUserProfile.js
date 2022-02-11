@@ -12,7 +12,10 @@ const calculateAge = (birthdate) => {
 }
 
 const MyUserProfile = () => {
-    const { user } = useContext(UserContext);
+    const { user, isLoading } = useContext(UserContext);
+    if (isLoading) {
+        return <div>Loading...</div>
+    }
     const profile = user['user_profile'];
 
     // const checklist = user['resident_type'] === 'local' ?
