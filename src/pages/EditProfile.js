@@ -129,6 +129,10 @@ const EditProfile = () => {
                     <label htmlFor='first_name'>First name</label>
                     <input type='text' id='firstName' name='first_name' onChange={handleInputChange} value={formFields.first_name} ></input>
                 </p>
+                {/* <p>
+                    <label htmlFor='profile_pic'>Profile Picture</label>
+                    <input type='file' id='profilePic' name='profile_pic' value={formFields.profile_pic} accept='image/png image/jpg image/jpeg' ></input>
+                </p> */}
                 <p>
                     <label htmlFor='pronouns'>Pronouns</label>
                     <input type="text" name="pronouns" onChange={handleInputChange} value={formFields.pronouns}></input>
