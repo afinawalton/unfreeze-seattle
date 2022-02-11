@@ -5,17 +5,15 @@ const axios = require('axios');
 
 export default function useLogout() {
     const { setUser } = useContext(UserContext);
-
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
     const logoutUser = async () => {
-        axios.get('http://localhost:8080/auth/logout', { withCredentials: true })
+        return axios.get('http://localhost:8080/auth/logout', { withCredentials: true })
         .then(res => {
             console.log(res);
             setUser(null);
-        })
-        .then(() => {
-            navigate('/');
+            localStorage.removeItem('user');
+            navigate('/login');
         })
         .catch(err => {
             console.log(err);

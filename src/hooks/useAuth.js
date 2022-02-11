@@ -1,9 +1,11 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from './UserContext';
+import useLocalStorage from '../hooks/useLocalStorage';
 const axios = require('axios');
 
 export default function useAuth() {
+    const { setLocalStorage } = useLocalStorage();
     // Creates var setUser and sets it to key within UserContext that says {, setUser: ...}
     // However, UserContext starts out as null
     const { user, setUser } = useContext(UserContext);
@@ -19,6 +21,7 @@ export default function useAuth() {
         .then(res => {
             console.log('Response from .get: ', res.data);
             setUser(res.data);
+            setLocalStorage('user', res.data);
         })
         .catch(err => {
             setError(err);
@@ -78,6 +81,7 @@ export default function useAuth() {
         .then(res => {
             console.log('User successfully updated!');
             setUser(null);
+            localStorage.clear();
         })
         .then(() => {
             navigate('/');
