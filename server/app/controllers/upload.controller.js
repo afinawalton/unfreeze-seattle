@@ -18,7 +18,7 @@ const multerStorage = multer.diskStorage({
 const multerFilter = (req, file, cb) => {
     if (!file.originalname.match(/\.(png|jpg|jpeg)$/)) {
         // upload only png and jpg format
-        return cb(new Error('Please upload an image!'))
+        return cb(new Error('Please upload an image that is .PNG, .JPG, or .JPEG!'))
     }
 
     cb(null, true)
