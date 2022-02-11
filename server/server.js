@@ -51,7 +51,7 @@ db.interests.sync({ force: true })
     })
 db.neighborhoods.sync({ force: true })
     .then(() => {
-        db.neighborhoods.bulkCreate(db.data.neighborhoods, { fields: ["name"] });
+        db.neighborhoods.bulkCreate(db.data.neighborhoods);
     })
 
 require('./app/routes/auth.routes')(app);
