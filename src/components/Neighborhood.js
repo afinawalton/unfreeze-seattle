@@ -9,7 +9,7 @@ const Neighborhood = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/api/neighborhoods/${parseInt(townId)}`, { withCredentials: true })
+        axios.get(`/api/neighborhoods/${parseInt(townId)}`, { withCredentials: true })
         .then(res => {
             console.log(res.data);
             setThisTown(res.data);

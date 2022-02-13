@@ -15,7 +15,7 @@ export default function useFindUser() {
         const controller = new AbortController();
 
         const findUser = async () => {
-            return await axios.get('http://localhost:8080/user', { withCredentials: true, signal: controller.signal })
+            return await axios.get('/user', { withCredentials: true, signal: controller.signal })
             .then(res => {
                 // console.log('This is the data we got back from findUser() ', res);
                 // Sets user state to appropriate value

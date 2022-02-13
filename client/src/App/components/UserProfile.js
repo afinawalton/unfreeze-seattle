@@ -21,7 +21,7 @@ const UserProfile = () => {
     
     useEffect(() => {
         if (isFetched === false) {
-            axios.get(`http://localhost:8080/users/${parseInt(userId)}`, { withCredentials: true })
+            axios.get(`/users/${parseInt(userId)}`, { withCredentials: true })
             .then(res => {
                 console.log(res.data);
                 setThisUser(res.data);
@@ -68,7 +68,7 @@ const UserProfile = () => {
         <main id='userProfilePage'>
             <button className='userButton backToButton' onClick={() => navigate(-1)}>← Back to Feed</button>
             <header id='profileHeader'>
-                <img src={`http://localhost:8080/images/${profile['profile_pic']}`} alt={`Portrait of ${profile['first_name']}`} className='profilePic' />
+                <img src={`/images/${profile['profile_pic']}`} alt={`Portrait of ${profile['first_name']}`} className='profilePic' />
                 <section className="userDetails">
                     <p>{profile['first_name']}, {calculateAge(thisUser['birthdate'])}, {profile['pronouns']}</p>
                     <p>{profile['work']}</p>

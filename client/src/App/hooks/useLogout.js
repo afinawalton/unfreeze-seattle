@@ -8,7 +8,7 @@ export default function useLogout() {
     const navigate = useNavigate();
 
     const logoutUser = async () => {
-        return axios.get('http://localhost:8080/auth/logout', { withCredentials: true })
+        return axios.get('/auth/logout', { withCredentials: true })
         .then(res => {
             console.log(res);
             setUser(null);

@@ -17,7 +17,7 @@ const NewsFeed = () => {
 
         const getUsers = async () => {
             if (user.resident_type === 'local') {
-                await axios.get('http://localhost:8080/users?residentType=transplant', {
+                await axios.get('/users?residentType=transplant', {
                 signal: controller.signal,
                 withCredentials: true
                 })
@@ -29,7 +29,7 @@ const NewsFeed = () => {
                     console.log(err);
                 })
             } else if (user.resident_type === 'transplant') {
-                await axios.get('http://localhost:8080/users/?residentType=local', {
+                await axios.get('/users/?residentType=local', {
                 signal: controller.signal,
                 withCredentials: true
                 })
@@ -47,7 +47,7 @@ const NewsFeed = () => {
             getUsers();
         }
 
-        axios.get('http://localhost:8080/api/fact', { withCredentials: true })
+        axios.get('/api/fact', { withCredentials: true })
         .then(res => {
             console.log(res.data[0]);
             setDisplayFact(res.data[0]);

@@ -101,7 +101,7 @@ const MyUserProfile = () => {
     return (
         <main id='userProfilePage'>
             <header id='profileHeader'>
-                <img src={`http://localhost:8080/images/${profile['profile_pic']}`} alt={`Portrait of ${profile['first_name']}`} className='profilePic' />
+                <img src={`/images/${profile['profile_pic']}`} alt={`Portrait of ${profile['first_name']}`} className='profilePic' />
                 <section className="userDetails">
                     <p>{profile['first_name']}, {calculateAge(user['birthdate'])}, {profile['pronouns']}</p>
                     <p>{profile['work']}</p>

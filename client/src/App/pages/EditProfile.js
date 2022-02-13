@@ -16,7 +16,7 @@ const EditProfile = () => {
     useEffect(() => {
         const controller = new AbortController();
 
-        axios.get('http://localhost:8080/api/interests', { withCredentials: true })
+        axios.get('/api/interests', { withCredentials: true })
         .then(res => {
             setInterests(res.data);
         })
@@ -35,7 +35,7 @@ const EditProfile = () => {
     useEffect(() => {
         const controller = new AbortController();
 
-        axios.get('http://localhost:8080/api/neighborhoods', { withCredentials: true })
+        axios.get('/api/neighborhoods', { withCredentials: true })
         .then(res => {
             let neighborhoodList = res.data;
             neighborhoodList.sort();
