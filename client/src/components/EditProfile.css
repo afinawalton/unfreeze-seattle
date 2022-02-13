@@ -1,0 +1,12 @@
+#prompt1 {
+    margin-bottom: 35px;
+}
+
+.blurb::after {
+    content: 'Required. Include a small description related to your Top Interest.';
+    display: block;
+    margin-top: 10px;
+    font-size: small;
+    text-align: left;
+    padding-left: 15px;
+}

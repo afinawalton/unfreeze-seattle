@@ -3,7 +3,6 @@ const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const config = require('./app/config/auth.config');
-const multer = require('multer');
 const path = require('path');
 
 const app = express();
@@ -24,7 +23,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser(config.secret));
 
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '../client/public')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 const db = require('./app/models');
 // db.sequelize.sync({ force: true })
@@ -59,7 +59,7 @@ require('./app/routes/user.routes')(app);
 require('./app/routes/main.routes')(app);
 require('./app/routes/image.routes')(app);
   
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
 })
