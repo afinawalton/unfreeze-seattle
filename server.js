@@ -2,7 +2,7 @@ const express = require('express');
 // const bodyParser = require('body-parser');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const config = require('./app/config/auth.config');
+const config = require('./server/app/config/auth.config');
 const path = require('path');
 
 const app = express();
@@ -24,9 +24,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(config.secret));
 
 // app.use(express.static(path.join(__dirname, '../client/public')));
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, './client/build')));
 
-const db = require('./app/models');
+const db = require('./server/app/models');
 // db.sequelize.sync({ force: true })
 // db.sequelize.sync({ force: false })
 //     .then(() => {
@@ -54,13 +54,13 @@ db.neighborhoods.sync({ force: true })
         db.neighborhoods.bulkCreate(db.data.neighborhoods);
     })
 
-require('./app/routes/auth.routes')(app);
-require('./app/routes/user.routes')(app);
-require('./app/routes/main.routes')(app);
-require('./app/routes/image.routes')(app);
+require('./server/app/routes/auth.routes')(app);
+require('./server/app/routes/user.routes')(app);
+require('./server/app/routes/main.routes')(app);
+require('./server/app/routes/image.routes')(app);
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname+'../client/build/index.html'));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './client/build', 'index.html'));
 })
   
 const PORT = process.env.PORT || 8080;

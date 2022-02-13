@@ -1,6 +1,6 @@
 const { verifySignUp } = require('../middleware');
 const auth = require('../controllers/auth.controller');
-const { router } = require('../../server');
+// const { router } = require('../../server');
 
 module.exports = (app) => {
     app.use((req, res, next) => {
