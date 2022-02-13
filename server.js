@@ -2,7 +2,7 @@ const express = require('express');
 // const bodyParser = require('body-parser');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const config = require('./server/app/config/auth.config');
+// const config = require('./server/app/config/auth.config');
 const path = require('path');
 
 const app = express();
@@ -21,7 +21,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
-app.use(cookieParser(config.secret));
+app.use(cookieParser(process.env.CONFIG_SECRET));
 
 // app.use(express.static(path.join(__dirname, '../client/public')));
 app.use(express.static(path.join(__dirname, './client/build')));
