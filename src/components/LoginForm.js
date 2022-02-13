@@ -35,15 +35,17 @@ const LoginForm = () => {
     return (
         <section id="login">
             <form onSubmit={onFormSubmit} id='loginForm'>
-                <p id='emailContainer'>
+                <p id='emailContainer' className='required'>
                     <label htmlFor='email'>Email address</label>
                     <input id='email' aria-label='email' aria-required='true' required value={formFields.email} onChange={onEmailChange}></input>
                 </p>
-                <p id='passwordContainer'>
+                <p id='passwordContainer' className='required'>
                     <label htmlFor='password'>Password</label>
                     <input id='password' type='password' aria-label='password' aria-required='true' required value={formFields.password} onChange={onPasswordChange}></input>
                 </p>
-                <button class='userFormButton' type='submit'>Log In</button>
+                <p>
+                    <button className='userFormButton' type='submit'>Log In</button>
+                </p>
             </form>
             <section id="createAccountSection">
                 <p id='noAccount'>Don't have an account?</p>

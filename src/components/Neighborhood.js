@@ -22,7 +22,7 @@ const Neighborhood = () => {
     return (
         <main id='neighborhoodPage'>
             <button className='userButton backToButton' onClick={() => navigate(-1)}>← Back to Feed</button>
-            <h1>Neighborhood: <span class="townName">{thisTown.name}</span></h1>
+            <h1>Neighborhood: <span className="townName">{thisTown.name}</span></h1>
             <section id='mustEat'>
                 <h2>Must Eat</h2>
                 <img src='' alt='rec1'></img>

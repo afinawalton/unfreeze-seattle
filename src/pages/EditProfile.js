@@ -70,7 +70,11 @@ const EditProfile = () => {
     const [formFields, setFormFields] = useState(emptyProfile);
 
     const handleInputChange = (e) => {
-        const { name, value } = e.target;
+        let { name, value } = e.target;
+
+        if (!value) {
+            value = '';
+        }
 
         if (name === 'other_interests') {
             const options = e.target.options;
@@ -123,9 +127,9 @@ const EditProfile = () => {
         <main>
             <form id='editProfileForm' onSubmit={onFormSubmit}>
                 <h2 id='editProfileTitle'>Edit My Profile</h2>
-                <p>
+                <p className='required'>
                     <label htmlFor='first_name'>First name</label>
-                    <input type='text' id='firstName' name='first_name' onChange={handleInputChange} value={formFields.first_name} ></input>
+                    <input type='text' id='firstName' name='first_name' onChange={handleInputChange} value={formFields.first_name} required></input>
                 </p>
                 {/* <p>
                     <label htmlFor='profile_pic'>Profile Picture</label>
@@ -139,27 +143,27 @@ const EditProfile = () => {
                     <label htmlFor='work'>Work</label>
                     <input type="text" name="work" onChange={handleInputChange} value={formFields.work}></input>
                 </p>
-                <p>
+                <p className='required'>
                     <label htmlFor='neighborhood'>Neighborhood</label>
-                    <select id='neighborhoodList' name='neighborhood' onChange={handleInputChange} value={formFields.neighborhood} >
+                    <select id='neighborhoodList' name='neighborhood' onChange={handleInputChange} value={formFields.neighborhood} required>
                         <option value=''>Choose your closest neighborhood</option>
                         {neighborhoods.map(pair => 
                             <option key={pair['id']} value={pair['name']}>{pair['name']}</option>
                         )}
                     </select>
                 </p>
-                <p>
+                <p className='required'>
                     <label htmlFor='top_interest'>Top Interest</label>
-                    <select id='top_interest' name='top_interest' onChange={handleInputChange} value={formFields.top_interest} >
+                    <select id='top_interest' name='top_interest' onChange={handleInputChange} value={formFields.top_interest} required>
                         <option value=''>Choose your primary interest</option>
                         {interests.map(pair => 
                             <option key={pair['id']} value={pair['name']}>{pair['name']}</option>
                         )}
                     </select>
                 </p>
-                <p>
+                <p className='blurb'>
                     <label htmlFor='blurb'>Blurb</label>
-                    <input type="text" name="blurb" onChange={handleInputChange} value={formFields.blurb}></input>
+                    <input type="text" name="blurb" onChange={handleInputChange} value={formFields.blurb} required></input>
                 </p>
                 <p>
                     <label htmlFor='other_interests'>Choose other interests</label>

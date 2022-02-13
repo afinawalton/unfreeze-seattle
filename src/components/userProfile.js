@@ -42,7 +42,7 @@ const UserProfile = () => {
 
     if (profile['prompt_answers']) {
         prompts = thisUser['resident_type'] === 'local' ?
-        <section id='profilePrompts'>
+        <section className='profilePrompts'>
             <div>
                 <h2 className='promptQuestion'>What’s your favorite thing about Seattle?</h2>
                 <p className='promptAnswer'>{profile['prompt_answers']['prompt 1']}</p>
@@ -52,7 +52,7 @@ const UserProfile = () => {
                 <p className='promptAnswer'>{profile['prompt_answers']['prompt 2']}</p>
             </div>
         </section> :
-        <section id='profilePrompts'>
+        <section className='profilePrompts'>
             <div>
                 <h2 className='promptQuestion'>Why did you move to Seattle?</h2>
                 <p className='promptAnswer'>{profile['prompt_answers']['prompt 1']}</p>
@@ -65,9 +65,9 @@ const UserProfile = () => {
     }
 
     return (
-        <main>
+        <main id='userProfilePage'>
             <button className='userButton backToButton' onClick={() => navigate(-1)}>← Back to Feed</button>
-            <section id='profileHeader'>
+            <header id='profileHeader'>
                 <img src={`http://localhost:8080/images/${profile['profile_pic']}`} alt={`Portrait of ${profile['first_name']}`} className='profilePic' />
                 <section className="userDetails">
                     <p>{profile['first_name']}, {calculateAge(thisUser['birthdate'])}, {profile['pronouns']}</p>
@@ -79,12 +79,14 @@ const UserProfile = () => {
                 <section className='otherInterests'>
                     {profile['other_interests'] ? profile['other_interests'].map(item => <p className='interest'>{item}</p>) : null}
                 </section>
+                <a className='userButton sendEmail' href={`mailto:${thisUser.email}`}>Send an Email</a>
+            </header>
+            <section class="profileContent">
+                <section className="profileBio">
+                    <p>{profile['bio']}</p>
+                </section>
+                {prompts}
             </section>
-            <a className='userButton sendEmail' href={`mailto:${thisUser.email}`}>Send an Email</a>
-            <section id="profileBio">
-                <p>{profile['bio']}</p>
-            </section>
-            {prompts}
         </main>
     )
 }

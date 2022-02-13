@@ -72,33 +72,36 @@ const MyUserProfile = () => {
     //     </div>
     // </section>
 
-    const prompts = user['resident_type'] === 'local' ?
-    <section id='profilePrompts'>
-        <div>
-            <h2 className='promptQuestion'>What’s your favorite thing about Seattle?</h2>
-            <p className='promptAnswer'>{profile['prompt_answers']['prompt 1']}</p>
-        </div>
-        <div>
-            <h2 className='promptQuestion'>What makes you stay here?</h2>
-            <p className='promptAnswer'>{profile['prompt_answers']['prompt 2']}</p>
-        </div>
-    </section> :
-    <section id='profilePrompts'>
-        <div>
-            <h2 className='promptQuestion'>Why did you move to Seattle?</h2>
-            <p className='promptAnswer'>{profile['prompt_answers']['prompt 1']}</p>
-        </div>
-        <div>
-            <h2 className='promptQuestion'>What do you most want to explore in WA?</h2>
-            <p className='promptAnswer'>{profile['prompt_answers']['prompt 2']}</p>
-        </div>
-    </section>
+    let prompts;
+
+    if (profile['prompt_answers']) {
+        prompts = user['resident_type'] === 'local' ?
+        <section className='profilePrompts'>
+            <div>
+                <h2 className='promptQuestion'>What’s your favorite thing about Seattle?</h2>
+                <p className='promptAnswer'>{profile['prompt_answers']['prompt 1']}</p>
+            </div>
+            <div>
+                <h2 className='promptQuestion'>What makes you stay here?</h2>
+                <p className='promptAnswer'>{profile['prompt_answers']['prompt 2']}</p>
+            </div>
+        </section> :
+        <section className='profilePrompts'>
+            <div>
+                <h2 className='promptQuestion'>Why did you move to Seattle?</h2>
+                <p className='promptAnswer'>{profile['prompt_answers']['prompt 1']}</p>
+            </div>
+            <div>
+                <h2 className='promptQuestion'>What do you most want to explore in WA?</h2>
+                <p className='promptAnswer'>{profile['prompt_answers']['prompt 2']}</p>
+            </div>
+        </section>
+    }
 
     return (
-        <main>
-            <Link to='/edit-profile' className='userButton' style={{ textDecoration: 'none' }}>Edit Profile</Link>
-            <section id='profileHeader'>
-                <img src='' alt={`Portrait of ${profile['first_name']}`} className='profilePic' />
+        <main id='userProfilePage'>
+            <header id='profileHeader'>
+                <img src={`http://localhost:8080/images/${profile['profile_pic']}`} alt={`Portrait of ${profile['first_name']}`} className='profilePic' />
                 <section className="userDetails">
                     <p>{profile['first_name']}, {calculateAge(user['birthdate'])}, {profile['pronouns']}</p>
                     <p>{profile['work']}</p>
@@ -109,12 +112,15 @@ const MyUserProfile = () => {
                 <section className='otherInterests'>
                     {profile['other_interests'] ? profile['other_interests'].map(item => <p key={item} className='interest'>{item}</p>) : null}
                 </section>
+                <Link to='/edit-profile' className='userButton editProfileButton' style={{ textDecoration: 'none' }}>Edit Profile</Link>
+            </header>
+            <section class="profileContent">
+                <section className="profileBio">
+                    <p>{profile['bio']}</p>
+                </section>
+                {/* {checklist} */}
+                {prompts}
             </section>
-            <section id="profileBio">
-                <p>{profile['bio']}</p>
-            </section>
-            {/* {checklist} */}
-            {prompts}
         </main>
     )
 }
