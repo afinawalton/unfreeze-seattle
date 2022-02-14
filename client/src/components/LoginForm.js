@@ -49,7 +49,7 @@ const LoginForm = () => {
             </form>
             <section id="createAccountSection">
                 <p id='noAccount'>Don't have an account?</p>
-                <a id='createAccount' href='/create-account'>Create an Account</a>
+                <a className='createAccountButton' href='/create-account'>Create an Account</a>
             </section>
         </section>
     )
