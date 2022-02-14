@@ -35,13 +35,10 @@ const App = () => {
               <Route path='/my-profile' element={<MyUserProfile />} />
               <Route path='/edit-profile' element={<EditProfile />} />
               <Route path='/delete-account' element={<DeleteAccount />} />
-              <Route path='/users' element={<NewsFeed />}>
-                <Route path=":userId" element={<UserProfile />} />
-              </Route>
-              <Route path='/neighborhoods' element={<Neighborhoods />}>
-                <Route path=":townId" element={<Neighborhood />} />
-              </Route>
-            {/* </Route> */}
+              <Route path='/users' element={<NewsFeed />} />
+              <Route path="/users/:userId" element={<UserProfile />} />
+              <Route path='/neighborhoods' element={<Neighborhoods />} />
+              <Route path="/neighborhoods/:townId" element={<Neighborhood />} />
           </Routes>
         </UserContext.Provider>
         <footer>
