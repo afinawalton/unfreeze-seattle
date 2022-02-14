@@ -42,7 +42,7 @@ const App = () => {
         </UserContext.Provider>
         <footer>
                 <p>
-                    Unfreeze Seattle © 2022    |    Made with love <span role='img' aria-label='heart'>❤️</span> in Seattle, WA by <a href='https://afinawalton.github.io/'>Afina Walton</a>
+                    Unfreeze Seattle © 2022    |    Made with love <span role='img' aria-label='heart'>❤️</span> by <a href='https://afinawalton.github.io/'>Afina Walton</a>
                     </p>
           </footer>
     </main>
