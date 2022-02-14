@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import useAuth from '../hooks/useAuth';
+import '../components/CreateAccount.css';
 
 const CreateAccount = () => {
 
@@ -58,9 +59,9 @@ const CreateAccount = () => {
     }
 
     return (
-        <main>
-            <header id='logo'>
-                <h1><span className="green">Unfreeze</span> <span className="blue">Seattle</span></h1>
+        <main id='createAccountPage'>
+            <header className='createAccountHeader'>
+                <h1 className='logo'><span className='green'>Unfreeze</span> <span className='blue'>Seattle</span></h1>
             </header>
             <form id='loginForm' onSubmit={onFormSubmit}>
                 <h2 id='createAccountTitle'>Create an Account</h2>
@@ -84,7 +85,7 @@ const CreateAccount = () => {
                     You're a <span>{formFields.resident_type}</span>!
                 </span>
                 <p>
-                    <button type='submit' id='createAccount'>Create Account</button>
+                    <button type='submit' className='createAccountButton'>Create Account</button>
                 </p>
             </form>
         </main>
