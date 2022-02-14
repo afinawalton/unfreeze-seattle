@@ -24,7 +24,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.CONFIG_SECRET));
 
 // app.use(express.static(path.join(__dirname, '../client/public')));
-app.use(express.static(path.join(__dirname, './client/build')));
 
 const db = require('./server/app/models');
 // db.sequelize.sync({ force: true })
@@ -63,8 +62,9 @@ require('./server/app/routes/image.routes')(app);
 //     res.sendFile(path.join(__dirname, './client/build', 'index.html'));
 // })
 
+app.use(express.static(path.join(__dirname, './client/build')));
 app.get('/*', (req, res) => {
-    res.sendFile(path.resolve(__dirname + '/client/build/index.html'));
+    res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
 })
   
 const PORT = process.env.PORT || 8080;
