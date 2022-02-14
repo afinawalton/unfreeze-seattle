@@ -5,7 +5,7 @@ const LoginForm = () => {
     // On this, we need to set up some form validation:
     // Bad email means it doesn't exist in the database => formSubmit works improperly
     // On form submit, generate code on App.js?
-    const { loginUser } = useAuth();
+    const { loginUser, error } = useAuth();
 
     const [formFields, setFormFields] = useState({ email: '', password: '' });
 
@@ -30,10 +30,15 @@ const LoginForm = () => {
         // Call log in user? Once we get a bad response, send it back to this component and render a message with info to the user
 
         loginUser(formFields);
+
+        // Grab the error and display in a div on the page
     }
 
     return (
         <section id="login">
+            {
+                error ? <div>{error}</div> : null
+            }
             <form onSubmit={onFormSubmit} id='loginForm'>
                 <p id='emailContainer' className='required'>
                     <label htmlFor='email'>Email address</label>
