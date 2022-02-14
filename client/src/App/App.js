@@ -22,21 +22,21 @@ const App = () => {
         <UserContext.Provider value={{ user, setUser, isLoading }}>
           <NavBar />
           <Routes>
-            <Route path='/' element={<App />}>
-              <Route path='home' element={<NewsFeed />} />
-              <Route path='login' element={<Login />} />
-              <Route path='create-account' element={<CreateAccount />} />
-              <Route path='my-profile' element={<MyUserProfile />} />
-              <Route path='edit-profile' element={<EditProfile />} />
-              <Route path='delete-account' element={<DeleteAccount />} />
-              <Route path='neighborhoods' element={<Neighborhoods />} />
-              <Route path='users'>
+            {
+              user ? <Route path='/' element={<NewsFeed />} />
+              : <Route path='/login' element={<Login />} />
+            }
+              <Route path='/create-account' element={<CreateAccount />} />
+              <Route path='/my-profile' element={<MyUserProfile />} />
+              <Route path='/edit-profile' element={<EditProfile />} />
+              <Route path='/delete-account' element={<DeleteAccount />} />
+              <Route path='/users' element={<NewsFeed />}>
                 <Route path=":userId" element={<UserProfile />} />
               </Route>
-              <Route path='neighborhoods'>
+              <Route path='/neighborhoods' element={<Neighborhoods />}>
                 <Route path=":townId" element={<Neighborhood />} />
               </Route>
-            </Route>
+            {/* </Route> */}
           </Routes>
         </UserContext.Provider>
         <footer>

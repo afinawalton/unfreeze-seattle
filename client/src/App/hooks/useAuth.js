@@ -52,7 +52,7 @@ export default function useAuth() {
             setUserContext();
         })
         .then(() => {
-            navigate('/home');
+            navigate('/');
         })
         .catch(err => {
           console.log(err);
