@@ -9,6 +9,10 @@ h1.logo {
     font-family: 'Titan One', sans-serif;
 }
 
+.existingUser a {
+    display: inline;
+}
+
 .green {
     color: var(--greenDark);
 }

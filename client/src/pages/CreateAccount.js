@@ -63,6 +63,9 @@ const CreateAccount = () => {
             <header className='createAccountHeader'>
                 <h1 className='logo'><span className='green'>Unfreeze</span> <span className='blue'>Seattle</span></h1>
             </header>
+            <section className='existingUser'>
+                <p id='noAccount'>Already have an account? <a className='' href='/login'>Log In</a></p>
+            </section>
             <form id='loginForm' onSubmit={onFormSubmit}>
                 {
                     error ? <div className='errorMsg'>{error + ' Please try again.'}</div> : null
