@@ -24,7 +24,7 @@ export default function useAuth() {
             setLocalStorage('user', res.data);
         })
         .catch(err => {
-            setError(err);
+            setError(err.response.data);
         })
     }
 
@@ -41,7 +41,7 @@ export default function useAuth() {
         })
         .catch(err => {
             console.log(err);
-            setError(err.response.data);
+            setError(err.response.data.message);
         })
     };
 
@@ -56,7 +56,7 @@ export default function useAuth() {
         })
         .catch(err => {
           console.log(err);
-          setError(err.response.data);
+          setError(err.response.data.message);
         });
     }
 

@@ -4,7 +4,7 @@ import '../components/CreateAccount.css';
 
 const CreateAccount = () => {
 
-    const { registerUser } = useAuth();
+    const { registerUser, error } = useAuth();
 
     const emptyForm = {
         
@@ -64,6 +64,9 @@ const CreateAccount = () => {
                 <h1 className='logo'><span className='green'>Unfreeze</span> <span className='blue'>Seattle</span></h1>
             </header>
             <form id='loginForm' onSubmit={onFormSubmit}>
+                {
+                    error ? <div className='errorMsg'>{error + ' Please try again.'}</div> : null
+                }
                 <h2 id='createAccountTitle'>Create an Account</h2>
                 <p>
                     <label htmlFor='email'>Email address</label>

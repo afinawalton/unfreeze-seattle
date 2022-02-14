@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import useAuth from '../hooks/useAuth';
+import './LoginForm.css';
 
 const LoginForm = () => {
     // On this, we need to set up some form validation:
     // Bad email means it doesn't exist in the database => formSubmit works improperly
     // On form submit, generate code on App.js?
-    const { loginUser } = useAuth();
+    const { loginUser, error } = useAuth();
 
     const [formFields, setFormFields] = useState({ email: '', password: '' });
 
@@ -35,6 +36,9 @@ const LoginForm = () => {
     return (
         <section id="login">
             <form onSubmit={onFormSubmit} id='loginForm'>
+            {
+                error ? <div className='errorMsg'>{error + ' Please try again.'}</div> : null
+            }
                 <p id='emailContainer' className='required'>
                     <label htmlFor='email'>Email address</label>
                     <input id='email' aria-label='email' aria-required='true' required value={formFields.email} onChange={onEmailChange}></input>

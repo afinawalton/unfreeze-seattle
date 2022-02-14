@@ -68,6 +68,15 @@ code {
   color: var(--blueLight);
 }
 
+.errorMsg {
+  background-color: var(--greenLight);
+  height: 50px;
+  line-height: 50px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -141,6 +150,7 @@ button {
 }
 
 .createAccountButton {
+  font-family: inherit;
   font-size: 18px;
   font-weight: bolder;
   text-decoration: none;
