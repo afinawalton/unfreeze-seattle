@@ -67,7 +67,7 @@ exports.signUpUser = async (req, res) => {
             console.log('Signed user token: ', token);
             
             // Add cookie to response = accessed with req.cookies
-            res.cookie('x-access-token', token, {
+            return res.cookie('x-access-token', token, {
                 maxAge: 3600000, // 1 hr in milliseconds
                 httpOnly: true,
                 // signed: true,
@@ -115,7 +115,7 @@ exports.logInUser = (req, res) => {
             console.log('Signed user token: ', token);
             
             // Add cookie to response = accessed with req.cookies
-            res.cookie('x-access-token', token, {
+            return res.cookie('x-access-token', token, {
                 maxAge: 3600000, // 1 hr in milliseconds
                 httpOnly: true,
                 // signed: true,
@@ -171,5 +171,5 @@ exports.logoutUser = async (req, res) => {
         httpOnly: true
     });
 
-    res.status(200).send('User successfully logged out!');
+    return res.status(200).send('User successfully logged out!');
 };
