@@ -52,7 +52,7 @@ export default function useAuth() {
             setUserContext();
         })
         .then(() => {
-            navigate('/');
+            navigate('/home');
         })
         .catch(err => {
           console.log(err);
@@ -84,7 +84,7 @@ export default function useAuth() {
             localStorage.clear();
         })
         .then(() => {
-            navigate('/');
+            navigate('/login');
         })
         .catch(err => {
             console.log(err);
