@@ -157,6 +157,9 @@ exports.checkUser = async (req, res) => {
                 currentUser.password = undefined;
                 return res.status(200).send(currentUser);
             })
+            .catch(err => {
+                console.log(err);
+            })
         })
    } else {
      currentUser =  null;
