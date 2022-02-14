@@ -1,5 +1,5 @@
 const db = require('../models');
-// const config = require('../config/auth.config.js');
+const config = require('../config/auth.config.js');
 const User = db.users;
 const Op = db.Sequelize.Op;
 
@@ -63,7 +63,7 @@ exports.signUpUser = async (req, res) => {
         }]
     })
         .then(user => {
-            const token = jwt.sign({ id: user.id }, process.env.CONFIG_SECRET, {});
+            const token = jwt.sign({ id: user.id }, config.secret, {});
             console.log('Signed user token: ', token);
             
             // Add cookie to response = accessed with req.cookies
@@ -111,7 +111,7 @@ exports.logInUser = (req, res) => {
                 });
             }
             // Create token by signing user's id to the token
-            const token = jwt.sign({ id: user.id }, process.env.CONFIG_SECRET, {});
+            const token = jwt.sign({ id: user.id }, config.secret, {});
             console.log('Signed user token: ', token);
             
             // Add cookie to response = accessed with req.cookies
@@ -149,7 +149,7 @@ exports.checkUser = async (req, res) => {
        console.log('Token successfully used in request.');
     
        // Verifies that the provided token has been 'signed' onto the appropriate secret/key
-        jwt.verify(token, process.env.CONFIG_SECRET, (err, decoded) => {
+        jwt.verify(token, config.secret, (err, decoded) => {
             User.findByPk(decoded.id, { include: [User.UserProfile] })
             .then(user => {
                 currentUser = user;
