@@ -59,8 +59,12 @@ require('./server/app/routes/user.routes')(app);
 require('./server/app/routes/main.routes')(app);
 require('./server/app/routes/image.routes')(app);
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './client/build', 'index.html'));
+// app.get('/*', (req, res) => {
+//     res.sendFile(path.join(__dirname, './client/build', 'index.html'));
+// })
+
+app.get('/*', (req, res) => {
+    res.sendFile(path.resolve(__dirname + '/client/build/index.html'));
 })
   
 const PORT = process.env.PORT || 8080;
