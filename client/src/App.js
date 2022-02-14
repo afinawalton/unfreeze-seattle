@@ -17,14 +17,18 @@ import Neighborhood from './components/Neighborhood';
 const App = () => {
   const { user, setUser, isLoading } = useFindUser();
 
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
   return (
     <main className="App">
         <UserContext.Provider value={{ user, setUser, isLoading }}>
           <NavBar />
           <Routes>
             {
-              user ? <Route path='/' element={<NewsFeed />} />
-              : <Route path='/' element={<Login />} />
+              user ? <Route path='' element={<NewsFeed />} />
+              : <Route path='' element={<Login />} />
             }
               <Route path='/login' element={<Login />} />
               <Route path='/create-account' element={<CreateAccount />} />
@@ -32,10 +36,10 @@ const App = () => {
               <Route path='/edit-profile' element={<EditProfile />} />
               <Route path='/delete-account' element={<DeleteAccount />} />
               <Route path='/users' element={<NewsFeed />}>
-                <Route path="/:userId" element={<UserProfile />} />
+                <Route path=":userId" element={<UserProfile />} />
               </Route>
               <Route path='/neighborhoods' element={<Neighborhoods />}>
-                <Route path="/:townId" element={<Neighborhood />} />
+                <Route path=":townId" element={<Neighborhood />} />
               </Route>
             {/* </Route> */}
           </Routes>

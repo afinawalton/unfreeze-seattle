@@ -16,6 +16,7 @@
   "devDependencies":{
     "react-error-overlay": "6.0.9"
   },
+  "homepage": "https://unfreeze-seattle-2022.herokuapp.com",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
