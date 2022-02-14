@@ -11,9 +11,11 @@ export default function useLogout() {
         return axios.get('/auth/logout')
         .then(res => {
             console.log(res);
+            navigate('/login');
+        })
+        .then(() => {
             setUser(null);
             localStorage.removeItem('user');
-            navigate('/login');
         })
         .catch(err => {
             console.log(err);
