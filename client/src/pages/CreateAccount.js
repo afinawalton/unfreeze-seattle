@@ -75,7 +75,7 @@ const CreateAccount = () => {
                 </p>
                 <p>
                     <label htmlFor='birthdate'>Birthdate</label>
-                    <input type='date' id='birthdate' name='birthdate' onChange={handleInputChange} value={formFields.birthdate} required></input>
+                    <input type='date' min='2004-02-14' id='birthdate' name='birthdate' onChange={handleInputChange} value={formFields.birthdate} required></input>
                 </p>
                 <p>
                     <label htmlFor='years_in_wa'>Years in Seattle</label>
