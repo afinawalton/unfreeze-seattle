@@ -15,18 +15,18 @@ module.exports = app => {
     });
 
     app.post(
-        '/users/:id/profile',
+        '/api/users/:id/profile',
         users.updateUserProfile
     );
 
     // Get one user's profile
-    app.get('/users/:id', users.getOneUser);
+    app.get('/api/users/:id', users.getOneUser);
 
     // Get all users by residency type
-    app.get('/users', users.getUsersByResidency);
+    app.get('/api/users', users.getUsersByResidency);
 
     // Delete a user
-    app.delete('/users/:id', users.deleteUser);
+    app.delete('/api/users/:id', users.deleteUser);
 
     // app.use('/users', router);
 }
