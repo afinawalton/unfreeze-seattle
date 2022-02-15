@@ -13,7 +13,6 @@ main {
     width: 100%;
     font-family: inherit;
     margin-bottom: 28px;
-    grid-row: 1 / span 1;
   }
 
 .userButton {
@@ -191,7 +190,8 @@ main {
     }
 
     .backToButton {
-        grid-column: 1 / span 10;
+        grid-column: 1 / span 3;
+        max-width: 350px;
         grid-row: 1 / span 1;
         margin-bottom: 24px;
     }

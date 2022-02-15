@@ -1,3 +1,8 @@
+#newsFeedPage {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
 #loggedInAs {
     display: flex;
     background-color: #F4F9FB;
