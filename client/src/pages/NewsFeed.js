@@ -90,7 +90,6 @@ const NewsFeed = () => {
                         {user['user_profile']['first_name']}
                     </span></p>
                 </section>
-                <p id='currentUserBlurb'>{user['user_profile']['blurb']}</p>
             </section>
             <main id='feed'>
                 <aside id='feedSubhead'>
