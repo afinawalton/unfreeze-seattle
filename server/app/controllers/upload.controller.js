@@ -6,7 +6,7 @@ let UserProfile = db.userProfiles;
 const multerStorage = multer.diskStorage({
     // Where files will be stored
     destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, '../../../public/images'));
+        cb(null, path.join(__dirname, '../../../client/public/images'));
     },
     // What the filename should be inside the folder
     filename: (req, file, cb) => {
