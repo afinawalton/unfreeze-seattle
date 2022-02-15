@@ -2,7 +2,7 @@
     "interests": [
         { "name": "Sports" },
         { "name": "Wildlife" },
-        { "name": "Activism / Politics" },
+        { "name": "Activism" },
         { "name": "Spirituality" },
         { "name": "Alcohol" },
         { "name": "Art" },
@@ -13,8 +13,7 @@
         { "name": "Community" },
         { "name": "Books" },
         { "name": "Nature" },
-        { "name": "Techie" },
-        { "name": "Homebody" }
+        { "name": "Tech" }
     ],
     "facts": [
         {
