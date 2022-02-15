@@ -123,6 +123,14 @@ const EditProfile = () => {
         setFormFields(emptyProfile);
     }
 
+    // window.addEventListener('click', (e) => {
+    //     const myForm = document.getElementById('editProfileForm');
+    //     const formData = new FormData(myForm);
+    //     for (let pair of formData.entries()) {
+    //         console.log(pair[0], ': ', pair[1]);
+    //     }
+    // });
+
     return (
         <main>
             <form id='editProfileForm' onSubmit={onFormSubmit}>
