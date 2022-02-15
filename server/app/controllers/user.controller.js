@@ -50,12 +50,10 @@ exports.updateUserProfile = (req, res) => {
     .then(profile => {
         profile.update(req.body, { returning: true })
         .then(data => {
-            console.log('Data returned: ', data);
             res.status(200).send(data);
         })
     })
     .catch(err => {
-        console.log('Error is: ', err);
         res.status(500).send({
             message: "No user found"
         });

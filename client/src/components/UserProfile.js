@@ -21,14 +21,9 @@ const UserProfile = () => {
         if (isFetched === false) {
             axios.get(`/api/users/${parseInt(userId)}`, { withCredentials: true })
             .then(res => {
-                console.log(res.data);
                 setThisUser(res.data);
                 setProfile(res.data.user_profile);
                 setIsFetched(true);
-            })
-            .then(() => {
-                console.log(thisUser);
-                console.log(profile);
             })
             .catch(err => {
                 console.log(err);

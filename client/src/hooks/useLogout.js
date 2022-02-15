@@ -10,7 +10,7 @@ export default function useLogout() {
     const logoutUser = async () => {
         return axios.get('/auth/logout')
         .then(res => {
-            console.log(res);
+            console.log('User successfully logged out!');
             navigate('/login');
         })
         .then(() => {

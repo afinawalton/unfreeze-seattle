@@ -116,8 +116,6 @@ const EditProfile = () => {
     const onFormSubmit = (e) => {
         e.preventDefault();
 
-        console.log('Data being submitted: ', formFields);
-
         editProfile(formFields);
         
         setFormFields(emptyProfile);

@@ -63,7 +63,6 @@ exports.signUpUser = async (req, res) => {
     })
         .then(user => {
             const token = jwt.sign({ id: user.id }, process.env.CONFIG_SECRET, {});
-            console.log('Signed user token: ', token);
             
             return res.cookie('x-access-token', token, {
                 maxAge: 3600000, // 1 hr in milliseconds
@@ -110,7 +109,6 @@ exports.logInUser = (req, res) => {
             }
             
             const token = jwt.sign({ id: user.id }, process.env.CONFIG_SECRET, {});
-            console.log('Signed user token: ', token);
             
             return res.cookie('x-access-token', token, {
                 maxAge: 3600000, // 1 hr in milliseconds
@@ -140,13 +138,11 @@ exports.checkUser = async (req, res) => {
 
     if (req.cookies['x-access-token']) {
         const token = req.cookies['x-access-token'];
-        console.log('Token successfully used in request.');
     
         jwt.verify(token, process.env.CONFIG_SECRET, (err, decoded) => {
             User.findByPk(decoded.id, { include: [User.UserProfile] })
             .then(user => {
                 currentUser = user;
-                console.log('User from database: ', currentUser);
                 currentUser.password = undefined;
                 return res.status(200).send(currentUser);
             })

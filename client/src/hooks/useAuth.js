@@ -14,7 +14,6 @@ export default function useAuth() {
     const setUserContext = async () => {
         return await axios.get('/user', { withCredentials: true })
         .then(res => {
-            console.log('Response from .get: ', res.data);
             setUser(res.data);
             setLocalStorage('user', res.data);
         })
