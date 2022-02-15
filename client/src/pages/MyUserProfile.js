@@ -114,7 +114,7 @@ const MyUserProfile = () => {
                 </section>
                 <Link to='/edit-profile' className='userButton editProfileButton' style={{ textDecoration: 'none' }}>Edit Profile</Link>
             </header>
-            <section class="profileContent">
+            <section className="profileContent">
                 <section className="profileBio">
                     <p>{profile['bio']}</p>
                 </section>
