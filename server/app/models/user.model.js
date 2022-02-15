@@ -9,17 +9,14 @@ module.exports = (sequelize, Sequelize, Model) => {
             type: Sequelize.STRING,
             allowNull: true
         },
-        // Needed to validate ability to register for the site
         birthdate: {
             type: Sequelize.DATEONLY,
             allowNull: false
         },
-        // Allows the user to see specific content
         resident_type: {
             type: Sequelize.STRING(12),
             allowNull: false
         },
-        // Determines residentType on front-end form
         years_in_wa: {
             type: Sequelize.INTEGER,
             allowNull: true
@@ -54,11 +51,11 @@ module.exports = (sequelize, Sequelize, Model) => {
         },
         top_interest: {
             type: Sequelize.STRING(40),
-            allowNull: true // for now
+            allowNull: true
         },
         blurb: {
             type: Sequelize.STRING(50),
-            allowNull: true // for now
+            allowNull: true
         },
         other_interests: {
             type: Sequelize.ARRAY(Sequelize.TEXT)
@@ -66,12 +63,9 @@ module.exports = (sequelize, Sequelize, Model) => {
         bio: {
             type: Sequelize.STRING(300)
         },
-        // Add recommendations column but only for local users
-        // seattle favs? allow transplants to add to their list as
-        // they explore Seattle?
         prompt_answers: {
             type: Sequelize.JSON,
-            allowNull: true // for now
+            allowNull: true
         },
         profile_pic: {
             type: Sequelize.STRING(2048)

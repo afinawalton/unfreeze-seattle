@@ -1,7 +1,3 @@
-/* main {
-    display: grid;
-} */
-
 #loginMain {
     text-align: center;
     width: 90%;
@@ -16,26 +12,6 @@
 #passwordContainer {
     margin-bottom: 35px;
 }
-
-/* form {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    width: 100%;
-    align-items: center;
-    padding: 50px 5px;
-    border-radius: 10px;
-    box-shadow: 0 4px 4px var(--blueMid);
-    margin: 0 auto 28px auto;
-}
-
-#loginForm > * {
-    width: 80%;
-}
-
-#loginForm p > * {
-    display: block;
-} */
 
 #createAccountSection {
     width: 80%;

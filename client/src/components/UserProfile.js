@@ -16,8 +16,6 @@ const UserProfile = () => {
     const [profile, setProfile] = useState({});
     const [isFetched, setIsFetched] = useState(false);
     const navigate = useNavigate();
-
-    // Do a GET request to request data from server and when this component first renders, it will store the data in state using matched params
     
     useEffect(() => {
         if (isFetched === false) {

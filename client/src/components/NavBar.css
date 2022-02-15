@@ -35,9 +35,6 @@ nav ul a:hover {
 }
 
 nav button {
-    /* background-color: var(--blueDark);
-    color: var(--blueLight);
-     */
     background-color: transparent;
     border: none;
     color: var(--greenDark);

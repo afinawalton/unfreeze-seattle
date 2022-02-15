@@ -101,7 +101,6 @@ label::after {
 }
 
 .required::after {
-  /* content: 'This field is required.'; */
   content: 'Required.';
   display: block;
   margin-top: 10px;

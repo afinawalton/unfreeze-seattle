@@ -1,5 +1,4 @@
 const db = require('../models');
-// const config = require('../config/auth.config.js');
 const User = db.users;
 const Op = db.Sequelize.Op;
 
@@ -66,7 +65,6 @@ exports.signUpUser = async (req, res) => {
             const token = jwt.sign({ id: user.id }, process.env.CONFIG_SECRET, {});
             console.log('Signed user token: ', token);
             
-            // Add cookie to response = accessed with req.cookies
             return res.cookie('x-access-token', token, {
                 maxAge: 3600000, // 1 hr in milliseconds
                 httpOnly: true,
@@ -110,11 +108,10 @@ exports.logInUser = (req, res) => {
                     message: 'Invalid password!'
                 });
             }
-            // Create token by signing user's id to the token
+            
             const token = jwt.sign({ id: user.id }, process.env.CONFIG_SECRET, {});
             console.log('Signed user token: ', token);
             
-            // Add cookie to response = accessed with req.cookies
             return res.cookie('x-access-token', token, {
                 maxAge: 3600000, // 1 hr in milliseconds
                 httpOnly: true,
@@ -139,16 +136,12 @@ exports.logInUser = (req, res) => {
 
 // Check if user is logged in
 exports.checkUser = async (req, res) => {
-    // Initialize var to store current user data
     let currentUser;
-    // Check whether the request has a cookie called 'jwt'
-    // In this case, it doesn't for some reason
+
     if (req.cookies['x-access-token']) {
-        // Create a token and set it to the token stored in the jwt cookie
-       const token = req.cookies['x-access-token'];
-       console.log('Token successfully used in request.');
+        const token = req.cookies['x-access-token'];
+        console.log('Token successfully used in request.');
     
-       // Verifies that the provided token has been 'signed' onto the appropriate secret/key
         jwt.verify(token, process.env.CONFIG_SECRET, (err, decoded) => {
             User.findByPk(decoded.id, { include: [User.UserProfile] })
             .then(user => {
@@ -167,7 +160,6 @@ exports.checkUser = async (req, res) => {
   }
 };
 
-// //log user out
 exports.logoutUser = async (req, res) => {
     res.clearCookie('x-access-token', {
         maxAge: 3600000,

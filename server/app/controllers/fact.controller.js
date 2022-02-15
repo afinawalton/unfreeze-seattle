@@ -2,7 +2,6 @@ const db = require('../models');
 let Fact = db.facts;
 const Op = db.Sequelize.Op;
 
-// Get a random fact from db
 exports.getRandomFact = (req, res) => {
     Fact.findAll({
         order: db.Sequelize.literal('random()'),

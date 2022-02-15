@@ -11,7 +11,6 @@ const NewsFeed = () => {
     const [isFetched, setIsFetched] = useState(false);
     const [displayFact, setDisplayFact] = useState('');
 
-    // Add cleanup function
     useEffect(() => {
         const controller = new AbortController();
 
