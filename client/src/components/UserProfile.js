@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import spaceNeedle from '../spaceNeedle.jpeg';
 const axios = require('axios');
 
 const calculateAge = (birthdate) => {
@@ -61,7 +62,7 @@ const UserProfile = () => {
         <main id='userProfilePage'>
             <button className='userButton backToButton' onClick={() => navigate(-1)}>← Back to Feed</button>
             <header id='profileHeader'>
-                <img src={`/images/${profile['profile_pic']}`} alt={`Portrait of ${profile['first_name']}`} className='profilePic' />
+                <img src={spaceNeedle} alt={`Portrait of ${profile['first_name']}`} className='profilePic' />
                 <section className="userDetails">
                     <p>{profile['first_name']}, {calculateAge(thisUser['birthdate'])}, {profile['pronouns']}</p>
                     <p>{profile['work']}</p>
