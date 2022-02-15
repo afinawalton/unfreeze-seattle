@@ -70,6 +70,7 @@
 
 #blurbFeed {
     width: 100%;
+    max-width: 450px;
 }
 
 #blurbFeed h2 {
@@ -119,9 +120,5 @@
 
     #feed {
         grid-column: 3 / span 4;
-    }
-
-    #blurbFeed {
-        max-width: 400px;
     }
 }

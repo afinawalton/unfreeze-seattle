@@ -29,6 +29,11 @@ code {
     monospace;
 }
 
+main {
+  width: 87%;
+  margin: 0 auto;
+}
+
 #titleCard {
   background-color: var(--blueDark);
   height: 70vw;
