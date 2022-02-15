@@ -82,7 +82,7 @@ const UserProfile = () => {
                 </section>
                 <a className='userButton sendEmail' href={`mailto:${thisUser.email}`}>Send an Email</a>
             </header>
-            <section class="profileContent">
+            <section className="profileContent">
                 <section className="profileBio">
                     <p>{profile['bio']}</p>
                 </section>
