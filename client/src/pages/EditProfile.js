@@ -11,6 +11,7 @@ const EditProfile = () => {
     
     const [interests, setInterests] = useState([]);
     const [neighborhoods, setNeighborhoods] = useState([]);
+    const [addImageMsg, setAddImageMsg] = useState('');
 
     // Get list of interests from database and add to state
     useEffect(() => {
@@ -113,6 +114,16 @@ const EditProfile = () => {
         }
     };
 
+    // const handleAddPhoto = (e) => {
+    //     const imgFile = document.getElementById('profilePic');
+
+    //     axios.post(`/users/${user.id}/upload/profile-pic`, imgFile.value)
+    //     .then(res => {
+    //         console.log(res);
+    //         setAddImageMsg(res.data);
+    //     })
+    // }
+
     const onFormSubmit = (e) => {
         e.preventDefault();
 
@@ -139,10 +150,14 @@ const EditProfile = () => {
                     <label htmlFor='first_name'>First name</label>
                     <input type='text' id='firstName' name='first_name' onChange={handleInputChange} value={formFields.first_name} required></input>
                 </p>
-                {/* <p>
+                <p className='profilePicContainer'>
                     <label htmlFor='profile_pic'>Profile Picture</label>
-                    <input type='file' id='profilePic' name='profile_pic' value={formFields.profile_pic} accept='image/png image/jpg image/jpeg' ></input>
-                </p> */}
+                    <p className='photoSubmit'>
+                        <input type='file' id='profilePic' name='profile_pic' value={formFields.profile_pic} accept='image/png image/jpg image/jpeg' ></input>
+                        <button className='addPhotoButton'>Add Photo</button>
+                    </p>
+                    {addImageMsg ? <p>{addImageMsg}</p> : null}
+                </p>
                 <p>
                     <label htmlFor='pronouns'>Pronouns</label>
                     <input type="text" name="pronouns" onChange={handleInputChange} value={formFields.pronouns}></input>
