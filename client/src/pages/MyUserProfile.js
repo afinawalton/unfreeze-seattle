@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../hooks/UserContext';
 import { Link } from 'react-router-dom';
+import spaceNeedle from '../spaceNeedle.jpeg';
 import '../components/UserProfile.css';
 
 const calculateAge = (birthdate) => {
@@ -101,7 +102,7 @@ const MyUserProfile = () => {
     return (
         <main id='userProfilePage'>
             <header id='profileHeader'>
-                <img src={`/images/${profile['profile_pic']}`} alt={`Portrait of ${profile['first_name']}`} className='profilePic' />
+                <img src={spaceNeedle} alt={`Portrait of ${profile['first_name']}`} className='profilePic' />
                 <section className="userDetails">
                     <p>{profile['first_name']}, {calculateAge(user['birthdate'])}, {profile['pronouns']}</p>
                     <p>{profile['work']}</p>
