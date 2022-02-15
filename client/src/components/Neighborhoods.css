@@ -11,6 +11,11 @@
     font-weight: 400;
 }
 
+#neighborhoodContainer {
+    display: flex;
+    justify-content: center;
+}
+
 #neighborhoodList {
     padding: 0;
     list-style: none;

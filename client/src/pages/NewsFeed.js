@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Blurb from '../components/Blurb';
 import { UserContext } from '../hooks/UserContext';
+import spaceNeedle from '../spaceNeedle.jpeg';
 import '../components/NewsFeed.css'
 const axios = require('axios');
 
@@ -81,17 +82,17 @@ const NewsFeed = () => {
     </section>
 
     return (
-        <section id='mainFeed'>
+        <section id='newsFeedPage'>
             <section id="loggedInAs">
                 <section id='picAndName'>
-                    <img src='' alt={`Portrait of ${user['user_profile']['first_name']}`}></img>
+                    <img src={spaceNeedle} alt={`Portrait of ${user['user_profile']['first_name']}`}></img>
                     <p>Logged in as <br /><span id="user">
                         {user['user_profile']['first_name']}
                     </span></p>
                 </section>
                 <p id='currentUserBlurb'>{user['user_profile']['blurb']}</p>
             </section>
-            <main id='main'>
+            <main id='feed'>
                 <aside id='feedSubhead'>
                     <h2>Did You Know?</h2>
                     <q className='fact' cite={displayFact.source}>{displayFact.fact}</q>

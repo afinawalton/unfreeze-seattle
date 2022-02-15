@@ -14,12 +14,13 @@ nav ul {
     padding: 0 0 37px 0;
     list-style: none;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    max-width: 400px;
     font-size: 12px;
 }
 
 nav li {
-    padding: 0 12.5px;
+    margin: 0 auto;
 }
 
 nav a {
