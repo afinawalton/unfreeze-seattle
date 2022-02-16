@@ -53,7 +53,7 @@ export default function useAuth() {
     }
 
     const editProfile = async (profileData) => {
-        return await axios.post(`/users/${user.id}/profile`, profileData, { withCredentials: true })
+        return await axios.post(`/api/users/${user.id}/profile`, profileData, { withCredentials: true })
         .then(res => {
             console.log('User successfully updated!');
             setUserContext();
@@ -68,7 +68,7 @@ export default function useAuth() {
     }
 
     const deleteUser = async () => {
-        return await axios.delete(`/users/${user.id}`, { withCredentials: true })
+        return await axios.delete(`/api/users/${user.id}`, { withCredentials: true })
         .then(res => {
             console.log('User successfully deleted!');
             setUser(null);
