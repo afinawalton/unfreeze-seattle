@@ -1,7 +1,11 @@
+// REACT & REACT-ROUTER
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+
+// HOOKS
 import useFindUser from './hooks/useFindUser';
 import { UserContext } from './hooks/UserContext';
+
 // COMPONENTS
 import NavBar from './components/NavBar';
 import Login from './pages';
@@ -42,10 +46,10 @@ const App = () => {
           </Routes>
         </UserContext.Provider>
         <footer>
-                <p>
-                    Unfreeze Seattle © 2022    |    Made with love <span role='img' aria-label='heart'>❤️</span> by <a href='https://afinawalton.github.io/'>Afina Walton</a>
-                </p>
-          </footer>
+          <p>
+              Unfreeze Seattle © 2022 | Made with love <span role='img' aria-label='heart'>❤️</span> by <a href='https://afinawalton.github.io/'>Afina Walton</a>
+          </p>
+        </footer>
     </main>
   );
 }

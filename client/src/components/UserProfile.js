@@ -17,21 +17,14 @@ const UserProfile = () => {
     const [profile, setProfile] = useState({});
     const [isFetched, setIsFetched] = useState(false);
     const navigate = useNavigate();
-
-    // Do a GET request to request data from server and when this component first renders, it will store the data in state using matched params
     
     useEffect(() => {
         if (isFetched === false) {
             axios.get(`/api/users/${parseInt(userId)}`, { withCredentials: true })
             .then(res => {
-                console.log(res.data);
                 setThisUser(res.data);
                 setProfile(res.data.user_profile);
                 setIsFetched(true);
-            })
-            .then(() => {
-                console.log(thisUser);
-                console.log(profile);
             })
             .catch(err => {
                 console.log(err);

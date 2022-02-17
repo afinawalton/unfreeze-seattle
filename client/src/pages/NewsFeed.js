@@ -12,7 +12,6 @@ const NewsFeed = () => {
     const [isFetched, setIsFetched] = useState(false);
     const [displayFact, setDisplayFact] = useState('');
 
-    // Add cleanup function
     useEffect(() => {
         const controller = new AbortController();
 
@@ -50,7 +49,6 @@ const NewsFeed = () => {
 
         axios.get('/api/fact', { withCredentials: true })
         .then(res => {
-            console.log(res.data[0]);
             setDisplayFact(res.data[0]);
         })
         .catch(err => {

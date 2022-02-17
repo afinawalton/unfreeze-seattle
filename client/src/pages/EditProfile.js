@@ -127,8 +127,6 @@ const EditProfile = () => {
     const onFormSubmit = (e) => {
         e.preventDefault();
 
-        console.log('Data being submitted: ', formFields);
-
         editProfile(formFields);
         
         setFormFields(emptyProfile);
@@ -149,14 +147,6 @@ const EditProfile = () => {
                 <p className='required'>
                     <label htmlFor='first_name'>First name</label>
                     <input type='text' id='firstName' name='first_name' onChange={handleInputChange} value={formFields.first_name} required></input>
-                </p>
-                <p className='profilePicContainer'>
-                    <label htmlFor='profile_pic'>Profile Picture</label>
-                    <p className='photoSubmit'>
-                        <input type='file' id='profilePic' name='profile_pic' value={formFields.profile_pic} accept='image/png image/jpg image/jpeg' ></input>
-                        <button className='addPhotoButton'>Add Photo</button>
-                    </p>
-                    {addImageMsg ? <p>{addImageMsg}</p> : null}
                 </p>
                 <p>
                     <label htmlFor='pronouns'>Pronouns</label>

@@ -11,7 +11,6 @@ const Neighborhood = () => {
     useEffect(() => {
         axios.get(`/api/neighborhoods/${parseInt(townId)}`, { withCredentials: true })
         .then(res => {
-            console.log(res.data);
             setThisTown(res.data);
         })
         .catch(err => {

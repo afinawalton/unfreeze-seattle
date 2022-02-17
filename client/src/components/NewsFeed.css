@@ -96,7 +96,6 @@
         max-height: 100px;
         max-width: 250px;
     }
-    
     #loggedInAs img {
         display: initial;
         border: 1px solid var(--blueDark);
@@ -104,7 +103,6 @@
         aspect-ratio: 1;
         height: 70px;
     }
-    
     #picAndName {
         display: flex;
     }

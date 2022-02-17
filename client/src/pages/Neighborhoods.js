@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import Neighborhood from '../components/Neighborhood';
 import { Link } from 'react-router-dom';
 import '../components/Neighborhoods.css';
 const axios = require('axios');
@@ -21,25 +20,6 @@ const Neighborhoods = () => {
             console.log(err);
         })
     }, [])
-    // Create IndividualNeighborhodood component to redirect to
-    // Import browser router to route to different pages
-    // Use structure in App.js
-    // Back-end needs to use Yelp API
-    // Or I need to add the best data myself
-
-    // When you click on a neighborhood
-    // It stores that context in state
-    // Passes props to neighborhood component
-    // const selectNeighborhood = () => {
-    //     // Redirect to selected neighborhood
-    //     // Render single Neighborhood component
-    // }
-    // Props: list of must eat, list of must do, list of must see
-    // Renders a page with that neighborhood component
-    const normalizeName = (name) => {
-        name = name.replace(/\s/g, '-').toLowerCase();
-        return name
-    }
     
     return (
         <main id='neighborhoodsPage'>
@@ -50,7 +30,6 @@ const Neighborhoods = () => {
                     {neighborhoods.map(info => <li className='neighborhood' key={info.id}><Link to={`/neighborhoods/${info.id}`}>{info.name}</Link></li>)}
                 </ul>
             </section>
-            {/* <Neighborhood /> */}
         </main>
     )
 }

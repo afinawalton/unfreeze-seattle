@@ -6,20 +6,14 @@ const axios = require('axios');
 
 export default function useAuth() {
     const { setLocalStorage } = useLocalStorage();
-    // Creates var setUser and sets it to key within UserContext that says {, setUser: ...}
-    // However, UserContext starts out as null
+
     const { user, setUser } = useContext(UserContext);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    // Set user in context and push them home
     const setUserContext = async () => {
-        // Requests the checkUser function from the database, which returns a currentUser if the request has jwt in its cookies
-
-        // Only called when we register, login, and edit profile
         return await axios.get('/user', { withCredentials: true })
         .then(res => {
-            console.log('Response from .get: ', res.data);
             setUser(res.data);
             setLocalStorage('user', res.data);
         })
@@ -28,11 +22,9 @@ export default function useAuth() {
         })
     }
 
-    // Register user
     const registerUser = async (signUpData) => {
         return await axios.post('/auth/signup', signUpData, { withCredentials: true })
         .then(res => {
-            // setIsLoading(false);
             console.log('New user successfully created!');
             setUserContext();
             })
@@ -61,10 +53,9 @@ export default function useAuth() {
     }
 
     const editProfile = async (profileData) => {
-        return await axios.post(`/users/${user.id}/profile`, profileData, { withCredentials: true })
+        return await axios.post(`/api/users/${user.id}/profile`, profileData, { withCredentials: true })
         .then(res => {
             console.log('User successfully updated!');
-            // Need to send back ALL user data + user_profile column
             setUserContext();
             })
         .then(() => {
@@ -77,9 +68,9 @@ export default function useAuth() {
     }
 
     const deleteUser = async () => {
-        return await axios.delete(`/users/${user.id}`, { withCredentials: true })
+        return await axios.delete(`/api/users/${user.id}`, { withCredentials: true })
         .then(res => {
-            console.log('User successfully updated!');
+            console.log('User successfully deleted!');
             setUser(null);
             localStorage.clear();
         })

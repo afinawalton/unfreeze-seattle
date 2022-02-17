@@ -3,9 +3,6 @@ import useAuth from '../hooks/useAuth';
 import './LoginForm.css';
 
 const LoginForm = () => {
-    // On this, we need to set up some form validation:
-    // Bad email means it doesn't exist in the database => formSubmit works improperly
-    // On form submit, generate code on App.js?
     const { loginUser, error } = useAuth();
 
     const [formFields, setFormFields] = useState({ email: '', password: '' });
@@ -27,14 +24,14 @@ const LoginForm = () => {
     const onFormSubmit = (e) => {
         e.preventDefault();
 
-        // Have some sort of form validation here
-        // Call log in user? Once we get a bad response, send it back to this component and render a message with info to the user
-
         loginUser(formFields);
     }
 
     return (
         <section id="login">
+            {
+                error ? <div>{error}</div> : null
+            }
             <form onSubmit={onFormSubmit} id='loginForm'>
             {
                 error ? <div className='errorMsg'>{error + ' Please try again.'}</div> : null

@@ -3,9 +3,7 @@ let User = db.users;
 let UserProfile = db.userProfiles;
 const Op = db.Sequelize.Op;
 
-// Get all users
 exports.getUsersByResidency = (req, res) => {
-    // Allow to find users by local or transplant
     const residentType = req.query.residentType;
     let condition = residentType ? { resident_type: { [Op.iLike]: `%${residentType}` } } : null;
 
@@ -23,7 +21,6 @@ exports.getUsersByResidency = (req, res) => {
         });
 };
 
-// Get one user by id
 exports.getOneUser = (req, res) => {
     const id = req.params.id;
 
@@ -44,7 +41,6 @@ exports.getOneUser = (req, res) => {
         });
 };
 
-// Update a user
 exports.updateUserProfile = (req, res) => {
     const id = req.params.id;
 
@@ -54,19 +50,16 @@ exports.updateUserProfile = (req, res) => {
     .then(profile => {
         profile.update(req.body, { returning: true })
         .then(data => {
-            console.log('Data returned: ', data);
             res.status(200).send(data);
         })
     })
     .catch(err => {
-        console.log('Error is: ', err);
         res.status(500).send({
             message: "No user found"
         });
     });
 };
 
-// Delete a user
 exports.deleteUser = (req, res) => {
     const id = req.params.id;
 
@@ -91,17 +84,3 @@ exports.deleteUser = (req, res) => {
             });
         });
 };
-
-// Authentication testing
-exports.allAccess = (req, res) => {
-    res.status(200).send('Public Content.');
-}
-
-exports.localBoard = (req, res) => {
-    res.status(200).send('Local Main Feed.');
-}
-
-exports.transplantBoard = (req, res) => {
-    // Query into the database to get all users with transplants
-    res.status(200).send('Transplant Main Feed.');
-}

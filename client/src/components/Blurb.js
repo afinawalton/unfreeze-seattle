@@ -3,7 +3,6 @@ import spaceNeedle from '../spaceNeedle.jpeg';
 import './Blurb.css';
 
 const Blurb = ({ id, userProfile }) => {
-    // How do we pass this data onto the UserProfile itself?
     return (
         <article id="blurb">
             <img src={spaceNeedle} alt={`Portrait of ${userProfile['first_name']}`} />

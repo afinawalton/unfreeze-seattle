@@ -38,7 +38,6 @@
 .neighborhood:hover {
     background-color: var(--blueDark);
     color: var(--blueLight);
-
 }
 
 .neighborhood a {

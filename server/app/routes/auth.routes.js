@@ -1,6 +1,5 @@
 const { verifySignUp } = require('../middleware');
 const auth = require('../controllers/auth.controller');
-// const { router } = require('../../server');
 
 module.exports = (app) => {
     app.use((req, res, next) => {
@@ -26,6 +25,4 @@ module.exports = (app) => {
     app.post('/auth/login', auth.logInUser);
 
     app.get('/auth/logout', auth.logoutUser);
-
-    // app.use('/auth', router);
 };

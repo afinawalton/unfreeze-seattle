@@ -10,10 +10,6 @@ h1.logo {
     font-weight: lighter;
 }
 
-.existingUser a {
-    display: inline;
-}
-
 .green {
     color: var(--greenDark);
 }
