@@ -23,8 +23,11 @@ Everyone knows about the so-called "Seattle Freeze". Transplants to Seattle have
 - CORS
 
 ## Instructions for Setup
-### Deployed (Recommended)
+### Deployed Site (Recommended)
 Visit [Unfreeze Seattle website](https://unfreeze-seattle-2022.herokuapp.com/)
+
+### Video Demo
+https://drive.google.com/file/d/1eLv6uqDbIFERzOCAPgCWccemgfHAZrab/view?usp=sharing
 
 ### Localhost (Not Recommended)
 1. Make sure you're on the `master` branch (the development branch for this project)
