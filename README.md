@@ -22,14 +22,10 @@ Everyone knows about the so-called "Seattle Freeze". Transplants to Seattle have
 - Cookie Parser
 - CORS
 
-## Instructions for Setup
-### Deployed Site (Recommended)
-Visit [Unfreeze Seattle website](https://unfreeze-seattle-2022.herokuapp.com/)
-
-### Video Demo
+## Video Demo
 https://drive.google.com/file/d/1eLv6uqDbIFERzOCAPgCWccemgfHAZrab/view?usp=sharing
 
-### Localhost (Not Recommended)
+### Local Setup
 1. Make sure you're on the `master` branch (the development branch for this project)
 2. Clone the repository
 3. Install PostgreSQL locally on your machine and create a new database called `unfreeze_seattle`.
